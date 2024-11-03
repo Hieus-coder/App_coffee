@@ -17,6 +17,7 @@ public class Datban extends javax.swing.JFrame {
     private bancontroller bc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public Datban(boolean isAdmin) {
         this.admin = isAdmin;
 
@@ -27,6 +28,9 @@ public class Datban extends javax.swing.JFrame {
 //            return;
 //        }
 
+=======
+    public Datban() {
+>>>>>>> parent of 52a988d (up menu)
 =======
     public Datban() {
 >>>>>>> parent of 52a988d (up menu)
@@ -99,6 +103,7 @@ public class Datban extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 <<<<<<< HEAD
+<<<<<<< HEAD
         BtnDangxuat = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -106,6 +111,9 @@ public class Datban extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+=======
+        jLabel3 = new javax.swing.JLabel();
+>>>>>>> parent of 52a988d (up menu)
 =======
         jLabel3 = new javax.swing.JLabel();
 >>>>>>> parent of 52a988d (up menu)
@@ -126,6 +134,7 @@ public class Datban extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         BtnDangxuat.setText("Đăng xuất");
         BtnDangxuat.addActionListener(new java.awt.event.ActionListener() {
@@ -176,11 +185,16 @@ public class Datban extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel3.setText("heelo");
 >>>>>>> parent of 52a988d (up menu)
+=======
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel3.setText("heelo");
+>>>>>>> parent of 52a988d (up menu)
 
         javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
         pnMenu.setLayout(pnMenuLayout);
         pnMenuLayout.setHorizontalGroup(
             pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
 <<<<<<< HEAD
             .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,6 +217,9 @@ public class Datban extends javax.swing.JFrame {
             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 =======
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
+=======
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
+>>>>>>> parent of 52a988d (up menu)
                 .addGap(176, 176, 176)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnMenuLayout.createSequentialGroup()
@@ -210,6 +227,9 @@ public class Datban extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
+>>>>>>> parent of 52a988d (up menu)
+=======
 >>>>>>> parent of 52a988d (up menu)
         );
         pnMenuLayout.setVerticalGroup(
@@ -217,6 +237,7 @@ public class Datban extends javax.swing.JFrame {
             .addGroup(pnMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
+<<<<<<< HEAD
 <<<<<<< HEAD
                 .addGap(29, 29, 29)
                 .addComponent(jLabel2)
@@ -236,11 +257,16 @@ public class Datban extends javax.swing.JFrame {
                 .addComponent(BtnDangxuat)
                 .addContainerGap())
 =======
+=======
+>>>>>>> parent of 52a988d (up menu)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+<<<<<<< HEAD
+>>>>>>> parent of 52a988d (up menu)
+=======
 >>>>>>> parent of 52a988d (up menu)
         );
 
@@ -392,6 +418,7 @@ public class Datban extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnDatbanActionPerformed
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed
         // TODO add your handling code here:
         int confirmed = JOptionPane.showConfirmDialog(this,
@@ -420,6 +447,11 @@ public class Datban extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
+=======
+    /**
+     * @param args the command line arguments
+     */
+>>>>>>> parent of 52a988d (up menu)
 =======
     /**
      * @param args the command line arguments
@@ -461,6 +493,7 @@ public class Datban extends javax.swing.JFrame {
     private javax.swing.JButton BtnDatban;
     private javax.swing.JButton BtnHuyban;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -469,6 +502,11 @@ public class Datban extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+=======
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+>>>>>>> parent of 52a988d (up menu)
 =======
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
