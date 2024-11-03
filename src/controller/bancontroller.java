@@ -29,10 +29,10 @@ public class bancontroller {
             pstmt.setString(1, trangThai);
             pstmt.setString(2, maBan);
             int rowsAffected = pstmt.executeUpdate();
-            return rowsAffected > 0; // Trả về true nếu cập nhật thành công
+            return rowsAffected > 0;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return false; // Trả về false nếu có lỗi
+            return false; 
         }
     }
 }

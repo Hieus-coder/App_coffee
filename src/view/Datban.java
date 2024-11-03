@@ -242,7 +242,7 @@ public class Datban extends javax.swing.JFrame {
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow >= 0) {
             String maBan = jTable1.getValueAt(selectedRow, 0).toString(); 
-            String newStatus = "Trong"; 
+            String newStatus = "Trống"; 
             boolean success = bc.updateBanStatus(maBan, newStatus);
             if (success) {
                 loadDataToTable();
@@ -260,7 +260,7 @@ public class Datban extends javax.swing.JFrame {
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow >= 0) {
             String maBan = jTable1.getValueAt(selectedRow, 0).toString(); 
-            String newStatus = "Da dat"; 
+            String newStatus = "Đã đặt"; 
             boolean success = bc.updateBanStatus(maBan, newStatus);
             if (success) {
                 loadDataToTable();

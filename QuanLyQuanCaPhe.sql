@@ -40,16 +40,16 @@ GO
 -- Thêm dữ liệu vào bảng BAN
 INSERT INTO BAN (MABAN, TENBAN, TRANGTHAI)
 VALUES
-	('B01', 'BAN1', 'Trong'),
-	('B02', 'BAN2', 'Trong'),
-	('B03', 'BAN3', 'Trong'),
-	('B04', 'BAN4', 'Trong'),
-	('B05', 'BAN5', 'Trong'),
-	('B06', 'BAN6', 'Trong'),
-	('B07', 'BAN7', 'Trong'),
-	('B08', 'BAN8', 'Trong'),
-	('B09', 'BAN9', 'Trong'),
-	('B10', 'BAN10', 'Trong');
+	('B01', 'BAN1', 'Đã đặt'),
+	('B02', 'BAN2', 'Trống'),
+	('B03', 'BAN3', 'Trống'),
+	('B04', 'BAN4', 'Trống'),
+	('B05', 'BAN5', 'Trống'),
+	('B06', 'BAN6', 'Trống'),
+	('B07', 'BAN7', 'Trống'),
+	('B08', 'BAN8', 'Trống'),
+	('B09', 'BAN9', 'Trống'),
+	('B10', 'BAN10', 'Trống');
 
 GO
 /*--------------------------------------------------------------------*/
@@ -66,11 +66,11 @@ GO
 -- Thêm dữ liệu vào bảng DOUONG
 INSERT INTO DOUONG (MADOUONG, TENDOUONG, GIA)
 VALUES
-    ('D01', 'Ca phe den', 20000),
-    ('D02', 'Ca phe sua', 25000),
-    ('D03', 'Bac xiu', 30000),
-    ('D04', 'Ca phe trung', 35000),
-    ('D05', 'Sinh to thap cam', 40000);
+    ('D01', 'Cà phê đen', 20000),
+    ('D02', 'Cà phê sữa', 25000),
+    ('D03', 'Bạc xỉu', 30000),
+    ('D04', 'Cà phê trứng', 35000),
+    ('D05', 'Sinh tố thập cẩm', 40000);
 
 GO
 /*--------------------------------------------------------------------*/
@@ -131,4 +131,4 @@ INSERT INTO DOANHTHU (NGAY, GIO, TONGTIEN) VALUES ('2024-08-05', '14:30:00', 350
 GO
 
 
-select * from doanhthu
+select * from ban
