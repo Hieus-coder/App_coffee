@@ -4,6 +4,7 @@
  */
 package view;
 
+<<<<<<< HEAD
 /**
  *
  * @author Hieus
@@ -15,6 +16,21 @@ public class Dangnhap {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+=======
+import controller.usercontroller;
+import DBC.Dbconnection;
+import javax.swing.JOptionPane;
+
+public class Dangnhap extends javax.swing.JFrame {
+
+    public static boolean isAuthenticated = false;
+    private usercontroller cn;
+
+    public Dangnhap() {
+        initComponents();
+        Dbconnection connect = new Dbconnection();
+        cn = new usercontroller(connect.getConnect()); 
+>>>>>>> parent of f36fce9 (Updata Datban)
     }
 <<<<<<< HEAD
     
