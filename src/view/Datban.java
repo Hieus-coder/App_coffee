@@ -19,6 +19,9 @@ public class Datban extends javax.swing.JFrame {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d16e67b (up)
     public Datban(boolean isAdmin) {
         this.admin = isAdmin;
 
@@ -32,12 +35,15 @@ public class Datban extends javax.swing.JFrame {
 =======
     public Datban() {
 >>>>>>> parent of 52a988d (up menu)
+<<<<<<< HEAD
 =======
     public Datban() {
 >>>>>>> parent of 52a988d (up menu)
 =======
     public Datban() {
 >>>>>>> parent of 52a988d (up menu)
+=======
+>>>>>>> parent of d16e67b (up)
         initComponents();
         setTitle("Coffee");
         
@@ -109,7 +115,6 @@ public class Datban extends javax.swing.JFrame {
 <<<<<<< HEAD
         jLabel2 = new javax.swing.JLabel();
 <<<<<<< HEAD
-<<<<<<< HEAD
         BtnDangxuat = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -120,6 +125,7 @@ public class Datban extends javax.swing.JFrame {
 =======
         jLabel3 = new javax.swing.JLabel();
 >>>>>>> parent of 52a988d (up menu)
+<<<<<<< HEAD
 =======
         jLabel3 = new javax.swing.JLabel();
 >>>>>>> parent of 52a988d (up menu)
@@ -136,6 +142,8 @@ public class Datban extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 >>>>>>> parent of 52a988d (up menu)
+=======
+>>>>>>> parent of d16e67b (up)
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -156,6 +164,9 @@ public class Datban extends javax.swing.JFrame {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d16e67b (up)
         BtnDangxuat.setText("Đăng xuất");
         BtnDangxuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,10 +225,6 @@ public class Datban extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel3.setText("heelo");
 >>>>>>> parent of 52a988d (up menu)
-=======
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel3.setText("heelo");
->>>>>>> parent of 52a988d (up menu)
 
         javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
         pnMenu.setLayout(pnMenuLayout);
@@ -226,6 +233,9 @@ public class Datban extends javax.swing.JFrame {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d16e67b (up)
             .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(BtnDangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -248,12 +258,15 @@ public class Datban extends javax.swing.JFrame {
             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 =======
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
+<<<<<<< HEAD
 =======
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
 >>>>>>> parent of 52a988d (up menu)
 =======
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
 >>>>>>> parent of 52a988d (up menu)
+=======
+>>>>>>> parent of d16e67b (up)
                 .addGap(176, 176, 176)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnMenuLayout.createSequentialGroup()
@@ -263,8 +276,11 @@ public class Datban extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 52a988d (up menu)
 =======
+=======
+>>>>>>> parent of d16e67b (up)
 >>>>>>> parent of 52a988d (up menu)
 =======
 >>>>>>> parent of de04fe8 (up)
@@ -279,6 +295,9 @@ public class Datban extends javax.swing.JFrame {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d16e67b (up)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
@@ -301,10 +320,13 @@ public class Datban extends javax.swing.JFrame {
                 .addComponent(BtnDangxuat)
                 .addContainerGap())
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 52a988d (up menu)
 =======
 >>>>>>> parent of 52a988d (up menu)
+=======
+>>>>>>> parent of d16e67b (up)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
                 .addGap(26, 26, 26)
@@ -312,10 +334,13 @@ public class Datban extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 52a988d (up menu)
 =======
 >>>>>>> parent of 52a988d (up menu)
 =======
+=======
+>>>>>>> parent of d16e67b (up)
 >>>>>>> parent of 52a988d (up menu)
         );
 
@@ -465,6 +490,9 @@ public class Datban extends javax.swing.JFrame {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d16e67b (up)
     private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed
         // TODO add your handling code here:
         int confirmed = JOptionPane.showConfirmDialog(this,
@@ -487,6 +515,7 @@ public class Datban extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 >>>>>>> parent of 52a988d (up menu)
+<<<<<<< HEAD
 =======
     /**
      * @param args the command line arguments
@@ -515,6 +544,8 @@ public class Datban extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 >>>>>>> parent of 52a988d (up menu)
+=======
+>>>>>>> parent of d16e67b (up)
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -554,11 +585,14 @@ public class Datban extends javax.swing.JFrame {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     private javax.swing.JButton btnDatban;
     private javax.swing.JButton btnDatmon;
     private javax.swing.JButton btnDoanthu;
 >>>>>>> parent of de04fe8 (up)
+=======
+>>>>>>> parent of d16e67b (up)
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnThanhtoan;
     private javax.swing.JButton btnTrangchu;
@@ -570,6 +604,7 @@ public class Datban extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
 >>>>>>> parent of 52a988d (up menu)
+<<<<<<< HEAD
 =======
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -582,6 +617,8 @@ public class Datban extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
 >>>>>>> parent of 52a988d (up menu)
+=======
+>>>>>>> parent of d16e67b (up)
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;

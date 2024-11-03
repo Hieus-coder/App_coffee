@@ -76,11 +76,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d16e67b (up)
               <Component id="pnMenu" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
 =======
-=======
->>>>>>> parent of 52a988d (up menu)
               <Component id="pnMenu" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
@@ -118,6 +119,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d16e67b (up)
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       <Component id="BtnDangxuat" max="32767" attributes="0"/>
@@ -147,6 +151,7 @@
                       <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
                       <Component id="jLabel5" max="32767" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
 =======
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
@@ -155,6 +160,8 @@
 >>>>>>> parent of 52a988d (up menu)
 =======
 >>>>>>> parent of 52a988d (up menu)
+=======
+>>>>>>> parent of d16e67b (up)
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" pref="37" max="-2" attributes="0"/>
@@ -163,8 +170,11 @@
                   <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 52a988d (up menu)
 =======
+=======
+>>>>>>> parent of d16e67b (up)
 >>>>>>> parent of 52a988d (up menu)
 =======
 >>>>>>> parent of de04fe8 (up)
@@ -180,6 +190,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d16e67b (up)
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -202,16 +215,11 @@
                       <Component id="BtnDangxuat" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
 =======
-=======
->>>>>>> parent of 52a988d (up menu)
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-<<<<<<< HEAD
->>>>>>> parent of 52a988d (up menu)
-=======
 >>>>>>> parent of 52a988d (up menu)
 =======
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -240,7 +248,6 @@
 <<<<<<< HEAD
             <Component class="javax.swing.JLabel" name="jLabel2">
 <<<<<<< HEAD
-<<<<<<< HEAD
             </Component>
 =======
 >>>>>>> parent of de04fe8 (up)
@@ -253,11 +260,14 @@
               </Events>
 =======
 >>>>>>> parent of 52a988d (up menu)
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 52a988d (up menu)
 =======
             <Component class="javax.swing.JLabel" name="jLabel2">
 >>>>>>> parent of 52a988d (up menu)
+=======
+>>>>>>> parent of d16e67b (up)
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -269,6 +279,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d16e67b (up)
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhanVienActionPerformed"/>
               </Events>
@@ -326,10 +339,13 @@
               </Events>
 =======
 >>>>>>> parent of 52a988d (up menu)
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 52a988d (up menu)
 =======
 >>>>>>> parent of 52a988d (up menu)
+=======
+>>>>>>> parent of d16e67b (up)
             </Component>
           </SubComponents>
         </Container>
