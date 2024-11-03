@@ -8,10 +8,12 @@ public class accountcontroller {
 
     private Connection conn;
 
+    // Constructor nhận vào đối tượng Connection
     public accountcontroller(Connection conn) {
         this.conn = conn;
     }
 
+    // Phương thức kiểm tra tài khoản và mật khẩu
     public boolean checkUserCredentials(String TAIKHOAN, String MATKHAU) {
         try {
             String sql = "SELECT * FROM ACCOUNT WHERE TAIKHOAN = ? AND MATKHAU = ?";
@@ -24,9 +26,5 @@ public class accountcontroller {
             ex.printStackTrace();
             return false;
         }
-    }
-
-    public boolean isAdmin(String TAIKHOAN) {
-        return "admin".equals(TAIKHOAN);
     }
 }
