@@ -1,5 +1,4 @@
-@ -1,424 +1,455 @@
-@ -1,423 +1,454 @@
+@ -1,305 +1,335 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
@@ -48,25 +47,29 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <Component id="pnMenu" min="-2" pref="0" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="203" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jScrollPane1" pref="648" max="32767" attributes="0"/>
-                              <Component id="jLabel4" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel4" pref="845" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="648" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="270" max="-2" attributes="0"/>
                           <Component id="BtnDatban" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
                           <Component id="BtnHuyban" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -74,37 +77,18 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
               <Component id="pnMenu" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
-=======
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
-              <Component id="pnMenu" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
->>>>>>> parent of 52a988d (up menu)
-=======
-              <Component id="pnMenu" alignment="0" pref="488" max="32767" attributes="0"/>
-=======
-              <Component id="pnMenu" alignment="0" max="32767" attributes="0"/>
->>>>>>> parent of 52a988d (up menu)
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
->>>>>>> parent of de04fe8 (up)
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="31" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel4" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="247" max="-2" attributes="0"/>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BtnHuyban" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BtnDatban" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -120,128 +104,54 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                      <Component id="BtnDangxuat" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" pref="37" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="BtnDangxuat" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
                       <Component id="jLabel5" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  <Component id="btnTrangchu" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnDatban" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnDatmon" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnThanhtoan" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnDoanthu" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnNhanVien" alignment="0" max="32767" attributes="0"/>
-<<<<<<< HEAD
                   <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
-=======
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-                      <Component id="jLabel5" max="32767" attributes="0"/>
-                  </Group>
-=======
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-                      <Component id="jLabel5" max="32767" attributes="0"/>
-                  </Group>
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of de04fe8 (up)
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="47" max="-2" attributes="0"/>
-=======
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="btnTrangchu" min="-2" pref="47" max="-2" attributes="0"/>
->>>>>>> parent of de04fe8 (up)
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnDatban" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnDatmon" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="jButton3" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnThanhtoan" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="jButton4" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnDoanthu" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="jButton5" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnNhanVien" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="57" max="32767" attributes="0"/>
                       <Component id="BtnDangxuat" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-=======
-=======
->>>>>>> parent of 52a988d (up menu)
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-<<<<<<< HEAD
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
->>>>>>> parent of 52a988d (up menu)
-=======
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
->>>>>>> parent of 52a988d (up menu)
                   </Group>
               </Group>
             </DimensionLayout>
@@ -258,15 +168,8 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel5MouseClicked"/>
               </Events>
             </Component>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
             <Component class="javax.swing.JLabel" name="jLabel2">
-<<<<<<< HEAD
-<<<<<<< HEAD
             </Component>
-=======
->>>>>>> parent of de04fe8 (up)
             <Component class="javax.swing.JButton" name="BtnDangxuat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
@@ -274,44 +177,30 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDangxuatActionPerformed"/>
               </Events>
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
-            <Component class="javax.swing.JLabel" name="jLabel2">
->>>>>>> parent of 52a988d (up menu)
-=======
-            <Component class="javax.swing.JLabel" name="jLabel2">
->>>>>>> parent of 52a988d (up menu)
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JButton" name="btnNhanVien">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="3"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="heelo"/>
+                <Property name="text" type="java.lang.String" value="Nh&#xe2;n vi&#xea;n"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
               </Properties>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhanVienActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnTrangchu">
+            <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Trang ch&#x1ee7;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTrangchuActionPerformed"/>
-              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnDatban">
+            <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x1eb7;t b&#xe0;n"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -319,7 +208,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnDatmon">
+            <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x1eb7;t m&#xf3;n"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -327,10 +216,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDatmonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnThanhtoan">
+            <Component class="javax.swing.JButton" name="jButton4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Thanh to&#xe1;n"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -338,10 +227,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhtoanActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnDoanthu">
+            <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Doanh thu"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -349,16 +238,8 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoanthuActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
               </Events>
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
-=======
->>>>>>> parent of 52a988d (up menu)
             </Component>
           </SubComponents>
         </Container>
