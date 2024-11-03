@@ -1,18 +1,19 @@
 package view;
 
-import controller.usercontroller;
+import controller.accountcontroller;
 import DBC.Dbconnection;
 import javax.swing.JOptionPane;
 
 public class Dangnhap extends javax.swing.JFrame {
 
     public static boolean isAuthenticated = false;
-    private usercontroller cn;
+    private accountcontroller cn;
 
     public Dangnhap() {
         initComponents();
+        setTitle("Coffee");
         Dbconnection connect = new Dbconnection();
-        cn = new usercontroller(connect.getConnect()); 
+        cn = new accountcontroller(connect.getConnect()); 
     }
 
     @SuppressWarnings("unchecked")

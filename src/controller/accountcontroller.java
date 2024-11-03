@@ -3,14 +3,13 @@ package controller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 
-public class usercontroller {
+public class accountcontroller {
 
     private Connection conn;
 
     // Constructor nhận vào đối tượng Connection
-    public usercontroller(Connection conn) {
+    public accountcontroller(Connection conn) {
         this.conn = conn;
     }
 
@@ -22,7 +21,7 @@ public class usercontroller {
             pre.setString(1, TAIKHOAN);
             pre.setString(2, MATKHAU);
             ResultSet rs = pre.executeQuery();
-            return rs.next();  // Nếu có kết quả, tài khoản và mật khẩu là đúng
+            return rs.next();
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
