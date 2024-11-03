@@ -1,4 +1,3 @@
-@ -1,409 +1,486 @@
 package view;
 
 import controller.bancontroller;
