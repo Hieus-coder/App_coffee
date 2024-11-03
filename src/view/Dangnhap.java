@@ -8,7 +8,7 @@ package view;
  *
  * @author Hieus
  */
-public class App_Coffee {
+public class Dangnhap {
 
     /**
      * @param args the command line arguments
