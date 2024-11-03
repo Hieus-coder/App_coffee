@@ -7,13 +7,14 @@ import javax.swing.JOptionPane;
 public class Dangnhap extends javax.swing.JFrame {
 
     public static boolean isAuthenticated = false;
-    private accountcontroller cn;
+    private boolean isAdmin = false;
+    private accountcontroller accController;
 
     public Dangnhap() {
         initComponents();
         setTitle("Coffee");
         Dbconnection connect = new Dbconnection();
-        cn = new accountcontroller(connect.getConnect()); 
+        accController = new accountcontroller(connect.getConnect());
     }
 
     @SuppressWarnings("unchecked")
@@ -107,14 +108,17 @@ public class Dangnhap extends javax.swing.JFrame {
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
         String username = txtTaikhoan.getText().trim();
-        String password = txtMatkhau.getText().trim();
-        if (cn.checkUserCredentials(username, password)) {
+        String password = new String(txtMatkhau.getPassword()).trim();
+
+        if (accController.checkUserCredentials(username, password)) {
             isAuthenticated = true;
-            Datban frm = new Datban();
+            isAdmin = accController.isAdmin(username); 
+
+            Datban frm = new Datban(isAdmin);
             frm.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Dang nhap that bai");
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");
         }
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
