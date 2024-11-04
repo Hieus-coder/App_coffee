@@ -16,12 +16,12 @@ public class Datban extends javax.swing.JFrame {
     public Datban(boolean isAdmin) {
         this.admin = isAdmin;
 
-//        if (!Dangnhap.isAuthenticated) {
-//            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
-//            this.dispose();
-//            new Dangnhap().setVisible(true);
-//            return;
-//        }
+        if (!Dangnhap.isAuthenticated) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
+            this.dispose();
+            new Dangnhap().setVisible(true);
+            return;
+        }
 
         initComponents();
         btnNhanVien.setVisible(admin);
@@ -32,37 +32,6 @@ public class Datban extends javax.swing.JFrame {
         this.bc = new bancontroller(conn);
         loadDataToTable();
     }
-
-    int width = 210;
-    int height = 900;
-
-    void openMenu() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < width; i++) {
-                    pnMenu.setSize(i, height);
-//                    try {
-//                        Thread.sleep(0,1);
-//                    } catch (InterruptedException ex) {
-//                        Logger.getLogger(Datban.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-                }
-            }
-        }).start();
-    }
-
-    void closeMenu() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = width; i > 0; i--) {
-                    pnMenu.setSize(i, height);
-                }
-            }
-        }).start();
-    }
-
     private void loadDataToTable() {
         try {
             ResultSet rs = bc.getAllBan();
@@ -82,7 +51,6 @@ public class Datban extends javax.swing.JFrame {
 
         pnMain = new javax.swing.JPanel();
         pnMenu = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         BtnDangxuat = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
@@ -91,7 +59,6 @@ public class Datban extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BtnDatban = new javax.swing.JButton();
@@ -100,13 +67,7 @@ public class Datban extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/close.png"))); // NOI18N
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-        });
+        pnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         BtnDangxuat.setText("Đăng xuất");
         BtnDangxuat.addActionListener(new java.awt.event.ActionListener() {
@@ -167,23 +128,20 @@ public class Datban extends javax.swing.JFrame {
                         .addGap(64, 64, 64)
                         .addComponent(BtnDangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(71, 71, 71))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnMenuLayout.createSequentialGroup()
+                .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnNhanVien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnMenuLayout.setVerticalGroup(
             pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addGap(29, 29, 29)
+                .addGap(69, 69, 69)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,17 +155,10 @@ public class Datban extends javax.swing.JFrame {
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(BtnDangxuat)
                 .addContainerGap())
         );
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/menu.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -245,21 +196,19 @@ public class Datban extends javax.swing.JFrame {
         pnMainLayout.setHorizontalGroup(
             pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnMainLayout.createSequentialGroup()
-                .addComponent(pnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnMainLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMainLayout.createSequentialGroup()
                                 .addGap(91, 91, 91)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                                 .addGap(106, 106, 106)))
                         .addContainerGap())
                     .addGroup(pnMainLayout.createSequentialGroup()
-                        .addGap(270, 270, 270)
+                        .addGap(66, 66, 66)
                         .addComponent(BtnDatban)
                         .addGap(214, 214, 214)
                         .addComponent(BtnHuyban)
@@ -269,11 +218,7 @@ public class Datban extends javax.swing.JFrame {
             pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnMainLayout.createSequentialGroup()
-                .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnMainLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -302,16 +247,6 @@ public class Datban extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        // TODO add your handling code here:
-        closeMenu();
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        openMenu();
-    }//GEN-LAST:event_jLabel1MouseClicked
 
     private void BtnHuybanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHuybanActionPerformed
         // TODO add your handling code here:
@@ -349,18 +284,6 @@ public class Datban extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtnDatbanActionPerformed
 
-    private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed
-        // TODO add your handling code here:
-        int confirmed = JOptionPane.showConfirmDialog(this,
-            "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (confirmed == JOptionPane.YES_OPTION) {
-            Dangnhap frm = new Dangnhap();
-            frm.setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_BtnDangxuatActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -376,6 +299,18 @@ public class Datban extends javax.swing.JFrame {
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNhanVienActionPerformed
+
+    private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed
+        // TODO add your handling code here:
+        int confirmed = JOptionPane.showConfirmDialog(this,
+            "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (confirmed == JOptionPane.YES_OPTION) {
+            Dangnhap frm = new Dangnhap();
+            frm.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_BtnDangxuatActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -395,10 +330,8 @@ public class Datban extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel pnMain;
