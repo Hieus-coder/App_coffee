@@ -25,7 +25,7 @@ public class accountcontroller {
             return false;
         }
     }
-
+    
     public boolean isAdmin(String TAIKHOAN) {
         return "admin".equals(TAIKHOAN);
     }

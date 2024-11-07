@@ -7,6 +7,7 @@ import DBC.Dbconnection;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import controller.*;
+import model.quanlymodel;
 
 /**
  *
@@ -281,46 +282,22 @@ public class Themnhanvien extends javax.swing.JFrame {
         Object chucvu = jCbChucvu.getSelectedItem();
         Object quequan = jCbQuequan.getSelectedItem();
         String sdt = txtSDT.getText();
-        String queryThemNV = "INSERT INTO nhan_su(ho_va_ten, gioi_tinh, nam_sinh, chuc_vu, que_quan,so_dien_thoai) VALUES (?, ?, ?, ?, ?, ?)";
-        try {
-            PreparedStatement pstmt = conn.prepareStatement(queryThemNV);
-            pstmt.setString(1, ho +" "+ ten);
-            pstmt.setString(2, gt);
-            pstmt.setInt(3, namsinh);
-            pstmt.setString(4, (String)chucvu);
-            pstmt.setString(5, (String)quequan);
-            pstmt.setString(6, sdt);
-            
-            pstmt.executeUpdate();
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        String queryThemTK = "INSERT INTO ACCOUNT(ID, TAIKHOAN, MATKHAU, ID_NHAN_SU) VALUES (? , ?, ?, ?)";
-        try {
-            PreparedStatement pstmt = conn.prepareStatement(queryThemTK);
-            pstmt.setInt(1, autoid++);
-            pstmt.setString(2, taikhoan);
-            pstmt.setString(3, matkhau);
-            pstmt.setInt(4, autoid++);
-            pstmt.executeUpdate();
-            
+       
+        quanlymodel employee = new quanlymodel();
+        employee.setHO_VA_TEN(ho +" "+ ten);
+        employee.setGIOI_TINH(gt);
+        employee.setNAM_SINH(namsinh);
+        employee.setQUE_QUAN((String) quequan);
+        employee.setCHUC_VU((String)chucvu);
+        employee.setSO_DIEN_THOAI(sdt);
+        
+        nhansucontroller  controller = new nhansucontroller();
+        boolean success = controller.addEmployee(employee);
+        if (success) {
             JOptionPane.showMessageDialog(null, "Thêm nhân viên thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            txtHo.setText("");
-            txtTen.setText(""); 
-            txtTaikhoan.setText("");
-            txtMatkhau.setText("");
-            txtNamsinh.setText("");
-            if (jRBNam.isSelected() || jRBNu.isSelected()) {
-                jRBNam.setSelected(false);
-                jRBNu.setSelected(false);
-            }
-            txtSDT.setText("");
-
-            this.dispose();
         }
-        catch(SQLException e) {
-            e.printStackTrace();
+        else {
+            JOptionPane.showMessageDialog(null, "Thêm nhân viên thất bại.", "Thông báo", JOptionPane.ERROR_MESSAGE);            
         }
         
     }//GEN-LAST:event_btnLuuActionPerformed

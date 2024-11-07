@@ -7,13 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class NhansuController {
+public class nhansucontroller {
     private Connection conn;
 
-    public NhansuController(Connection conn) {
+    public nhansucontroller(Connection conn) {
         this.conn = conn;
     }
-
+    public nhansucontroller() { }
     // Method to retrieve all employees
     public ResultSet getAll() {
         try {
@@ -118,4 +118,5 @@ public class NhansuController {
             return false; 
         }
     }
+    
 }
