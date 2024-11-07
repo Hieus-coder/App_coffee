@@ -6,7 +6,7 @@ package view;
 import DBC.Dbconnection;
 import java.sql.*;
 import javax.swing.JOptionPane;
-import Controller.
+import controller.*;
 
 /**
  *
@@ -265,7 +265,7 @@ public class Themnhanvien extends javax.swing.JFrame {
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
-        int maxid =  
+//        int maxid =  
         String ho = txtHo.getText();
         String ten = txtTen.getText();
         String taikhoan = txtTaikhoan.getText();
