@@ -5,7 +5,7 @@ package model;
  */
 public class quanlymodel {
     
-    private int ID; // Đổi tên biến từ 'id' thành 'ID' để khớp với tên cột SQL
+    private int ID_NHAN_SU; // Đổi tên biến từ 'id' thành 'id' để khớp với tên cột SQL
     private String HO_VA_TEN; // Đổi tên biến
     private String GIOI_TINH; // Đổi tên biến
     private int NAM_SINH; // Đổi tên biến
@@ -14,8 +14,8 @@ public class quanlymodel {
     private String SO_DIEN_THOAI; // Đổi tên biến
 
     // Constructor
-    public quanlymodel(int ID, String HO_VA_TEN, String GIOI_TINH, int NAM_SINH, String CHUC_VU, String QUE_QUAN, String SO_DIEN_THOAI) {
-        this.ID = ID;
+    public quanlymodel(int id, String HO_VA_TEN, String GIOI_TINH, int NAM_SINH, String CHUC_VU, String QUE_QUAN, String SO_DIEN_THOAI) {
+        this.ID_NHAN_SU = id;
         this.HO_VA_TEN = HO_VA_TEN;
         this.GIOI_TINH = GIOI_TINH;
         this.NAM_SINH = NAM_SINH;
@@ -25,12 +25,12 @@ public class quanlymodel {
     }
 
     // Getters and Setters
-    public int getID() {
-        return ID;
+    public int getid() {
+        return ID_NHAN_SU;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setid(int id) {
+        this.ID_NHAN_SU = id;
     }
 
     public String getHO_VA_TEN() {
@@ -84,7 +84,7 @@ public class quanlymodel {
     @Override
     public String toString() {
         return "QuanLyModel{" +
-                "ID=" + ID +
+                "id=" + ID_NHAN_SU +
                 ", HO_VA_TEN='" + HO_VA_TEN + '\'' +
                 ", GIOI_TINH='" + GIOI_TINH + '\'' +
                 ", NAM_SINH=" + NAM_SINH +

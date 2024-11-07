@@ -6,6 +6,8 @@ package view;
 import DBC.Dbconnection;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import Controller.
+
 /**
  *
  * @author leduc
@@ -263,7 +265,7 @@ public class Themnhanvien extends javax.swing.JFrame {
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
-        int autoid = 2;
+        int maxid =  
         String ho = txtHo.getText();
         String ten = txtTen.getText();
         String taikhoan = txtTaikhoan.getText();
@@ -294,13 +296,13 @@ public class Themnhanvien extends javax.swing.JFrame {
         catch (SQLException e) {
             e.printStackTrace();
         }
-        String queryThemTK = "INSERT INTO ACCOUNT(ID, TAIKHOAN, MATKHAU) VALUES (? , ?, ?)";
+        String queryThemTK = "INSERT INTO ACCOUNT(ID, TAIKHOAN, MATKHAU, ID_NHAN_SU) VALUES (? , ?, ?, ?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(queryThemTK);
             pstmt.setInt(1, autoid++);
             pstmt.setString(2, taikhoan);
             pstmt.setString(3, matkhau);
-            
+            pstmt.setInt(4, autoid++);
             pstmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Thêm nhân viên thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -337,6 +339,7 @@ public class Themnhanvien extends javax.swing.JFrame {
         txtSDT.setText("");
         this.dispose();
     }//GEN-LAST:event_btnKhongluuActionPerformed
+
 
     /**
      * @param args the command line arguments

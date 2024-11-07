@@ -2,7 +2,7 @@ package view;
 
 import DBC.Dbconnection;
 import java.sql.Connection;
-import controller.nhansucontroller;
+import controller.NhansuController;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +16,7 @@ public class QuanLy extends javax.swing.JFrame {
 
     private boolean admin;
     private Connection conn;
-    private nhansucontroller ns;
+    private NhansuController ns;
 
     public QuanLy(boolean isAdmin) {
         this.admin = isAdmin;
@@ -26,7 +26,7 @@ public class QuanLy extends javax.swing.JFrame {
 
         Dbconnection dbConnection = new Dbconnection();
         this.conn = dbConnection.getConnect();
-        this.ns = new nhansucontroller(conn);
+        this.ns = new NhansuController(conn);
         loadDataToTable();
     }
 
@@ -468,7 +468,7 @@ public class QuanLy extends javax.swing.JFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int id = Integer.parseInt(txtID.getText()); // Giả sử có một trường nhập liệu cho ID
-        nhansucontroller nsController = new nhansucontroller(conn);
+        NhansuController nsController = new NhansuController(conn);
 
         // Gọi phương thức xóa
         boolean isSuccess = nsController.deleteEmployee(id);

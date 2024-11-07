@@ -13,19 +13,23 @@ GO
 
 -- Tạo bảng ACCOUNT để lưu thông tin tài khoản admin
 CREATE TABLE ACCOUNT (
-	ID INT PRIMARY KEY,
-	TAIKHOAN VARCHAR(50),
-	MATKHAU VARCHAR(50)
+    ID INT PRIMARY KEY,
+    TAIKHOAN VARCHAR(50),
+    MATKHAU VARCHAR(50),
+    ID_NHAN_SU INT FOREIGN KEY (ID_NHAN_SU) REFERENCES NHAN_SU(ID_NHAN_SU)
 );
+
+
 
 GO
 
 -- Thêm dữ liệu vào bảng ACCOUNT
-INSERT INTO ACCOUNT (ID, TAIKHOAN, MATKHAU)
-VALUES
-	(1, 'admin', '123456');
+INSERT INTO ACCOUNT (ID, TAIKHOAN, MATKHAU, ID_NHAN_SU)
+VALUES 
+    (1,N'tk_nguyen_a', N'password1', 1),  
+    (2,N'tk_tran_b', N'password2', 2),   
+    (3,N'tk_le_c', N'password3', 3)
 
-GO
 
 /*--------------------------------------------------------------------*/
 
@@ -130,24 +134,26 @@ INSERT INTO DOANHTHU (NGAY, GIO, TONGTIEN) VALUES ('2024-08-05', '14:30:00', 350
 GO
 
 CREATE TABLE NHAN_SU (
-    ID INT PRIMARY KEY IDENTITY(1,1),
+    ID_NHAN_SU INT PRIMARY KEY IDENTITY(1,1),
     HO_VA_TEN NVARCHAR(100) NOT NULL,
     GIOI_TINH NVARCHAR(10),
     NAM_SINH INT,
     CHUC_VU NVARCHAR(50),
     QUE_QUAN NVARCHAR(100),
     SO_DIEN_THOAI NVARCHAR(15)
+
 );
+-- Thêm cột ID_NHAN_SU vào bảng ACCOUNT
 
 
 go
-
-INSERT INTO nhan_su (ho_va_ten, gioi_tinh, nam_sinh, chuc_vu, que_quan, so_dien_thoai)
+INSERT INTO NHAN_SU (HO_VA_TEN, GIOI_TINH, NAM_SINH, CHUC_VU, QUE_QUAN, SO_DIEN_THOAI)
 VALUES 
     (N'Nguyễn Văn A', N'Nam', 1990, N'Pha chế', N'Hà Nội', N'0912345678'),
     (N'Trần Thị B', N'Nữ', 1992, N'Bồi bàn', N'TP Hồ Chí Minh', N'0987654321'),
     (N'Lê Văn C', N'Nam', 1988, N'Lao công', N'Đà Nẵng', N'0932123456');
 
 
-select * from nhan_su 
 
+Drop table NHAN_SU
+Drop table ACCOUNT

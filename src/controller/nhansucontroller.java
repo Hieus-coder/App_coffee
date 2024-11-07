@@ -4,11 +4,13 @@ import model.quanlymodel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class nhansucontroller {
+public class NhansuController {
     private Connection conn;
 
-    public nhansucontroller(Connection conn) {
+    public NhansuController(Connection conn) {
         this.conn = conn;
     }
 
@@ -61,7 +63,7 @@ public class nhansucontroller {
             pstmt.setString(4, employee.getCHUC_VU());
             pstmt.setString(5, employee.getQUE_QUAN());
             pstmt.setString(6, employee.getSO_DIEN_THOAI());
-            pstmt.setInt(7, employee.getID());
+            pstmt.setInt(7, employee.getid());
 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
@@ -91,6 +93,17 @@ public class nhansucontroller {
         }
     }
 
+    public int getMaxId() throws SQLException {
+        String query = "SELECT MAX(ID) FROM NHAN_SU";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        if (rs.next()) {
+            return rs.getInt(1);
+        } else {
+            return 0;
+        }
+    }
     // Method to delete an employee by ID
     public boolean deleteEmployee(int id) {
         try {
