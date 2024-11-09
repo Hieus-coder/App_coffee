@@ -1,8 +1,6 @@
 package view;
 
 import controller.bancontroller;
-import DBC.Dbconnection;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -10,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 public class Datban extends javax.swing.JFrame {
 
     private boolean admin;
-    private Connection conn;
     private bancontroller bc;
 
     public Datban(boolean isAdmin) {
@@ -26,9 +23,7 @@ public class Datban extends javax.swing.JFrame {
         btnNhanVien.setVisible(admin);
         setTitle("Coffee");
 
-        Dbconnection dbConnection = new Dbconnection();
-        this.conn = dbConnection.getConnect();
-        this.bc = new bancontroller(conn);
+        bc = new bancontroller();
         loadDataToTable();
     }
 

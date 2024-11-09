@@ -4,10 +4,9 @@
  */
 package view;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
-import DBC.Dbconnection;
+import controller.nhansucontroller;
 /**
  *
  * @author leduc
@@ -17,13 +16,13 @@ public class Quanlinhanvien extends javax.swing.JFrame {
     /**
      * Creates new form Quanlinhanvien
      */
-    private Connection conn;
     private DefaultTableModel model;
+    private nhansucontroller ns;
+
     public Quanlinhanvien() {
         initComponents();
-        DefaultTableModel model = new DefaultTableModel();
-        Dbconnection dbconn = new Dbconnection();
-        conn = dbconn.getConnect();
+        model = new DefaultTableModel();
+        ns = new nhansucontroller();
         loadNhanvien();
     }
 
@@ -242,7 +241,7 @@ public class Quanlinhanvien extends javax.swing.JFrame {
     public void loadNhanvien() {
         String queryNhansu = "SELECT * FROM NHAN_SU";
         try {
-            Statement stmt = conn.createStatement();
+            Statement stmt = ns.createStatement();
             ResultSet rs = stmt.executeQuery(queryNhansu);
             
             model.addColumn("Họ và tên");

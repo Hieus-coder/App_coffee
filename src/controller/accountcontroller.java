@@ -6,19 +6,9 @@ import DBC.Dbconnection;
 public class accountcontroller {
 
     private Connection conn;
-    private nhansucontroller nhanvien = new nhansucontroller();
-
-    public accountcontroller(Connection conn) {
-        this.conn = conn;
-    }
 
     public accountcontroller() {
-        try {
-            Dbconnection db = new Dbconnection();
-            this.conn = db.getConnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        conn = Dbconnection.getInstance().getConnection();
     }
 
     public boolean checkUserCredentials(String TAIKHOAN, String MATKHAU) {

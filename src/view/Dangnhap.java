@@ -1,7 +1,6 @@
 package view;
 
 import controller.accountcontroller;
-import DBC.Dbconnection;
 import javax.swing.JOptionPane;
 
 public class Dangnhap extends javax.swing.JFrame {
@@ -13,8 +12,7 @@ public class Dangnhap extends javax.swing.JFrame {
     public Dangnhap() {
         initComponents();
         setTitle("Coffee");
-        Dbconnection connect = new Dbconnection();
-        accController = new accountcontroller(connect.getConnect());
+        accController = new accountcontroller();
     }
 
     @SuppressWarnings("unchecked")

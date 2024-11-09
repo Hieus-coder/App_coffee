@@ -15,7 +15,6 @@ import model.quanlymodel;
 public class QuanLy extends javax.swing.JFrame {
 
     private boolean admin;
-    private Connection conn;
     private nhansucontroller ns;
 
     public QuanLy(boolean isAdmin) {
@@ -24,9 +23,7 @@ public class QuanLy extends javax.swing.JFrame {
         btnNhanVien.setVisible(admin);
         setTitle("Coffee");
 
-        Dbconnection dbConnection = new Dbconnection();
-        this.conn = dbConnection.getConnect();
-        this.ns = new nhansucontroller(conn);
+        ns = new nhansucontroller();
         loadDataToTable();
     }
 
@@ -214,7 +211,7 @@ public class QuanLy extends javax.swing.JFrame {
                 .addComponent(btnDoanhthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(BtnDangxuat)
                 .addContainerGap())
         );
@@ -390,7 +387,24 @@ public class QuanLy extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 690, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(197, 197, 197)
+                                .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(242, 242, 242))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1))
+                                .addGap(55, 55, 55))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(Boxbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(145, 145, 145))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,10 +482,10 @@ public class QuanLy extends javax.swing.JFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int id = Integer.parseInt(txtID.getText()); // Giả sử có một trường nhập liệu cho ID
-        nhansucontroller nsController = new nhansucontroller(conn);
+        ns = new nhansucontroller();
 
         // Gọi phương thức xóa
-        boolean isSuccess = nsController.deleteEmployee(id);
+        boolean isSuccess = ns.deleteEmployee(id);
 
         if (isSuccess) {
             JOptionPane.showMessageDialog(this, "Xóa nhân viên thành công!");

@@ -1,4 +1,3 @@
-
 package DBC;
 
 import java.sql.Connection;
@@ -6,24 +5,29 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Dbconnection {
+    private static Dbconnection instance;
     private Connection conn;
 
-    public Dbconnection() {
+    private Dbconnection() {
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=QLCOFFEE;encrypt=true;trustServerCertificate=true;";
-            conn = DriverManager.getConnection(connectionUrl, "sa", "12345");
-            System.out.println("Connected.");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Don't find driver JDBC: " + e.getMessage());
-            e.printStackTrace();
+            // Thay đổi chuỗi kết nối dưới đây theo cơ sở dữ liệu của bạn
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=QLCOFFEE;encrypt=true;trustServerCertificate=true;";
+            String username = "sa";
+            String password = "12345";
+            conn = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
-            System.out.println("Er: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public Connection getConnect() {
+    public static Dbconnection getInstance() {
+        if (instance == null) {
+            instance = new Dbconnection();
+        }
+        return instance;
+    }
+
+    public Connection getConnection() {
         return conn;
     }
 }

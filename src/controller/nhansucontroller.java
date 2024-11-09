@@ -11,19 +11,9 @@ import java.sql.Statement;
 public class nhansucontroller {
 
     private Connection conn;
-    private Dbconnection dbconn;
-
-    public nhansucontroller(Connection conn) {
-        this.conn = conn;
-    }
 
     public nhansucontroller() {
-        try {
-            this.dbconn = new Dbconnection();
-            this.conn = dbconn.getConnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        conn = Dbconnection.getInstance().getConnection();
     }
 
     // Method to retrieve all employees
@@ -137,5 +127,7 @@ public class nhansucontroller {
             return false;
         }
     }
-
+    public Statement createStatement() throws SQLException {
+        return this.conn.createStatement();
+    }
 }

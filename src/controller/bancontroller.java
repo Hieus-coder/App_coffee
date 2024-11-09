@@ -1,5 +1,6 @@
 package controller;
 
+import DBC.Dbconnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,8 +8,8 @@ import java.sql.ResultSet;
 public class bancontroller {
     private Connection conn;
     
-    public bancontroller(Connection conn) {
-        this.conn = conn;
+    public bancontroller() {
+        conn = Dbconnection.getInstance().getConnection();
     }
     
     public ResultSet getAllBan() {
