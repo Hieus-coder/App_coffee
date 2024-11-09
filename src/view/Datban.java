@@ -1,6 +1,6 @@
 package view;
 
-import controller.BanController;
+import controller.bancontroller;
 import DBC.Dbconnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ public class Datban extends javax.swing.JFrame {
 
     private boolean admin;
     private Connection conn;
-    private BanController bc;
+    private bancontroller bc;
 
     public Datban(boolean isAdmin) {
         this.admin = isAdmin;
@@ -28,7 +28,7 @@ public class Datban extends javax.swing.JFrame {
 
         Dbconnection dbConnection = new Dbconnection();
         this.conn = dbConnection.getConnect();
-        this.bc = new BanController(conn);
+        this.bc = new bancontroller(conn);
         loadDataToTable();
     }
 

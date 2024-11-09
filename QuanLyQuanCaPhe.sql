@@ -12,25 +12,40 @@ GO
 /*--------------------------------------------------------------------*/
 
 -- Tạo bảng ACCOUNT để lưu thông tin tài khoản admin
+CREATE SEQUENCE Seq_ID_NHAN_SU
+    START WITH 1
+    INCREMENT BY 1;
+
+-- Tạo bảng ACCOUNT
 CREATE TABLE ACCOUNT (
-    ID INT PRIMARY KEY,
+    ID INT PRIMARY KEY IDENTITY(1,1),
     TAIKHOAN VARCHAR(50),
     MATKHAU VARCHAR(50),
-    ID_NHAN_SU INT FOREIGN KEY (ID_NHAN_SU) REFERENCES NHAN_SU(ID_NHAN_SU)
+    ID_NHAN_SU INT UNIQUE,
+    FOREIGN KEY (ID_NHAN_SU) REFERENCES NHAN_SU(ID_NHAN_SU)
 );
+
+-- Trigger để tự động cập nhật ID_NHAN_SU khi thêm một hàng mới
+CREATE TRIGGER trg_Insert_ACCOUNT
+ON ACCOUNT
+AFTER INSERT
+AS
+BEGIN
+    UPDATE ACCOUNT
+    SET ID_NHAN_SU = FORMAT(NEXT VALUE FOR Seq_ID_NHAN_SU, '0000')
+    WHERE ID IN (SELECT ID FROM inserted);
+END;
 
 
 
 GO
 
 -- Thêm dữ liệu vào bảng ACCOUNT
-INSERT INTO ACCOUNT (ID, TAIKHOAN, MATKHAU, ID_NHAN_SU)
+INSERT INTO ACCOUNT (TAIKHOAN, MATKHAU, ID_NHAN_SU)
 VALUES 
-    (1,N'tk_nguyen_a', N'password1', 1),  
-    (2,N'tk_tran_b', N'password2', 2),   
-    (3,N'tk_le_c', N'password3', 3)
-
-
+    (N'tk_nguyen_a', N'x', 1),  
+    (N'tk_tran_b', N'password2', 2),   
+    (N'tk_le_c', N'password3', 3);
 /*--------------------------------------------------------------------*/
 
 -- Tạo bảng BAN để quản lý thông tin các bàn
@@ -78,6 +93,7 @@ VALUES
     ('D05', N'Sinh tố thập cẩm', 40000);
 
 GO
+Select * from ACCOUNT;
 /*--------------------------------------------------------------------*/
 
 -- Tạo bảng ORDER_ để lưu thông tin đơn đặt đồ uống
@@ -141,19 +157,15 @@ CREATE TABLE NHAN_SU (
     CHUC_VU NVARCHAR(50),
     QUE_QUAN NVARCHAR(100),
     SO_DIEN_THOAI NVARCHAR(15)
-
 );
 -- Thêm cột ID_NHAN_SU vào bảng ACCOUNT
 
 
-go
 INSERT INTO NHAN_SU (HO_VA_TEN, GIOI_TINH, NAM_SINH, CHUC_VU, QUE_QUAN, SO_DIEN_THOAI)
 VALUES 
     (N'Nguyễn Văn A', N'Nam', 1990, N'Pha chế', N'Hà Nội', N'0912345678'),
     (N'Trần Thị B', N'Nữ', 1992, N'Bồi bàn', N'TP Hồ Chí Minh', N'0987654321'),
     (N'Lê Văn C', N'Nam', 1988, N'Lao công', N'Đà Nẵng', N'0932123456');
 
-
-
-Drop table NHAN_SU
-Drop table ACCOUNT
+	select max(ID_NHAN_SU) from NHAN_SU
+	select * from NHAN_SU

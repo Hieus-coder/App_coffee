@@ -14,12 +14,12 @@ import model.quanlymodel;
  * @author leduc
  */
 public class Themnhanvien extends javax.swing.JFrame {
-
-    private Connection conn;
+    
+    private accountcontroller account = new accountcontroller();
+    private nhansucontroller nhanvien = new nhansucontroller();
+    private quanlymodel model = new quanlymodel();
     public Themnhanvien() {
         initComponents();
-        Dbconnection dbConn = new Dbconnection();
-        conn = dbConn.getConnect();
     }
 
     /**
@@ -83,24 +83,24 @@ public class Themnhanvien extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtHo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtHo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(37, 37, 37)
                         .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtMatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -115,13 +115,13 @@ public class Themnhanvien extends javax.swing.JFrame {
                     .addComponent(txtHo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
                     .addComponent(txtTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(txtMatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
@@ -265,8 +265,7 @@ public class Themnhanvien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        // TODO add your handling code here:
-//        int maxid =  
+        int autoid = nhanvien.getIDNhanvien() + 1;
         String ho = txtHo.getText();
         String ten = txtTen.getText();
         String taikhoan = txtTaikhoan.getText();
@@ -274,47 +273,40 @@ public class Themnhanvien extends javax.swing.JFrame {
         int namsinh = Integer.valueOf(txtNamsinh.getText());
         String gt = null;
         if (jRBNam.isSelected()) {
-             gt = jRBNam.getText();
+            gt = jRBNam.getText();
         }
         if (jRBNu.isSelected()) {
-             gt = jRBNu.getText();
+            gt = jRBNu.getText();
         }
-        Object chucvu = jCbChucvu.getSelectedItem();
-        Object quequan = jCbQuequan.getSelectedItem();
+        String chucvu = jCbChucvu.getSelectedItem().toString();
+        String quequan = jCbQuequan.getSelectedItem().toString();
         String sdt = txtSDT.getText();
+        
        
-        quanlymodel employee = new quanlymodel();
-        employee.setHO_VA_TEN(ho +" "+ ten);
-        employee.setGIOI_TINH(gt);
-        employee.setNAM_SINH(namsinh);
-        employee.setQUE_QUAN((String) quequan);
-        employee.setCHUC_VU((String)chucvu);
-        employee.setSO_DIEN_THOAI(sdt);
         
-        nhansucontroller  controller = new nhansucontroller();
-        boolean success = controller.addEmployee(employee);
-        if (success) {
-            JOptionPane.showMessageDialog(null, "Thêm nhân viên thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        model.setHO_VA_TEN(ho+" "+ten);
+        model.setGIOI_TINH(gt);
+        model.setCHUC_VU(chucvu);
+        model.setNAM_SINH(namsinh);
+        model.setQUE_QUAN(quequan);
+        model.setSO_DIEN_THOAI(sdt);
+        boolean successNV = nhanvien.addEmployee(model);
+        boolean successTK = account.addAccount(taikhoan, matkhau, autoid);
+        if (successNV) {
+            if (successTK) {
+                JOptionPane.showMessageDialog(null, "Thêm nhân viên thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Thêm tài khoản thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);                 
+            }
+        } else{
+                JOptionPane.showMessageDialog(null, "Thêm nhân viên thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
-        else {
-            JOptionPane.showMessageDialog(null, "Thêm nhân viên thất bại.", "Thông báo", JOptionPane.ERROR_MESSAGE);            
-        }
-        
+        this.dispose();
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnKhongluuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhongluuActionPerformed
-        // TODO add your handling code here:
-        txtHo.setText("");
-        txtTen.setText("");
-        txtTaikhoan.setText("");
-        txtMatkhau.setText("");
-        txtNamsinh.setText("");
-        if (jRBNam.isSelected() || jRBNu.isSelected()) {
-            jRBNam.setSelected(false);
-            jRBNu.setSelected(false);
-        }
-        txtSDT.setText("");
-        this.dispose();
+        
     }//GEN-LAST:event_btnKhongluuActionPerformed
 
 

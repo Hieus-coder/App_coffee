@@ -2,7 +2,7 @@ package view;
 
 import DBC.Dbconnection;
 import java.sql.Connection;
-import controller.NhansuController;
+import controller.nhansucontroller;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +16,7 @@ public class QuanLy extends javax.swing.JFrame {
 
     private boolean admin;
     private Connection conn;
-    private NhansuController ns;
+    private nhansucontroller ns;
 
     public QuanLy(boolean isAdmin) {
         this.admin = isAdmin;
@@ -26,7 +26,7 @@ public class QuanLy extends javax.swing.JFrame {
 
         Dbconnection dbConnection = new Dbconnection();
         this.conn = dbConnection.getConnect();
-        this.ns = new NhansuController(conn);
+        this.ns = new nhansucontroller(conn);
         loadDataToTable();
     }
 
@@ -440,7 +440,7 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-
+        int id = Integer.parseInt(txtID.getText());
         String hoVaTen = txtHoten.getText();
         String gioiTinh = txtGioitinh.getText();
         int namSinh = Integer.parseInt(txtNamsinh.getText()); // Chuyển đổi chuỗi thành số nguyên
@@ -448,7 +448,7 @@ public class QuanLy extends javax.swing.JFrame {
         String queQuan = txtQuequan.getText();
         String soDienThoai = txtSdt.getText();
 
-        quanlymodel newEmployee = new quanlymodel(0, hoVaTen, gioiTinh, namSinh, chucVu, queQuan, soDienThoai);
+        quanlymodel newEmployee = new quanlymodel(id, hoVaTen, gioiTinh, namSinh, chucVu, queQuan, soDienThoai);
 
         boolean success = ns.addEmployee(newEmployee);
 
@@ -468,7 +468,7 @@ public class QuanLy extends javax.swing.JFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int id = Integer.parseInt(txtID.getText()); // Giả sử có một trường nhập liệu cho ID
-        NhansuController nsController = new NhansuController(conn);
+        nhansucontroller nsController = new nhansucontroller(conn);
 
         // Gọi phương thức xóa
         boolean isSuccess = nsController.deleteEmployee(id);
