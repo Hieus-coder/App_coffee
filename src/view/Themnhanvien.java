@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+
 import javax.swing.JOptionPane;
 import controller.*;
 import model.quanlymodel;
@@ -12,10 +13,11 @@ import model.quanlymodel;
  * @author leduc
  */
 public class Themnhanvien extends javax.swing.JFrame {
-    
+
     private accountcontroller account = new accountcontroller();
     private nhansucontroller nhanvien = new nhansucontroller();
     private quanlymodel model = new quanlymodel();
+
     public Themnhanvien() {
         initComponents();
     }
@@ -263,12 +265,11 @@ public class Themnhanvien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        int autoid = nhanvien.getIDNhanvien() + 1;
         String ho = txtHo.getText();
         String ten = txtTen.getText();
         String taikhoan = txtTaikhoan.getText();
         String matkhau = txtMatkhau.getText();
-        int namsinh = Integer.valueOf(txtNamsinh.getText());
+        int namsinh = Integer.valueOf(txtNamsinh.getText().toString());
         String gt = null;
         if (jRBNam.isSelected()) {
             gt = jRBNam.getText();
@@ -276,37 +277,59 @@ public class Themnhanvien extends javax.swing.JFrame {
         if (jRBNu.isSelected()) {
             gt = jRBNu.getText();
         }
+
         String chucvu = jCbChucvu.getSelectedItem().toString();
         String quequan = jCbQuequan.getSelectedItem().toString();
         String sdt = txtSDT.getText();
-        
-       
-        
-        model.setHO_VA_TEN(ho+" "+ten);
+
+        model.setHO_VA_TEN(ho + " " + ten);
         model.setGIOI_TINH(gt);
         model.setCHUC_VU(chucvu);
         model.setNAM_SINH(namsinh);
         model.setQUE_QUAN(quequan);
         model.setSO_DIEN_THOAI(sdt);
+
+        // Thêm nhân viên vào bảng NHAN_SU
         boolean successNV = nhanvien.addEmployee(model);
-        boolean successTK = account.addAccount(taikhoan, matkhau, autoid);
+
         if (successNV) {
+            // Lấy ID của nhân viên vừa thêm vào bảng NHAN_SU
+            int autoid = nhanvien.getIDNhanvien();
+
+            // Kiểm tra tài khoản có tồn tại chưa
+            boolean accountExists = account.checkAccountExists(taikhoan);
+            if (accountExists) {
+                JOptionPane.showMessageDialog(null, "Tài khoản đã tồn tại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;  // Dừng lại nếu tài khoản đã tồn tại
+            }
+
+            // Thêm tài khoản vào bảng ACCOUNT
+            boolean successTK = account.addAccount(taikhoan, matkhau, autoid);
+
             if (successTK) {
-                JOptionPane.showMessageDialog(null, "Thêm nhân viên thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Thêm nhân viên và tài khoản thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Thêm tài khoản thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
-            else {
-                JOptionPane.showMessageDialog(null, "Thêm tài khoản thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);                 
-            }
-        } else{
-                JOptionPane.showMessageDialog(null, "Thêm nhân viên thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Thêm nhân viên thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
+
         this.dispose();
     }//GEN-LAST:event_btnLuuActionPerformed
 
-    private void btnKhongluuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhongluuActionPerformed
-        
-    }//GEN-LAST:event_btnKhongluuActionPerformed
 
+    private void btnKhongluuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhongluuActionPerformed
+        txtHo.setText("");
+        txtTen.setText("");
+        txtTaikhoan.setText("");
+        txtMatkhau.setText("");
+        if (jRBNam.isSelected() || jRBNu.isSelected()) {
+            jRBNam.setSelected(false);
+            jRBNu.setSelected(false);
+        }
+        this.dispose();
+    }//GEN-LAST:event_btnKhongluuActionPerformed
 
     /**
      * @param args the command line arguments

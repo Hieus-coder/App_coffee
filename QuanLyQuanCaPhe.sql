@@ -25,20 +25,6 @@ CREATE TABLE ACCOUNT (
     FOREIGN KEY (ID_NHAN_SU) REFERENCES NHAN_SU(ID_NHAN_SU)
 );
 
--- Trigger để tự động cập nhật ID_NHAN_SU khi thêm một hàng mới
-CREATE TRIGGER trg_Insert_ACCOUNT
-ON ACCOUNT
-AFTER INSERT
-AS
-BEGIN
-    UPDATE ACCOUNT
-    SET ID_NHAN_SU = FORMAT(NEXT VALUE FOR Seq_ID_NHAN_SU, '0000')
-    WHERE ID IN (SELECT ID FROM inserted);
-END;
-
-
-
-GO
 
 -- Thêm dữ liệu vào bảng ACCOUNT
 INSERT INTO ACCOUNT (TAIKHOAN, MATKHAU, ID_NHAN_SU)
@@ -167,5 +153,5 @@ VALUES
     (N'Trần Thị B', N'Nữ', 1992, N'Bồi bàn', N'TP Hồ Chí Minh', N'0987654321'),
     (N'Lê Văn C', N'Nam', 1988, N'Lao công', N'Đà Nẵng', N'0932123456');
 
-	select max(ID_NHAN_SU) from NHAN_SU
-	select * from NHAN_SU
+
+

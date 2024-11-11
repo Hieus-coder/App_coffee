@@ -11,6 +11,7 @@ import java.sql.Statement;
 public class nhansucontroller {
 
     private Connection conn;
+    private accountcontroller account;
 
     public nhansucontroller() {
         conn = Dbconnection.getInstance().getConnection();
@@ -93,10 +94,13 @@ public class nhansucontroller {
     }
 
     public boolean addEmployee(quanlymodel employee) {
+        PreparedStatement pstmt = null;
+        ResultSet generatedKeys = null;
+
         try {
-            
+            // Chèn nhân viên vào bảng NHAN_SU
             String sql = "INSERT INTO NHAN_SU (HO_VA_TEN, GIOI_TINH, NAM_SINH, CHUC_VU, QUE_QUAN, SO_DIEN_THOAI) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             pstmt.setString(1, employee.getHO_VA_TEN());
             pstmt.setString(2, employee.getGIOI_TINH());
@@ -104,11 +108,31 @@ public class nhansucontroller {
             pstmt.setString(4, employee.getCHUC_VU());
             pstmt.setString(5, employee.getQUE_QUAN());
             pstmt.setString(6, employee.getSO_DIEN_THOAI());
-            
-            int rowAffected = pstmt.executeUpdate();
-            return rowAffected > 0;
+
+            int rowAffected = pstmt.executeUpdate(); // Thực thi câu lệnh INSERT
+            if (rowAffected > 0) {
+                // Lấy ID của nhân viên vừa được thêm vào
+                generatedKeys = pstmt.getGeneratedKeys();  // Đảm bảo gọi getGeneratedKeys sau executeUpdate
+                if (generatedKeys.next()) {
+                    int idNhansu = generatedKeys.getInt(1);  // Lấy ID của nhân viên
+
+                    // Không chèn tài khoản mặc định vào bảng ACCOUNT nữa
+                    return true; // Trả về true nếu nhân viên được thêm thành công
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (generatedKeys != null) {
+                    generatedKeys.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -127,6 +151,7 @@ public class nhansucontroller {
             return false;
         }
     }
+
     public Statement createStatement() throws SQLException {
         return this.conn.createStatement();
     }
