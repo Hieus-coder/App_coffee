@@ -14,8 +14,8 @@ import model.quanlymodel;
  */
 public class Themnhanvien extends javax.swing.JFrame {
 
-    private accountcontroller account = new accountcontroller();
-    private nhansucontroller nhanvien = new nhansucontroller();
+    private accountcontroller account;
+    private nhansucontroller nhanvien;
     private quanlymodel model = new quanlymodel();
 
     public Themnhanvien() {

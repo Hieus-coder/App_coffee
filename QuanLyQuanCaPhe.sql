@@ -12,16 +12,13 @@ GO
 /*--------------------------------------------------------------------*/
 
 -- Tạo bảng ACCOUNT để lưu thông tin tài khoản admin
-CREATE SEQUENCE Seq_ID_NHAN_SU
-    START WITH 1
-    INCREMENT BY 1;
 
 -- Tạo bảng ACCOUNT
 CREATE TABLE ACCOUNT (
     ID INT PRIMARY KEY IDENTITY(1,1),
     TAIKHOAN VARCHAR(50),
     MATKHAU VARCHAR(50),
-    ID_NHAN_SU INT UNIQUE,
+    ID_NHAN_SU INT,
     FOREIGN KEY (ID_NHAN_SU) REFERENCES NHAN_SU(ID_NHAN_SU)
 );
 
@@ -154,4 +151,5 @@ VALUES
     (N'Lê Văn C', N'Nam', 1988, N'Lao công', N'Đà Nẵng', N'0932123456');
 
 
-
+Select TAIKHOAN, MATKHAU from ACCOUNT
+Select * from NHAN_SU
