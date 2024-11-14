@@ -127,7 +127,7 @@ public class QuanLy extends javax.swing.JFrame {
         btnDatban1 = new javax.swing.JButton();
         btnDatmon1 = new javax.swing.JButton();
         btnThanhtoan1 = new javax.swing.JButton();
-        btnDoanthu = new javax.swing.JButton();
+        btnDoanhthu = new javax.swing.JButton();
 
         jLabel7.setText("jLabel7");
 
@@ -385,11 +385,11 @@ public class QuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnDoanthu.setText("Doanh thu");
-        btnDoanthu.setBorder(null);
-        btnDoanthu.addActionListener(new java.awt.event.ActionListener() {
+        btnDoanhthu.setText("Doanh thu");
+        btnDoanhthu.setBorder(null);
+        btnDoanhthu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoanthuActionPerformed(evt);
+                btnDoanhthuActionPerformed(evt);
             }
         });
 
@@ -406,7 +406,7 @@ public class QuanLy extends javax.swing.JFrame {
                         .addGap(64, 64, 64)
                         .addComponent(BtnDangxuat1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
-            .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnDoanhthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnThanhtoan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatmon1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatban1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -427,7 +427,7 @@ public class QuanLy extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThanhtoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDoanthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDoanhthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -655,12 +655,12 @@ public class QuanLy extends javax.swing.JFrame {
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnThanhtoan1ActionPerformed
 
-    private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
+    private void btnDoanhthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhthuActionPerformed
         // TODO add your handling code here:
         Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
         dt.setVisible(true); // Hiển thị trang QuanLy
         this.dispose(); // Đóng trang hiện tại
-    }//GEN-LAST:event_btnDoanthuActionPerformed
+    }//GEN-LAST:event_btnDoanhthuActionPerformed
 
     private void btnDatban1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatban1ActionPerformed
         // TODO add your handling code here:
@@ -682,7 +682,7 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JButton BtnDangxuat1;
     private javax.swing.JButton btnDatban1;
     private javax.swing.JButton btnDatmon1;
-    private javax.swing.JButton btnDoanthu;
+    private javax.swing.JButton btnDoanhthu;
     private javax.swing.JButton btnKLuu;
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnNhanVien1;
