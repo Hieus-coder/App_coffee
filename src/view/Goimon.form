@@ -37,7 +37,7 @@
                       <Component id="jPanel1" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="1090" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -320,27 +320,26 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="btnThem" max="32767" attributes="0"/>
+                          <Component id="btnThem" pref="104" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnXoa" max="32767" attributes="0"/>
+                          <Component id="btnXoa" pref="104" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnLuu" max="32767" attributes="0"/>
+                          <Component id="btnLuu" pref="105" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnKhongluu" max="32767" attributes="0"/>
+                          <Component id="btnKhongluu" pref="119" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnThanhtoan" min="-2" pref="92" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -463,12 +462,12 @@
                   </Group>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               </Group>
-              <Component id="btnDoanthu2" alignment="0" max="32767" attributes="0"/>
+              <Component id="btnDoanhthu" alignment="0" max="32767" attributes="0"/>
               <Component id="btnThanhtoan4" alignment="0" max="32767" attributes="0"/>
               <Component id="btnDatmon2" alignment="0" max="32767" attributes="0"/>
               <Component id="btnDatban2" alignment="0" max="32767" attributes="0"/>
               <Component id="btnTrangchu2" alignment="0" max="32767" attributes="0"/>
-              <Component id="btnNhanVien2" alignment="0" max="32767" attributes="0"/>
+              <Component id="btnNhanVien" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -485,9 +484,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnThanhtoan4" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnDoanthu2" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="btnDoanhthu" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnNhanVien2" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btnNhanVien" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="BtnDangxuat4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -506,7 +505,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDangxuat4ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnNhanVien2">
+        <Component class="javax.swing.JButton" name="btnNhanVien">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -517,7 +516,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhanVien2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhanVienActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnTrangchu2">
@@ -561,7 +560,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhtoan4ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnDoanthu2">
+        <Component class="javax.swing.JButton" name="btnDoanhthu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Doanh thu"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -569,7 +568,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoanthu2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoanhthuActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

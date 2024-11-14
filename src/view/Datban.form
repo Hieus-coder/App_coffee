@@ -112,7 +112,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnDoanthu" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnDoanhthu" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnThanhtoan" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnDatmon" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnDatban" alignment="0" max="32767" attributes="0"/>
@@ -134,7 +134,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnThanhtoan" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnDoanthu" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="btnDoanhthu" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnNhanVien" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace pref="67" max="32767" attributes="0"/>
@@ -210,7 +210,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhtoanActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnDoanthu">
+            <Component class="javax.swing.JButton" name="btnDoanhthu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Doanh thu"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -218,7 +218,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoanthuActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoanhthuActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

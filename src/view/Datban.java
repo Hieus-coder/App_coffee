@@ -53,7 +53,7 @@ public class Datban extends javax.swing.JFrame {
         btnDatban = new javax.swing.JButton();
         btnDatmon = new javax.swing.JButton();
         btnThanhtoan = new javax.swing.JButton();
-        btnDoanthu = new javax.swing.JButton();
+        btnDoanhthu = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
@@ -109,11 +109,11 @@ public class Datban extends javax.swing.JFrame {
             }
         });
 
-        btnDoanthu.setText("Doanh thu");
-        btnDoanthu.setBorder(null);
-        btnDoanthu.addActionListener(new java.awt.event.ActionListener() {
+        btnDoanhthu.setText("Doanh thu");
+        btnDoanhthu.setBorder(null);
+        btnDoanhthu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoanthuActionPerformed(evt);
+                btnDoanhthuActionPerformed(evt);
             }
         });
 
@@ -130,7 +130,7 @@ public class Datban extends javax.swing.JFrame {
                         .addGap(64, 64, 64)
                         .addComponent(BtnDangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
-            .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnDoanhthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnThanhtoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatban, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,7 +151,7 @@ public class Datban extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThanhtoan, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDoanthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDoanhthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
@@ -316,12 +316,12 @@ public class Datban extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtnDatbanActionPerformed
 
-    private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
+    private void btnDoanhthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhthuActionPerformed
         // TODO add your handling code here:
         Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
         dt.setVisible(true); // Hiển thị trang QuanLy
         this.dispose(); // Đóng trang hiện tại
-    }//GEN-LAST:event_btnDoanthuActionPerformed
+    }//GEN-LAST:event_btnDoanhthuActionPerformed
 
     private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
         // TODO add your handling code here:
@@ -377,7 +377,7 @@ public class Datban extends javax.swing.JFrame {
     private javax.swing.JButton BtnHuyban;
     private javax.swing.JButton btnDatban;
     private javax.swing.JButton btnDatmon;
-    private javax.swing.JButton btnDoanthu;
+    private javax.swing.JButton btnDoanhthu;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnThanhtoan;
     private javax.swing.JButton btnTrangchu;
