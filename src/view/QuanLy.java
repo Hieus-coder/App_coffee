@@ -67,9 +67,6 @@ public class QuanLy extends javax.swing.JFrame {
                 if (rs != null) {
                     rs.close();
                 }
-                if (conn != null) {
-                    conn.close();
-                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

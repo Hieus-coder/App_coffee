@@ -22,13 +22,15 @@ CREATE TABLE ACCOUNT (
     FOREIGN KEY (ID_NHAN_SU) REFERENCES NHAN_SU(ID_NHAN_SU)
 );
 
-
+go
 -- Thêm dữ liệu vào bảng ACCOUNT
 INSERT INTO ACCOUNT (TAIKHOAN, MATKHAU, ID_NHAN_SU)
 VALUES 
     (N'tk_nguyen_a', N'x', 1),  
     (N'tk_tran_b', N'password2', 2),   
     (N'tk_le_c', N'password3', 3);
+
+go
 /*--------------------------------------------------------------------*/
 
 -- Tạo bảng BAN để quản lý thông tin các bàn
@@ -76,7 +78,6 @@ VALUES
     ('D05', N'Sinh tố thập cẩm', 40000);
 
 GO
-Select * from ACCOUNT;
 /*--------------------------------------------------------------------*/
 
 -- Tạo bảng ORDER_ để lưu thông tin đơn đặt đồ uống
@@ -143,13 +144,14 @@ CREATE TABLE NHAN_SU (
 );
 -- Thêm cột ID_NHAN_SU vào bảng ACCOUNT
 
-
+go
 INSERT INTO NHAN_SU (HO_VA_TEN, GIOI_TINH, NAM_SINH, CHUC_VU, QUE_QUAN, SO_DIEN_THOAI)
 VALUES 
     (N'Nguyễn Văn A', N'Nam', 1990, N'Pha chế', N'Hà Nội', N'0912345678'),
     (N'Trần Thị B', N'Nữ', 1992, N'Bồi bàn', N'TP Hồ Chí Minh', N'0987654321'),
     (N'Lê Văn C', N'Nam', 1988, N'Lao công', N'Đà Nẵng', N'0932123456');
 
+go
 
 Select TAIKHOAN, MATKHAU from ACCOUNT
 Select * from NHAN_SU
