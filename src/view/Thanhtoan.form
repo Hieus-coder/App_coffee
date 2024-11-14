@@ -94,7 +94,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="543" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -112,7 +112,7 @@
                       <Component id="btnNhanVien" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace pref="67" max="32767" attributes="0"/>
                       <Component id="BtnDangxuat" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -120,17 +120,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
-        </Component>
-        <Component class="javax.swing.JButton" name="btnDoanthu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Doanh thu"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoanthuActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BtnDangxuat">
           <Properties>
@@ -190,6 +179,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhtoanActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnDoanthu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Doanh thu"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoanthuActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -257,7 +257,7 @@
                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" pref="408" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" pref="409" max="32767" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
