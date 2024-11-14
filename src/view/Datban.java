@@ -87,6 +87,11 @@ public class Datban extends javax.swing.JFrame {
 
         btnDatban.setText("Đặt bàn");
         btnDatban.setBorder(null);
+        btnDatban.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatbanActionPerformed(evt);
+            }
+        });
 
         btnDatmon.setText("Đặt món");
         btnDatmon.setBorder(null);
@@ -350,6 +355,13 @@ public class Datban extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_BtnDangxuatActionPerformed
+
+    private void btnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatbanActionPerformed
+        // TODO add your handling code here:
+        Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        db.setVisible(true); // Hiển thị trang QuanLy
+        this.dispose(); // Đóng trang hiện tại
+    }//GEN-LAST:event_btnDatbanActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

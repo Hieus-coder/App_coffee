@@ -363,6 +363,11 @@ public class QuanLy extends javax.swing.JFrame {
 
         btnDatban1.setText("Đặt bàn");
         btnDatban1.setBorder(null);
+        btnDatban1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatban1ActionPerformed(evt);
+            }
+        });
 
         btnDatmon1.setText("Đặt món");
         btnDatmon1.setBorder(null);
@@ -657,6 +662,13 @@ public class QuanLy extends javax.swing.JFrame {
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnDoanthuActionPerformed
 
+    private void btnDatban1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatban1ActionPerformed
+        // TODO add your handling code here:
+        Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        db.setVisible(true); // Hiển thị trang QuanLy
+        this.dispose(); // Đóng trang hiện tại
+    }//GEN-LAST:event_btnDatban1ActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -668,53 +680,21 @@ public class QuanLy extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Boxbtn;
     private javax.swing.JButton BtnDangxuat1;
-    private javax.swing.JButton BtnDangxuat4;
-    private javax.swing.JButton BtnDangxuat5;
-    private javax.swing.JButton BtnDangxuat6;
-    private javax.swing.JButton BtnDangxuat7;
     private javax.swing.JButton btnDatban1;
-    private javax.swing.JButton btnDatban2;
-    private javax.swing.JButton btnDatban3;
-    private javax.swing.JButton btnDatban4;
-    private javax.swing.JButton btnDatban5;
     private javax.swing.JButton btnDatmon1;
-    private javax.swing.JButton btnDatmon2;
-    private javax.swing.JButton btnDatmon3;
-    private javax.swing.JButton btnDatmon4;
-    private javax.swing.JButton btnDatmon5;
     private javax.swing.JButton btnDoanthu;
-    private javax.swing.JButton btnDoanthu2;
-    private javax.swing.JButton btnDoanthu3;
-    private javax.swing.JButton btnDoanthu4;
-    private javax.swing.JButton btnDoanthu5;
     private javax.swing.JButton btnKLuu;
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnNhanVien1;
-    private javax.swing.JButton btnNhanVien2;
-    private javax.swing.JButton btnNhanVien3;
-    private javax.swing.JButton btnNhanVien4;
-    private javax.swing.JButton btnNhanVien5;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThanhtoan1;
-    private javax.swing.JButton btnThanhtoan4;
-    private javax.swing.JButton btnThanhtoan5;
-    private javax.swing.JButton btnThanhtoan6;
-    private javax.swing.JButton btnThanhtoan7;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTrangchu1;
-    private javax.swing.JButton btnTrangchu2;
-    private javax.swing.JButton btnTrangchu3;
-    private javax.swing.JButton btnTrangchu4;
-    private javax.swing.JButton btnTrangchu5;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -727,10 +707,6 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private java.awt.Label label1;
     private javax.swing.JPanel pnMenu1;
-    private javax.swing.JPanel pnMenu4;
-    private javax.swing.JPanel pnMenu5;
-    private javax.swing.JPanel pnMenu6;
-    private javax.swing.JPanel pnMenu7;
     private javax.swing.JTextField txtChucvu;
     private javax.swing.JTextField txtGioitinh;
     private javax.swing.JTextField txtHoten;
