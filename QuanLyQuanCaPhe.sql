@@ -1,60 +1,32 @@
-﻿
--- Tạo cơ sở dữ liệu QLCoffee
+﻿-- Tạo cơ sở dữ liệu QLCoffee
 CREATE DATABASE QLCOFFEE;
 
 GO
 /*--------------------------------------------------------------------*/
-
 -- Sử dụng cơ sở dữ liệu QLCOFFEE
 USE QLCOFFEE;
 
 GO
 /*--------------------------------------------------------------------*/
-
--- Tạo bảng ACCOUNT để lưu thông tin tài khoản admin
-
--- Tạo bảng ACCOUNT
-CREATE TABLE ACCOUNT (
-    ID INT PRIMARY KEY IDENTITY(1,1),
-    TAIKHOAN VARCHAR(50),
-    MATKHAU VARCHAR(50),
-    ID_NHAN_SU INT,
-    FOREIGN KEY (ID_NHAN_SU) REFERENCES NHAN_SU(ID_NHAN_SU)
+CREATE TABLE NHAN_SU (
+    ID_NHAN_SU INT PRIMARY KEY IDENTITY(1,1),
+    HO_VA_TEN NVARCHAR(100) NOT NULL,
+    GIOI_TINH NVARCHAR(10),
+    NAM_SINH INT,
+    CHUC_VU NVARCHAR(50),
+    QUE_QUAN NVARCHAR(100),
+    SO_DIEN_THOAI NVARCHAR(15)
 );
 
 go
--- Thêm dữ liệu vào bảng ACCOUNT
-INSERT INTO ACCOUNT (TAIKHOAN, MATKHAU, ID_NHAN_SU)
-VALUES 
-    (N'tk_nguyen_a', N'x', 1),  
-    (N'tk_tran_b', N'password2', 2),   
-    (N'tk_le_c', N'password3', 3);
 
-go
 /*--------------------------------------------------------------------*/
-
 -- Tạo bảng BAN để quản lý thông tin các bàn
 CREATE TABLE BAN (
 	MABAN VARCHAR(20) PRIMARY KEY,
 	TENBAN NVARCHAR(20),
 	TRANGTHAI NVARCHAR(100)
 );
-
-GO
-
--- Thêm dữ liệu vào bảng BAN
-INSERT INTO BAN (MABAN, TENBAN, TRANGTHAI)
-VALUES
-	('B01', 'BAN1', N'Trống'),
-	('B02', 'BAN2', N'Trống'),
-	('B03', 'BAN3', N'Trống'),
-	('B04', 'BAN4', N'Trống'),
-	('B05', 'BAN5', N'Trống'),
-	('B06', 'BAN6', N'Trống'),
-	('B07', 'BAN7', N'Trống'),
-	('B08', 'BAN8', N'Trống'),
-	('B09', 'BAN9', N'Trống'),
-	('B10', 'BAN10', N'Trống');
 
 GO
 /*--------------------------------------------------------------------*/
@@ -65,17 +37,6 @@ CREATE TABLE DOUONG (
 	TENDOUONG VARCHAR(50),
 	GIA FLOAT
 );
-
-GO
-
--- Thêm dữ liệu vào bảng DOUONG
-INSERT INTO DOUONG (MADOUONG, TENDOUONG, GIA)
-VALUES
-    ('D01', N'Cà phê đen', 20000),
-    ('D02', N'Cà phê sữa', 25000),
-    ('D03', N'Bạc xỉu', 30000),
-    ('D04', N'Cà phê trứng', 35000),
-    ('D05', N'Sinh tố thập cẩm', 40000);
 
 GO
 /*--------------------------------------------------------------------*/
@@ -101,6 +62,24 @@ CREATE TABLE DOANHTHU (
 
 GO
 
+-- Tạo bảng ACCOUNT
+CREATE TABLE ACCOUNT (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    TAIKHOAN VARCHAR(50),
+    MATKHAU VARCHAR(50),
+    ID_NHAN_SU INT,
+    FOREIGN KEY (ID_NHAN_SU) REFERENCES NHAN_SU(ID_NHAN_SU)
+);
+
+go
+
+ALTER TABLE ACCOUNT
+ADD CONSTRAINT FK__ACCOUNT__ID_NHAN__47DBAE45
+FOREIGN KEY (ID_NHAN_SU)
+REFERENCES NHAN_SU(ID_NHAN_SU)
+ON DELETE CASCADE;
+
+go
 
 CREATE TRIGGER TRG_UPDATE_GIA
 ON ORDER_
@@ -116,35 +95,58 @@ END;
 
 GO
 
-INSERT INTO ORDER_ (MABAN, MADOUONG)
+/*INSERT INTO ORDER_ (MABAN, MADOUONG)
 VALUES ('B01', 'D01');
-go
+go*/
 
 -- Chèn dữ liệu vào bảng DOANHTHU
 
-INSERT INTO DOANHTHU (NGAY, GIO, TONGTIEN) VALUES ('2024-11-03', '10:30:00', 100000);
-INSERT INTO DOANHTHU (NGAY, GIO, TONGTIEN) VALUES ('2024-11-03', '15:45:00', 150000);
-
-INSERT INTO DOANHTHU (NGAY, GIO, TONGTIEN) VALUES ('2024-11-10', '09:20:00', 200000);
-INSERT INTO DOANHTHU (NGAY, GIO, TONGTIEN) VALUES ('2024-11-15', '16:50:00', 250000);
-
-INSERT INTO DOANHTHU (NGAY, GIO, TONGTIEN) VALUES ('2024-07-22', '11:00:00', 300000);
-INSERT INTO DOANHTHU (NGAY, GIO, TONGTIEN) VALUES ('2024-08-05', '14:30:00', 350000);
+INSERT INTO DOANHTHU (NGAY, GIO, TONGTIEN) 
+VALUES 
+	('2024-11-03', '10:30:00', 100000),
+	('2024-11-03', '15:45:00', 150000),
+	('2024-11-10', '09:20:00', 200000),
+	('2024-11-15', '16:50:00', 250000),
+	('2024-07-22', '11:00:00', 300000),
+	('2024-08-05', '14:30:00', 350000);
 
 GO
 
-CREATE TABLE NHAN_SU (
-    ID_NHAN_SU INT PRIMARY KEY IDENTITY(1,1),
-    HO_VA_TEN NVARCHAR(100) NOT NULL,
-    GIOI_TINH NVARCHAR(10),
-    NAM_SINH INT,
-    CHUC_VU NVARCHAR(50),
-    QUE_QUAN NVARCHAR(100),
-    SO_DIEN_THOAI NVARCHAR(15)
-);
+-- Thêm dữ liệu vào bảng DOUONG
+INSERT INTO DOUONG (MADOUONG, TENDOUONG, GIA)
+VALUES
+    ('D01', N'Cà phê đen', 20000),
+    ('D02', N'Cà phê sữa', 25000),
+    ('D03', N'Bạc xỉu', 30000),
+    ('D04', N'Cà phê trứng', 35000),
+    ('D05', N'Sinh tố thập cẩm', 40000);
+
+GO
+-- Thêm dữ liệu vào bảng BAN
+INSERT INTO BAN (MABAN, TENBAN, TRANGTHAI)
+VALUES
+	('B01', 'BAN1', N'Trống'),
+	('B02', 'BAN2', N'Trống'),
+	('B03', 'BAN3', N'Trống'),
+	('B04', 'BAN4', N'Trống'),
+	('B05', 'BAN5', N'Trống'),
+	('B06', 'BAN6', N'Trống'),
+	('B07', 'BAN7', N'Trống'),
+	('B08', 'BAN8', N'Trống'),
+	('B09', 'BAN9', N'Trống'),
+	('B10', 'BAN10', N'Trống');
 -- Thêm cột ID_NHAN_SU vào bảng ACCOUNT
 
 go
+-- Thêm dữ liệu vào bảng ACCOUNT
+INSERT INTO ACCOUNT (TAIKHOAN, MATKHAU, ID_NHAN_SU)
+VALUES 
+    (N'admin', N'12345', 1),  
+    (N'nhanviena', N'12345', 2),   
+    (N'nhanvienb', N'12345', 3);
+GO
+
+
 INSERT INTO NHAN_SU (HO_VA_TEN, GIOI_TINH, NAM_SINH, CHUC_VU, QUE_QUAN, SO_DIEN_THOAI)
 VALUES 
     (N'Nguyễn Văn A', N'Nam', 1990, N'Pha chế', N'Hà Nội', N'0912345678'),
@@ -153,5 +155,3 @@ VALUES
 
 go
 
-Select TAIKHOAN, MATKHAU from ACCOUNT
-Select * from NHAN_SU

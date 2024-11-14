@@ -140,11 +140,21 @@ public class nhansucontroller {
     // Method to delete an employee by ID
     public boolean deleteEmployee(int id) {
         try {
-            String sql = "DELETE FROM NHAN_SU WHERE ID = ?";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, id);
+            // Xóa bản ghi trong bảng ACCOUNT liên quan đến nhân viên
+            String deleteAccountSql = "DELETE FROM ACCOUNT WHERE ID_NHAN_SU = ?";
+            PreparedStatement pstmtAccount = conn.prepareStatement(deleteAccountSql);
+            pstmtAccount.setInt(1, id);
+            pstmtAccount.executeUpdate();
+            pstmtAccount.close();
 
-            int rowsAffected = pstmt.executeUpdate();
+            // Sau đó xóa bản ghi trong bảng NHAN_SU
+            String deleteEmployeeSql = "DELETE FROM NHAN_SU WHERE ID_NHAN_SU = ?";
+            PreparedStatement pstmtEmployee = conn.prepareStatement(deleteEmployeeSql);
+            pstmtEmployee.setInt(1, id);
+
+            int rowsAffected = pstmtEmployee.executeUpdate();
+            pstmtEmployee.close();
+
             return rowsAffected > 0;
         } catch (Exception ex) {
             ex.printStackTrace();

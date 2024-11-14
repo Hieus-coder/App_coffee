@@ -315,25 +315,41 @@ public class QuanLy extends javax.swing.JFrame {
                     .addComponent(btnKLuu)))
         );
 
+        txtNamsinh.setEditable(false);
+
+        txtQuequan.setEditable(false);
+
         jLabel3.setText("Quê quán:");
 
         jLabel4.setText("Chức vụ:");
 
+        txtChucvu.setEditable(false);
+
         jLabel5.setText("Số điện thoại:");
 
+        txtSdt.setEditable(false);
+
         jLabel6.setText("Giới tính:");
+
+        txtGioitinh.setEditable(false);
+
+        txtHoten.setEditable(false);
 
         jLabel1.setText("Năm sinh:");
 
         jLabel8.setText("ID:");
 
-        txtID.setEnabled(false);
+        txtID.setEditable(false);
 
         jLabel9.setText("Họ và Tên:");
 
         jLabel10.setText("Tài khoản:");
 
+        txtTaikhoan.setEditable(false);
+
         jLabel11.setText("Mật khẩu:");
+
+        txtMatkhau.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -466,7 +482,6 @@ public class QuanLy extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void enableTextFields(boolean enable) {
-        txtID.setEditable(enable);
         txtHoten.setEditable(enable);
         txtTaikhoan.setEditable(enable);
         txtMatkhau.setEditable(enable);
@@ -490,7 +505,7 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
@@ -514,15 +529,7 @@ public class QuanLy extends javax.swing.JFrame {
 
         int selectRow = jTable1.getSelectedRow();
         if (selectRow != -1) {
-            try {
-                enableTextFields(true);
-                updateSelectedRow(selectRow);
-                JOptionPane.showMessageDialog(null, "Sửa lỗi thành công.");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật thông tin nhân viên");
-            } finally {
-                enableTextFields(false);
-            }
+            enableTextFields(true);
         } else {
             JOptionPane.showMessageDialog(this, "Hãy chọn hàng để sửa");
         }
@@ -555,16 +562,22 @@ public class QuanLy extends javax.swing.JFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int selectRow = jTable1.getSelectedRow();
+        if (selectRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên để xóa.");
+            return;
+        }
 
-        if (selectRow != -1) {
-            int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa nhân viên này ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa nhân viên này?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
 
-            if (confirm == JOptionPane.YES_OPTION) {
-                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-                model.removeRow(selectRow);
-            } else {
-                JOptionPane.showConfirmDialog(this, "Vui lòng chọn nhân viên để xóa");
-            }
+        int idNhanSu = (int) jTable1.getValueAt(selectRow, 0);
+        if (ns.deleteEmployee(idNhanSu)) {
+            ((DefaultTableModel) jTable1.getModel()).removeRow(selectRow);
+            JOptionPane.showMessageDialog(this, "Xóa thành công!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Không thể xóa nhân viên.");
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -624,24 +637,28 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
-            int id = (int) model.getValueAt(i, 0);
-            String hoten = model.getValueAt(i, 1).toString();
-
-            int namsinh = (int) model.getValueAt(i, 4);
-            String gt = model.getValueAt(i, 5).toString();
-            String chucvu = model.getValueAt(i, 6).toString();
-            String quequan = model.getValueAt(i, 7).toString();
-            String sdt = model.getValueAt(i, 8).toString();
-
+        int selectRow = jTable1.getSelectedRow();
+        if (selectRow != -1) {
+            try {
+                enableTextFields(true);
+                updateSelectedRow(selectRow);
+                JOptionPane.showMessageDialog(null, "Sửa thành công.");
+                enableTextFields(false);
+                deletefield();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Lỗi cập nhật thông tin nhân viên");
+            } finally {
+                enableTextFields(false);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên để sửa !");
         }
-
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnKLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKLuuActionPerformed
         // TODO add your handling code here:
-
+        enableTextFields(false);
+        deletefield();
     }//GEN-LAST:event_btnKLuuActionPerformed
 
     public static void main(String args[]) {

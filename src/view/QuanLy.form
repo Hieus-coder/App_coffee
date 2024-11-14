@@ -442,8 +442,14 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtNamsinh">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtQuequan">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -456,6 +462,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtChucvu">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -463,6 +472,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSdt">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -470,8 +482,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGioitinh">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtHoten">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -485,7 +503,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtID">
           <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -499,6 +517,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTaikhoan">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -506,6 +527,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtMatkhau">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
