@@ -314,7 +314,7 @@ public class Goimon extends javax.swing.JFrame {
         btnDatban2.setBorder(null);
         btnDatban2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDatban2ActionPerformed(evt);
+                btnDatbanActionPerformed(evt);
             }
         });
 
@@ -322,7 +322,7 @@ public class Goimon extends javax.swing.JFrame {
         btnDatmon2.setBorder(null);
         btnDatmon2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDatmon2ActionPerformed(evt);
+                btnDatmonActionPerformed(evt);
             }
         });
 
@@ -330,7 +330,7 @@ public class Goimon extends javax.swing.JFrame {
         btnThanhtoan4.setBorder(null);
         btnThanhtoan4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThanhtoan4ActionPerformed(evt);
+                btnThanhtoanActionPerformed(evt);
             }
         });
 
