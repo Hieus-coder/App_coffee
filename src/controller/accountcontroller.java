@@ -126,6 +126,37 @@ public class accountcontroller {
     }
 
     public boolean isAdmin(String TAIKHOAN) {
-        return "admin".equals(TAIKHOAN);
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            // Truy vấn kiểm tra CHUC_VU của tài khoản
+            String sql = "SELECT ns.CHUC_VU "
+                    + "FROM ACCOUNT a "
+                    + "JOIN NHAN_SU ns ON a.ID_NHAN_SU = ns.ID_NHAN_SU "
+                    + "WHERE a.TAIKHOAN = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, TAIKHOAN);
+            rs = stmt.executeQuery();
+
+            // Kiểm tra nếu CHUC_VU là 'Quản lý'
+            if (rs.next()) {
+                String chucVu = rs.getString("CHUC_VU");
+                return "Quản lý".equalsIgnoreCase(chucVu);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return false;
     }
 }

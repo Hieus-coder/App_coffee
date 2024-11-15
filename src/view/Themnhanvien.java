@@ -20,6 +20,8 @@ public class Themnhanvien extends javax.swing.JFrame {
 
     public Themnhanvien() {
         initComponents();
+        nhanvien = new nhansucontroller();
+        account = new accountcontroller();
     }
 
     /**
@@ -308,6 +310,7 @@ public class Themnhanvien extends javax.swing.JFrame {
 
             if (successTK) {
                 JOptionPane.showMessageDialog(null, "Thêm nhân viên và tài khoản thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Thêm tài khoản thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
