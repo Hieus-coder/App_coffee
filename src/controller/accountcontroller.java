@@ -85,7 +85,7 @@ public class accountcontroller {
         }
         return encoded.toString();
     }
-
+    
     public String decodePassword(String encodedPassword) {
         if (encodedPassword == null) {
             return null;
@@ -124,7 +124,21 @@ public class accountcontroller {
             return false;
         }
     }
-
+    public boolean editAccount (String taikhoan, String matkhau, int id_nhan_su) {
+        PreparedStatement pstmt = null;
+        try {
+            String sql = "UPDATE ACCOUNT SET TAIKHOAN = ?, MATKHAU = ? WHERE ID_NHAN_SU = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, taikhoan);
+            pstmt.setString(2, matkhau);
+            pstmt.setInt(3, id_nhan_su);
+            int rowAffected = pstmt.executeUpdate();
+            return rowAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     public boolean isAdmin(String TAIKHOAN) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
