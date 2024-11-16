@@ -499,7 +499,7 @@ public class Goimon extends javax.swing.JFrame {
 
     private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
         // TODO add your handling code here:
-        Thanhtoan tt = new Thanhtoan(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        ThanhToan tt = new ThanhToan(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
         tt.setVisible(true); // Hiển thị trang QuanLy
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnThanhtoanActionPerformed

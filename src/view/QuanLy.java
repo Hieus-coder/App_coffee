@@ -695,7 +695,7 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void btnThanhtoan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoan1ActionPerformed
         // TODO add your handling code here:
-        Thanhtoan tt = new Thanhtoan(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        ThanhToan tt = new ThanhToan(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
         tt.setVisible(true); // Hiển thị trang QuanLy
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnThanhtoan1ActionPerformed
