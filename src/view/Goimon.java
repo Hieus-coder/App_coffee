@@ -7,8 +7,6 @@ package view;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import view.Datban; 
 /**
  *
  * @author leduc
@@ -18,7 +16,7 @@ public class Goimon extends javax.swing.JFrame {
     private boolean admin;
     private Datban datban;
     
-    public Goimon(boolean isAdmin, Datban _datban) {
+    public Goimon(boolean isAdmin) {
         this.admin = isAdmin;
         btnNhanVien = new javax.swing.JButton();
         btnNhanVien.setVisible(admin);
@@ -60,15 +58,15 @@ public class Goimon extends javax.swing.JFrame {
         btnThanhtoan = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        pnMenu4 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        BtnDangxuat4 = new javax.swing.JButton();
+        pnMenu = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        BtnDangxuat = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
-        btnTrangchu2 = new javax.swing.JButton();
-        btnDatban2 = new javax.swing.JButton();
+        btnDatban = new javax.swing.JButton();
         btnDatmon = new javax.swing.JButton();
-        btnThanhtoan4 = new javax.swing.JButton();
-        btnDoanhthu = new javax.swing.JButton();
+        btnThanhtoan1 = new javax.swing.JButton();
+        btnDoanthu = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -253,13 +251,13 @@ public class Goimon extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                        .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                        .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnLuu, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                        .addComponent(btnLuu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnKhongluu, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                        .addComponent(btnKhongluu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(btnThanhtoan, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -279,17 +277,18 @@ public class Goimon extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnMenu4.setBackground(new java.awt.Color(204, 102, 0));
-        pnMenu4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnMenu.setBackground(new java.awt.Color(74, 48, 34));
+        pnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        BtnDangxuat4.setText("Đăng xuất");
-        BtnDangxuat4.addActionListener(new java.awt.event.ActionListener() {
+        BtnDangxuat.setText("Đăng xuất");
+        BtnDangxuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDangxuat4ActionPerformed(evt);
+                BtnDangxuatActionPerformed(evt);
             }
         });
 
         btnNhanVien.setBackground(new java.awt.Color(255, 102, 102));
+        btnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setBorder(null);
         btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
@@ -298,17 +297,18 @@ public class Goimon extends javax.swing.JFrame {
             }
         });
 
-        btnTrangchu2.setText("Trang chủ");
-        btnTrangchu2.setBorder(null);
-
-        btnDatban2.setText("Đặt bàn");
-        btnDatban2.setBorder(null);
-        btnDatban2.addActionListener(new java.awt.event.ActionListener() {
+        btnDatban.setBackground(new java.awt.Color(74, 48, 34));
+        btnDatban.setForeground(new java.awt.Color(255, 255, 255));
+        btnDatban.setText("Đặt bàn");
+        btnDatban.setBorder(null);
+        btnDatban.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDatbanActionPerformed(evt);
             }
         });
 
+        btnDatmon.setBackground(new java.awt.Color(74, 48, 34));
+        btnDatmon.setForeground(new java.awt.Color(255, 255, 255));
         btnDatmon.setText("Đặt món");
         btnDatmon.setBorder(null);
         btnDatmon.addActionListener(new java.awt.event.ActionListener() {
@@ -317,61 +317,73 @@ public class Goimon extends javax.swing.JFrame {
             }
         });
 
-        btnThanhtoan4.setText("Thanh toán");
-        btnThanhtoan4.setBorder(null);
-        btnThanhtoan4.addActionListener(new java.awt.event.ActionListener() {
+        btnThanhtoan1.setBackground(new java.awt.Color(74, 48, 34));
+        btnThanhtoan1.setForeground(new java.awt.Color(255, 255, 255));
+        btnThanhtoan1.setText("Thanh toán");
+        btnThanhtoan1.setBorder(null);
+        btnThanhtoan1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThanhtoanActionPerformed(evt);
+                btnThanhtoan1ActionPerformed(evt);
             }
         });
 
-        btnDoanhthu.setText("Doanh thu");
-        btnDoanhthu.setBorder(null);
-        btnDoanhthu.addActionListener(new java.awt.event.ActionListener() {
+        btnDoanthu.setBackground(new java.awt.Color(74, 48, 34));
+        btnDoanthu.setForeground(new java.awt.Color(255, 255, 255));
+        btnDoanthu.setText("Doanh thu");
+        btnDoanthu.setBorder(null);
+        btnDoanthu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoanhthuActionPerformed(evt);
+                btnDoanthuActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout pnMenu4Layout = new javax.swing.GroupLayout(pnMenu4);
-        pnMenu4.setLayout(pnMenu4Layout);
-        pnMenu4Layout.setHorizontalGroup(
-            pnMenu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnMenu4Layout.createSequentialGroup()
-                .addGroup(pnMenu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnMenu4Layout.createSequentialGroup()
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Name");
+
+        javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
+        pnMenu.setLayout(pnMenuLayout);
+        pnMenuLayout.setHorizontalGroup(
+            pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMenuLayout.createSequentialGroup()
+                .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnMenuLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnMenu4Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnMenuLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(BtnDangxuat4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(BtnDangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
-            .addComponent(btnDoanhthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnThanhtoan4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnThanhtoan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnDatban2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnTrangchu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnDatban, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnMenuLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnMenu4Layout.setVerticalGroup(
-            pnMenu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnMenu4Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel14)
-                .addGap(18, 18, 18)
-                .addComponent(btnTrangchu2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnMenuLayout.setVerticalGroup(
+            pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMenuLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDatban2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
+                .addGap(49, 49, 49)
+                .addComponent(btnDatban, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDatmon, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnThanhtoan4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThanhtoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDoanhthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDoanthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnDangxuat4)
+                .addComponent(BtnDangxuat)
                 .addContainerGap())
         );
 
@@ -380,7 +392,7 @@ public class Goimon extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnMenu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
@@ -390,14 +402,14 @@ public class Goimon extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(9, 9, 9))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnMenu4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -471,7 +483,7 @@ public class Goimon extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBan2ActionPerformed
 
-    private void BtnDangxuat4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuat4ActionPerformed
+    private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed
         // TODO add your handling code here:
         int confirmed = JOptionPane.showConfirmDialog(this,
             "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
@@ -481,7 +493,7 @@ public class Goimon extends javax.swing.JFrame {
             frm.setVisible(true);
             this.dispose();
         }
-    }//GEN-LAST:event_BtnDangxuat4ActionPerformed
+    }//GEN-LAST:event_BtnDangxuatActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
@@ -490,33 +502,33 @@ public class Goimon extends javax.swing.JFrame {
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
-    private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
-        // TODO add your handling code here:
-        Goimon gm = new Goimon(admin, ban); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        gm.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
-    }//GEN-LAST:event_btnDatmonActionPerformed
-
-    private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
-        // TODO add your handling code here:
-        ThanhToan tt = new ThanhToan(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        tt.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
-    }//GEN-LAST:event_btnThanhtoanActionPerformed
-
-    private void btnDoanhthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhthuActionPerformed
-        // TODO add your handling code here:
-        Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        dt.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
-    }//GEN-LAST:event_btnDoanhthuActionPerformed
-
     private void btnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatbanActionPerformed
         // TODO add your handling code here:
         Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
         db.setVisible(true); // Hiển thị trang QuanLy
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnDatbanActionPerformed
+
+    private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
+        // TODO add your handling code here:
+        Goimon gm = new Goimon(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        gm.setVisible(true); // Hiển thị trang QuanLy
+        this.dispose(); // Đóng trang hiện tại
+    }//GEN-LAST:event_btnDatmonActionPerformed
+
+    private void btnThanhtoan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoan1ActionPerformed
+        // TODO add your handling code here:
+        ThanhToan tt = new ThanhToan(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        tt.setVisible(true); // Hiển thị trang QuanLy
+        this.dispose(); // Đóng trang hiện tại
+    }//GEN-LAST:event_btnThanhtoan1ActionPerformed
+
+    private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
+        // TODO add your handling code here:
+        Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        dt.setVisible(true); // Hiển thị trang QuanLy
+        this.dispose(); // Đóng trang hiện tại
+    }//GEN-LAST:event_btnDoanthuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -549,33 +561,33 @@ public class Goimon extends javax.swing.JFrame {
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(new Runnable() {
         public void run() {
-            new Goimon(true, ban).setVisible(true);
+            new Goimon(true).setVisible(true);
         }
     });
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnDangxuat4;
+    private javax.swing.JButton BtnDangxuat;
     private javax.swing.JButton btnBan1;
     private javax.swing.JButton btnBan2;
     private javax.swing.JButton btnBan3;
     private javax.swing.JButton btnBan4;
     private javax.swing.JButton btnBan5;
     private javax.swing.JButton btnBan6;
-    private javax.swing.JButton btnDatban2;
+    private javax.swing.JButton btnDatban;
     private javax.swing.JButton btnDatmon;
-    private javax.swing.JButton btnDoanhthu;
+    private javax.swing.JButton btnDoanthu;
     private javax.swing.JButton btnKhongluu;
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnThanhtoan;
-    private javax.swing.JButton btnThanhtoan4;
+    private javax.swing.JButton btnThanhtoan1;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnTrangchu2;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -587,7 +599,7 @@ public class Goimon extends javax.swing.JFrame {
     private javax.swing.JLabel lbBan4;
     private javax.swing.JLabel lbBan5;
     private javax.swing.JLabel lbBan6;
-    private javax.swing.JPanel pnMenu4;
+    private javax.swing.JPanel pnMenu;
     // End of variables declaration//GEN-END:variables
 
 }
