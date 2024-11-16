@@ -29,6 +29,20 @@ public class nhansucontroller {
         }
     }
 
+    public boolean checkEmployeeExists(int id_nhan_su) {
+        String sql = "SELECT COUNT(*) FROM NHAN_SU WHERE ID_NHAN_SU = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id_nhan_su);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     // Method to retrieve an employee by ID
     public quanlymodel getEmployeeById(int id) {
         quanlymodel employee = null;
@@ -58,7 +72,7 @@ public class nhansucontroller {
     // Method to update employee details
     public boolean updateEmployee(quanlymodel employee) {
         try {
-            String sql = "UPDATE NHAN_SU SET,ID = ?, HO_VA_TEN = ?, GIOI_TINH = ?, NAM_SINH = ?, CHUC_VU = ?, QUE_QUAN = ?, SO_DIEN_THOAI = ? WHERE ID = ?";
+            String sql = "UPDATE NHAN_SU SET HO_VA_TEN = ?, GIOI_TINH = ?, NAM_SINH = ?, CHUC_VU = ?, QUE_QUAN = ?, SO_DIEN_THOAI = ? WHERE ID_NHAN_SU = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, employee.getHO_VA_TEN());
             pstmt.setString(2, employee.getGIOI_TINH());

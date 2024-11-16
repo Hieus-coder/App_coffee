@@ -141,9 +141,9 @@ go
 -- Thêm dữ liệu vào bảng ACCOUNT
 INSERT INTO ACCOUNT (TAIKHOAN, MATKHAU, ID_NHAN_SU)
 VALUES 
-    (N'admin', N'12345', 1),  
-    (N'nhanviena', N'12345', 2),   
-    (N'nhanvienb', N'12345', 3);
+    (N'admin', N'12345', 40),  
+    (N'nhanviena', N'12345', 41),   
+    (N'nhanvienb', N'12345', 42);
 GO
 
 
@@ -155,3 +155,5 @@ VALUES
 
 go
 
+select * from NHAN_SU;
+select * from ACCOUNT

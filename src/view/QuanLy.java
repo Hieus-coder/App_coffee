@@ -14,9 +14,11 @@ import model.quanlymodel;
 public class QuanLy extends javax.swing.JFrame {
 
     private boolean admin;
+    private Datban ban;
     private nhansucontroller ns;
     private accountcontroller tk;
     private Connection conn;
+    private boolean isEditing = false;
 
     public QuanLy(boolean isAdmin) {
         this.admin = isAdmin;
@@ -25,6 +27,7 @@ public class QuanLy extends javax.swing.JFrame {
         tk = new accountcontroller();
         ns = new nhansucontroller();
         loadDataToTable();
+        enableTextFields(true);
 
     }
 
@@ -80,6 +83,8 @@ public class QuanLy extends javax.swing.JFrame {
         txtNamsinh.setText("");
         txtChucvu.setText("");
         txtSdt.setText("");
+        txtTaikhoan.setText("");
+        txtMatkhau.setText("");
     }
 
     public boolean isCellEditable(int row, int column) {
@@ -494,39 +499,50 @@ public class QuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-
         int selectRow = jTable1.getSelectedRow();
+
         if (selectRow != -1) {
-            enableTextFields(true);
+            isEditing = !isEditing;
+            if (isEditing) {
+                enableTextFields(true);
+            } else {
+                enableTextFields(false);
+            }
+            int id = Integer.parseInt(txtID.getText());
+            String Ten = txtHoten.getText();
+            String taikhoan = txtTaikhoan.getText();
+            char[] mk = txtMatkhau.getPassword();
+            String mkStr = String.valueOf(mk);
+            int namsinh = Integer.parseInt(txtNamsinh.getText());
+            String gt = txtGioitinh.getText();
+            String chucvu = txtChucvu.getText();
+            String quequan = txtQuequan.getText();
+            String sdt = txtSdt.getText();
+            if (Ten.isEmpty() || taikhoan.isEmpty() || mkStr.isEmpty() || gt.isEmpty() || chucvu.isEmpty() || quequan.isEmpty() || sdt.isEmpty()) {
+                JOptionPane.showConfirmDialog(this, "Vui lòng nhập đầy đủ thông tin!");
+            }
+
+            if (ns.checkEmployeeExists(id)) {
+                // Tạo đối tượng Employee để cập nhật thông tin nhân viên
+                quanlymodel employee = new quanlymodel(id, Ten, gt, namsinh, chucvu, quequan, sdt);
+
+                // Cập nhật tài khoản và thông tin nhân viên
+                boolean checkAccount = tk.editAccount(taikhoan, mkStr, id);
+                boolean checkTtnv = ns.updateEmployee(employee);
+                if (checkTtnv && checkAccount) {
+                    loadDataToTable();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cập nhật thất bại. Vui lòng thử lại.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Nhân viên với ID này không tồn tại.");
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Hãy chọn hàng để sửa");
         }
 
     }//GEN-LAST:event_btnSuaActionPerformed
-    private void updateSelectedRow(int selectRow) throws Exception {
-        String hoten = txtHoten.getText().trim();
-        String taikhoan = txtTaikhoan.getText().trim();
-        char[] matkhau = txtMatkhau.getPassword();
-        String mkStr = new String(matkhau).trim();
-        String namsinh = txtNamsinh.getText().trim();
-        String gt = txtGioitinh.getText().trim();
-        String chucvu = txtChucvu.getText().trim();
-        String quequan = txtQuequan.getText().trim();
-        String sdt = txtSdt.getText().trim();
-        if (hoten.isEmpty() || taikhoan.isEmpty() || mkStr.isEmpty() || namsinh.isEmpty() || gt.isEmpty() || chucvu.isEmpty() || quequan.isEmpty() || sdt.isEmpty()) {
-            throw new Exception("Vui lòng điền đầy đủ thông tin.");
-        }
-        String mahoaMkMoi = tk.encodePassword(mkStr);
 
-        jTable1.setValueAt(hoten, selectRow, 1);
-        jTable1.setValueAt(taikhoan, selectRow, 2);
-        jTable1.setValueAt(mahoaMkMoi, selectRow, 3);
-        jTable1.setValueAt(namsinh, selectRow, 4);
-        jTable1.setValueAt(gt, selectRow, 5);
-        jTable1.setValueAt(chucvu, selectRow, 6);
-        jTable1.setValueAt(quequan, selectRow, 7);
-        jTable1.setValueAt(sdt, selectRow, 8);
-    }
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int selectRow = jTable1.getSelectedRow();
@@ -599,20 +615,45 @@ public class QuanLy extends javax.swing.JFrame {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
         int selectRow = jTable1.getSelectedRow();
-        if (selectRow != -1) {
-            try {
-                enableTextFields(true);
-                updateSelectedRow(selectRow);
-                JOptionPane.showMessageDialog(null, "Sửa thành công.");
-                enableTextFields(false);
-                deletefield();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Lỗi cập nhật thông tin nhân viên");
-            } finally {
-                enableTextFields(false);
+        if (selectRow != -1 && isEditing) { // Kiểm tra nếu có hàng được chọn và đang ở trạng thái chỉnh sửa
+            // Lấy ID nhân viên từ bảng
+            int id_nhan_su = Integer.parseInt(jTable1.getValueAt(selectRow, 0).toString());
+
+            // Lấy thông tin từ các trường nhập
+            String Ten = txtHoten.getText();
+            String taikhoan = txtTaikhoan.getText();
+            char[] mk = txtMatkhau.getPassword();
+            String mkStr = String.valueOf(mk);
+            int namsinh = Integer.parseInt(txtNamsinh.getText());
+            String gt = txtGioitinh.getText();
+            String chucvu = txtChucvu.getText();
+            String quequan = txtQuequan.getText();
+            String sdt = txtSdt.getText();
+
+            // Kiểm tra nếu các trường nhập còn trống
+            if (Ten.isEmpty() || taikhoan.isEmpty() || mkStr.isEmpty() || gt.isEmpty() || chucvu.isEmpty() || quequan.isEmpty() || sdt.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+
+            // Cập nhật thông tin tài khoản
+            boolean checkAccount = tk.editAccount(taikhoan, mkStr, id_nhan_su);
+
+            // Cập nhật thông tin nhân viên
+            quanlymodel employee = new quanlymodel(id_nhan_su, Ten, gt, namsinh, chucvu, quequan, sdt);
+            boolean checkTtnv = ns.updateEmployee(employee);
+
+            // Kiểm tra kết quả cập nhật
+            if (checkAccount && checkTtnv) {
+                JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
+                loadDataToTable(); // Cập nhật lại dữ liệu trong bảng
+                enableTextFields(false); // Vô hiệu hóa các trường nhập sau khi lưu
+                isEditing = false; // Đặt lại cờ chỉnh sửa
+            } else {
+                JOptionPane.showMessageDialog(this, "Cập nhật thất bại. Vui lòng thử lại.");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên để sửa !");
+            JOptionPane.showMessageDialog(this, "Hãy chọn hàng để lưu.");
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 
@@ -625,8 +666,8 @@ public class QuanLy extends javax.swing.JFrame {
     private void BtnDangxuat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuat1ActionPerformed
         // TODO add your handling code here:
         int confirmed = JOptionPane.showConfirmDialog(this,
-            "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (confirmed == JOptionPane.YES_OPTION) {
             Dangnhap frm = new Dangnhap();
             frm.setVisible(true);
@@ -643,7 +684,7 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void btnDatmon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmon1ActionPerformed
         // TODO add your handling code here:
-        Goimon gm = new Goimon(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        Goimon gm = new Goimon(admin, ban); // Truyền tham số admin vào để giữ nguyên quyền truy cập
         gm.setVisible(true); // Hiển thị trang QuanLy
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnDatmon1ActionPerformed

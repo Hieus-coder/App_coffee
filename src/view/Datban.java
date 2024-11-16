@@ -8,8 +8,9 @@ import javax.swing.table.DefaultTableModel;
 public class Datban extends javax.swing.JFrame {
 
     private boolean admin;
+    private Datban ban;
     private bancontroller bc;
-
+    private boolean checkBan = false;
     public Datban(boolean isAdmin) {
         this.admin = isAdmin;
 
@@ -26,20 +27,32 @@ public class Datban extends javax.swing.JFrame {
         bc = new bancontroller();
         loadDataToTable();
     }
-
+    
     private void loadDataToTable() {
         try {
             ResultSet rs = bc.getAllBan();
             DefaultTableModel model = new DefaultTableModel(new String[]{"Mã bàn", "Tên Bàn", "Trạng Thái"}, 0);
+            
             while (rs.next()) {
                 model.addRow(new Object[]{rs.getString("MABAN"), rs.getString("TENBAN"), rs.getString("TRANGTHAI")});
             }
+            
             jTable1.setModel(model);
+            int rowIndex = 0; 
+            String trangthai = (String) model.getValueAt(rowIndex, 2);
+            if ("Trống".equals(trangthai)) {
+                checkBan = true;
+            } else {
+                checkBan = false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    public boolean isCheckBan() {
+        return checkBan;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -332,7 +345,7 @@ public class Datban extends javax.swing.JFrame {
 
     private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
         // TODO add your handling code here:
-        Goimon gm = new Goimon(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        Goimon gm = new Goimon(admin, ban); // Truyền tham số admin vào để giữ nguyên quyền truy cập
         gm.setVisible(true); // Hiển thị trang QuanLy
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnDatmonActionPerformed
