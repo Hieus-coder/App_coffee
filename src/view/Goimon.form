@@ -417,7 +417,6 @@
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               </Group>
               <Component id="btnDoanthu" alignment="0" max="32767" attributes="0"/>
-              <Component id="btnThanhtoan1" alignment="0" max="32767" attributes="0"/>
               <Component id="btnDatmon" alignment="0" max="32767" attributes="0"/>
               <Component id="btnDatban" alignment="0" max="32767" attributes="0"/>
               <Component id="btnNhanVien" alignment="0" max="32767" attributes="0"/>
@@ -439,8 +438,6 @@
                   <Component id="btnDatban" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDatmon" min="-2" pref="47" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnThanhtoan1" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDoanthu" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -512,23 +509,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDatmonActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnThanhtoan1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="22" green="30" red="4a" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Thanh to&#xe1;n"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhtoan1ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDoanthu">

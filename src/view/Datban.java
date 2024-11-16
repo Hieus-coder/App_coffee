@@ -71,7 +71,6 @@ public class Datban extends javax.swing.JFrame {
         btnNhanVien = new javax.swing.JButton();
         btnDatban = new javax.swing.JButton();
         btnDatmon = new javax.swing.JButton();
-        btnThanhtoan = new javax.swing.JButton();
         btnDoanthu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -185,16 +184,6 @@ public class Datban extends javax.swing.JFrame {
             }
         });
 
-        btnThanhtoan.setBackground(new java.awt.Color(74, 48, 34));
-        btnThanhtoan.setForeground(new java.awt.Color(255, 255, 255));
-        btnThanhtoan.setText("Thanh toán");
-        btnThanhtoan.setBorder(null);
-        btnThanhtoan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThanhtoanActionPerformed(evt);
-            }
-        });
-
         btnDoanthu.setBackground(new java.awt.Color(74, 48, 34));
         btnDoanthu.setForeground(new java.awt.Color(255, 255, 255));
         btnDoanthu.setText("Doanh thu");
@@ -224,7 +213,6 @@ public class Datban extends javax.swing.JFrame {
                         .addComponent(BtnDangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
             .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnThanhtoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatban, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -244,8 +232,6 @@ public class Datban extends javax.swing.JFrame {
                 .addComponent(btnDatban, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDatmon, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnThanhtoan, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDoanthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -382,13 +368,6 @@ public class Datban extends javax.swing.JFrame {
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnDatmonActionPerformed
 
-    private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
-        // TODO add your handling code here:
-        ThanhToan tt = new ThanhToan(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        tt.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
-    }//GEN-LAST:event_btnThanhtoanActionPerformed
-
     private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
         // TODO add your handling code here:
         Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
@@ -412,7 +391,6 @@ public class Datban extends javax.swing.JFrame {
     private javax.swing.JButton btnDatmon;
     private javax.swing.JButton btnDoanthu;
     private javax.swing.JButton btnNhanVien;
-    private javax.swing.JButton btnThanhtoan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

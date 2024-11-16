@@ -64,7 +64,6 @@ public class Goimon extends javax.swing.JFrame {
         btnNhanVien = new javax.swing.JButton();
         btnDatban = new javax.swing.JButton();
         btnDatmon = new javax.swing.JButton();
-        btnThanhtoan1 = new javax.swing.JButton();
         btnDoanthu = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -317,16 +316,6 @@ public class Goimon extends javax.swing.JFrame {
             }
         });
 
-        btnThanhtoan1.setBackground(new java.awt.Color(74, 48, 34));
-        btnThanhtoan1.setForeground(new java.awt.Color(255, 255, 255));
-        btnThanhtoan1.setText("Thanh toán");
-        btnThanhtoan1.setBorder(null);
-        btnThanhtoan1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThanhtoan1ActionPerformed(evt);
-            }
-        });
-
         btnDoanthu.setBackground(new java.awt.Color(74, 48, 34));
         btnDoanthu.setForeground(new java.awt.Color(255, 255, 255));
         btnDoanthu.setText("Doanh thu");
@@ -356,7 +345,6 @@ public class Goimon extends javax.swing.JFrame {
                         .addComponent(BtnDangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
             .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnThanhtoan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatban, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -376,8 +364,6 @@ public class Goimon extends javax.swing.JFrame {
                 .addComponent(btnDatban, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDatmon, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnThanhtoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDoanthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -516,13 +502,6 @@ public class Goimon extends javax.swing.JFrame {
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnDatmonActionPerformed
 
-    private void btnThanhtoan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoan1ActionPerformed
-        // TODO add your handling code here:
-        ThanhToan tt = new ThanhToan(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        tt.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
-    }//GEN-LAST:event_btnThanhtoan1ActionPerformed
-
     private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
         // TODO add your handling code here:
         Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
@@ -580,7 +559,6 @@ public class Goimon extends javax.swing.JFrame {
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnThanhtoan;
-    private javax.swing.JButton btnThanhtoan1;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;

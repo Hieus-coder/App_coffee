@@ -96,7 +96,6 @@
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               </Group>
               <Component id="btnDoanthu" alignment="0" max="32767" attributes="0"/>
-              <Component id="btnThanhtoan" alignment="0" max="32767" attributes="0"/>
               <Component id="btnDatmon" alignment="0" max="32767" attributes="0"/>
               <Component id="btnDatban" alignment="0" max="32767" attributes="0"/>
               <Component id="btnNhanVien" alignment="0" max="32767" attributes="0"/>
@@ -118,8 +117,6 @@
                   <Component id="btnDatban" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDatmon" min="-2" pref="47" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnThanhtoan" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDoanthu" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -193,23 +190,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDatmonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnThanhtoan">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="22" green="30" red="4a" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Thanh to&#xe1;n"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhtoanActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="btnDoanthu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -262,7 +242,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="46" max="32767" attributes="0"/>
-                      <Component id="label5" min="-2" pref="111" max="-2" attributes="0"/>
+                      <Component id="txtSodon" min="-2" pref="111" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -278,7 +258,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="50" max="32767" attributes="0"/>
-                      <Component id="label5" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="txtSodon" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -294,7 +274,7 @@
             <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x111;&#x1a1;n"/>
           </Properties>
         </Component>
-        <Component class="java.awt.Label" name="label5">
+        <Component class="java.awt.Label" name="txtSodon">
           <Properties>
             <Property name="alignment" type="int" value="1"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -329,7 +309,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="77" max="32767" attributes="0"/>
-                      <Component id="label6" min="-2" pref="111" max="-2" attributes="0"/>
+                      <Component id="txtChiphi" min="-2" pref="111" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -345,7 +325,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="42" max="32767" attributes="0"/>
-                      <Component id="label6" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="txtChiphi" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -361,7 +341,7 @@
             <Property name="text" type="java.lang.String" value="Chi ph&#xed;"/>
           </Properties>
         </Component>
-        <Component class="java.awt.Label" name="label6">
+        <Component class="java.awt.Label" name="txtChiphi">
           <Properties>
             <Property name="alignment" type="int" value="1"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -392,7 +372,7 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="58" max="32767" attributes="0"/>
-                  <Component id="label4" min="-2" pref="111" max="-2" attributes="0"/>
+                  <Component id="txtLai" min="-2" pref="111" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -403,7 +383,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="label3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="label4" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="txtLai" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -418,7 +398,7 @@
             <Property name="text" type="java.lang.String" value="L&#xe3;i thu"/>
           </Properties>
         </Component>
-        <Component class="java.awt.Label" name="label4">
+        <Component class="java.awt.Label" name="txtLai">
           <Properties>
             <Property name="alignment" type="int" value="1"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
