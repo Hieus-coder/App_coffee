@@ -289,6 +289,7 @@ public class Goimon extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pnMenu4.setBackground(new java.awt.Color(204, 102, 0));
         pnMenu4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         BtnDangxuat4.setText("Đăng xuất");

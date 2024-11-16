@@ -42,6 +42,7 @@ public class Doanhthu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        pnMenu.setBackground(new java.awt.Color(204, 102, 0));
         pnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         BtnDangxuat.setText("Đăng xuất");
