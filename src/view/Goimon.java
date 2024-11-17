@@ -5,9 +5,13 @@
 package view;
 
 import controller.bancontroller;
+import controller.ordercontroller;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.quanliban;
 
 /**
  *
@@ -17,16 +21,20 @@ public class Goimon extends javax.swing.JFrame {
 
     private boolean admin;
     private bancontroller ban;
-
+    private ordercontroller order;
+    private quanliban qlban;
     public Goimon(boolean isAdmin) {
         this.admin = isAdmin;
         btnNhanVien = new javax.swing.JButton();
         btnNhanVien.setVisible(admin);
         initComponents();
         ban = new bancontroller();
+        order = new ordercontroller();
         updateLabels();
+        updateDouong();
+        themDouong();
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,7 +64,7 @@ public class Goimon extends javax.swing.JFrame {
         btnThem = new javax.swing.JButton();
         btnThanhtoan = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        TableMondagoij = new javax.swing.JTable();
+        TableMondagoi = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabledsMon = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -212,7 +220,7 @@ public class Goimon extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         btnXoa.setText("Xóa");
@@ -226,7 +234,7 @@ public class Goimon extends javax.swing.JFrame {
             }
         });
 
-        TableMondagoij.setModel(new javax.swing.table.DefaultTableModel(
+        TableMondagoi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -237,7 +245,7 @@ public class Goimon extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(TableMondagoij);
+        jScrollPane2.setViewportView(TableMondagoi);
 
         TabledsMon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -250,6 +258,11 @@ public class Goimon extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TabledsMon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabledsMonMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TabledsMon);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -265,10 +278,6 @@ public class Goimon extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(jLabel6)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,31 +301,34 @@ public class Goimon extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnThanhtoan)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30))))
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(142, 142, 142))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(46, 46, 46)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(69, 69, 69)
                         .addComponent(btnThem)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnXoa)))
+                        .addGap(26, 26, 26)
+                        .addComponent(btnXoa))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(btnThanhtoan))
-                    .addComponent(lbTongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbTongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThanhtoan))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnMenu.setBackground(new java.awt.Color(74, 48, 34));
@@ -412,7 +424,7 @@ public class Goimon extends javax.swing.JFrame {
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnDangxuat)
-                .addGap(17, 17, 17))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -429,22 +441,24 @@ public class Goimon extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   private void updateLabels() {
+    public boolean isCellEditable(int row, int column) {
+        return false; 
+    }
+    private void updateLabels() {
         JLabel[] lbBans = {lbBan1, lbBan2, lbBan3, lbBan4, lbBan5, lbBan6};
         boolean[] trangthaiBans = ban.Trangthai(); // Lấy trạng thái của từng bàn
-
         // Kiểm tra trạng thái của từng bàn và thay đổi màu sắc cho từng JLabel tương ứng
         for (int i = 0; i < lbBans.length; i++) {
             if (trangthaiBans[i]) {
@@ -454,10 +468,41 @@ public class Goimon extends javax.swing.JFrame {
             }
         }
     }
+    public void updateDouong(){
+        DefaultTableModel model = new DefaultTableModel(new String[]{"Tên món", "Giá tiền"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Không cho phép chỉnh sửa bất kỳ ô nào trong bảng
+            }
+        };
+        List<Object[]> douonglist = order.Danhsachdouong();
+
+        if (douonglist != null) {
+            for (Object[] douong : douonglist) {
+                model.addRow(douong);
+            }
+        } else {
+            System.out.println("Khong the lay danh sach do uong");
+        }
+        TabledsMon.setModel(model);
+    }
+    public void themDouong() {
+        int selectRow = TabledsMon.getSelectedRow();
+        if (selectRow != -1) {
+            String tenDo = TabledsMon.getValueAt(selectRow, 0).toString();
+            float gia = (float) TabledsMon.getValueAt(selectRow,1);
+            String maDouong = order.Madouong(tenDo);
+            int soluong = 1;
+            float tong = gia*soluong;
+            DefaultTableModel modelban = new DefaultTableModel(new String[] {"Mã đồ uống", "Tên đồ uống", "Số lượng", "Tổng"}, 0);
+            
+            TableMondagoi.setModel(modelban);
+        }
+    }
 
     private void btnBan6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan6ActionPerformed
         // TODO add your handling code here:
-
+       
     }//GEN-LAST:event_btnBan6ActionPerformed
 
     private void btnBan5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan5ActionPerformed
@@ -475,7 +520,9 @@ public class Goimon extends javax.swing.JFrame {
 
     private void btnBan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan1ActionPerformed
         // TODO add your handling code here:
-
+//         List<Object[]> douonglist = order.Danhsachdouongdagoi();
+         
+         
     }//GEN-LAST:event_btnBan1ActionPerformed
 
     private void btnBan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan2ActionPerformed
@@ -500,7 +547,7 @@ public class Goimon extends javax.swing.JFrame {
         ql.setVisible(true); // Hiển thị trang QuanLy
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_btnNhanVienActionPerformed
-
+        
     private void btnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatbanActionPerformed
         // TODO add your handling code here:
         Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
@@ -524,7 +571,14 @@ public class Goimon extends javax.swing.JFrame {
 
     private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnThanhtoanActionPerformed
+
+    private void TabledsMonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabledsMonMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_TabledsMonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -563,7 +617,7 @@ public class Goimon extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnDangxuat;
-    private javax.swing.JTable TableMondagoij;
+    private javax.swing.JTable TableMondagoi;
     private javax.swing.JTable TabledsMon;
     private javax.swing.JButton btnBan1;
     private javax.swing.JButton btnBan2;
