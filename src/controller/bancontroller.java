@@ -52,6 +52,11 @@ public class bancontroller {
     }
 
     public boolean updateBanStatus(String maBan, String trangThai) {
+        if (!"Trống".equals(trangThai) && !"Không trống".equals(trangThai)) {
+            System.err.println("Giá trị trạng thái không hợp lệ: " + trangThai);
+            return false;
+        }
+        // Tiếp tục cập nhật trạng thái nếu hợp lệ
         try {
             String sql = "UPDATE BAN SET TRANGTHAI = ? WHERE MABAN = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -59,9 +64,10 @@ public class bancontroller {
             pstmt.setString(2, maBan);
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
         }
     }
+
 }
