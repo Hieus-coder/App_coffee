@@ -32,14 +32,9 @@ public class QuanLy extends javax.swing.JFrame {
     }
 
     private void loadDataToTable() {
-        ResultSet rs = null;
         Connection conn = Dbconnection.getInstance().getConnection();
         try {
-
-            String sql = "SELECT NS.ID_NHAN_SU, NS.HO_VA_TEN, AC.TAIKHOAN, AC.MATKHAU, NS.NAM_SINH, NS.GIOI_TINH, NS.CHUC_VU, NS.QUE_QUAN, NS.SO_DIEN_THOAI FROM ACCOUNT AC JOIN NHAN_SU NS ON AC.ID_NHAN_SU = NS.ID_NHAN_SU";
-            Statement stmt = conn.createStatement();
-            rs = stmt.executeQuery(sql);
-
+            ResultSet rs = ns.getAll();
             DefaultTableModel model = new DefaultTableModel(
                     new String[]{"ID", "Họ và Tên", "Tài Khoản", "Mật Khẩu", "Năm Sinh",
                         "Giới Tính", "Chức Vụ", "Quê Quán", "Số Điện Thoại"}, 0
@@ -64,14 +59,6 @@ public class QuanLy extends javax.swing.JFrame {
             jTable1.setModel(model);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -693,8 +680,8 @@ public class QuanLy extends javax.swing.JFrame {
     private void BtnDangxuat3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuat3ActionPerformed
         // TODO add your handling code here:
         int confirmed = JOptionPane.showConfirmDialog(this,
-            "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (confirmed == JOptionPane.YES_OPTION) {
             Dangnhap frm = new Dangnhap();
             frm.setVisible(true);

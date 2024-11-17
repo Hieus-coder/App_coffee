@@ -4,7 +4,10 @@
  */
 package view;
 
+import controller.doanhthucontroller;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,10 +19,58 @@ public class Doanhthu extends javax.swing.JFrame {
      * Creates new form Doanhthu
      */
     private boolean admin;
+    private doanhthucontroller Dt;
+
     public Doanhthu(boolean isAdmin) {
         initComponents();
         this.admin = isAdmin;
+        Dt = new doanhthucontroller();
         btnNhanVien.setVisible(admin);
+
+        loadDataToTable();
+
+    }
+
+    private void loadDataToTable() {
+        try {
+            ResultSet rs = Dt.getHoadon();
+            DefaultTableModel model = new DefaultTableModel(
+                    new String[]{"ID", "NGAY", "GIO", "TONGCHIPHI", "TONGTIEN"}, 0
+            );
+
+            // Biến để tính tổng
+            float totalChiphi = 0;
+            float totalTien = 0;
+            float lai = Dt.getLai();
+            int count = Dt.getCount();
+            // Duyệt qua các hàng và thêm vào bảng
+            while (rs.next()) {
+                float chiphi = rs.getFloat("TONGCHIPHI");
+                float tien = rs.getFloat("TONGTIEN");
+
+                totalChiphi += chiphi;
+                totalTien += tien;
+
+                model.addRow(new Object[]{
+                    rs.getInt("ID"),
+                    rs.getDate("NGAY"),
+                    rs.getTime("GIO"),
+                    chiphi,
+                    tien
+                });
+            }
+
+            // Cập nhật model cho bảng
+            jTable1.setModel(model);
+
+            // Hiển thị tổng chi phí và tổng tiền lên JLabel
+            txtSodon.setText("" + count);
+            txtChiphi.setText("" + totalChiphi);
+            txtLai.setText("" + lai);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -327,8 +378,8 @@ public class Doanhthu extends javax.swing.JFrame {
     private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed
         // TODO add your handling code here:
         int confirmed = JOptionPane.showConfirmDialog(this,
-            "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (confirmed == JOptionPane.YES_OPTION) {
             Dangnhap frm = new Dangnhap();
             frm.setVisible(true);

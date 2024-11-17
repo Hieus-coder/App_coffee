@@ -20,9 +20,13 @@ public class nhansucontroller {
     // Method to retrieve all employees
     public ResultSet getAll() {
         try {
-            String sql = "SELECT * FROM NHAN_SU"; // Thay bằng tên bảng thực tế của bạn
+            String sql = """
+            SELECT NS.ID_NHAN_SU, NS.HO_VA_TEN, A.TAIKHOAN, A.MATKHAU, 
+                   NS.NAM_SINH, NS.GIOI_TINH, A.CHUC_VU, NS.QUE_QUAN, NS.SO_DIEN_THOAI
+            FROM NHAN_SU NS
+            LEFT JOIN ACCOUNT A ON NS.ID_NHAN_SU = A.ID_NHAN_SU""";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            return pstmt.executeQuery(); // Trả về ResultSet
+            return pstmt.executeQuery(); // Trả về ResultSet chứa dữ liệu từ JOIN
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
