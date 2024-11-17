@@ -34,7 +34,7 @@ GO
 -- Tạo bảng DOUONG để lưu thông tin đồ uống
 CREATE TABLE DOUONG (
 	MADOUONG VARCHAR(20) PRIMARY KEY,
-	TENDOUONG VARCHAR(50),
+	TENDOUONG NVARCHAR(50),
 	GIA FLOAT,
 	CHIPHI FLOAT
 );
@@ -106,11 +106,7 @@ VALUES
 	('B03', 'BAN3', N'Trống'),
 	('B04', 'BAN4', N'Trống'),
 	('B05', 'BAN5', N'Trống'),
-	('B06', 'BAN6', N'Trống'),
-	('B07', 'BAN7', N'Trống'),
-	('B08', 'BAN8', N'Trống'),
-	('B09', 'BAN9', N'Trống'),
-	('B10', 'BAN10', N'Trống');
+	('B06', 'BAN6', N'Trống')
 -- Thêm cột ID_NHAN_SU vào bảng ACCOUNT
 
 go
@@ -152,3 +148,6 @@ BEGIN
 END;
 
 go
+select * from ban;
+select * from DOUONG
+select * from ACCOUNT
