@@ -55,7 +55,6 @@ public class ordercontroller {
         }
         return maDoUong;
     }
-    
 
     public List<Object[]> Danhsachdouongdagoi(String maban) {
         List<Object[]> danhSachDoUong = new ArrayList<>();
@@ -239,7 +238,7 @@ public class ordercontroller {
         }
         return false;
     }
-    
+
     public double tongtienban(String maban) {
         double totalAmount = 0;  // Khai báo biến totalAmount và gán giá trị mặc định là 0
 
@@ -263,6 +262,7 @@ public class ordercontroller {
 
         return totalAmount;  // Trả về tổng tiền
     }
+
     public boolean deleteFromDatabase(String maBan, String maDoUong) {
         String sql = "DELETE FROM ORDER_ WHERE MABAN = ? AND MADOUONG = ?";
         try (PreparedStatement pst = conn.prepareStatement(sql)) {
@@ -285,18 +285,35 @@ public class ordercontroller {
         }
         return false;
     }
-    public boolean insertDoanhThu(double tongChiPhi, double tongTien){
+
+    public boolean insertDoanhThu(double tongChiPhi, double tongTien) {
         try {
             String insertDoanhThuSql = "INSERT INTO DOANHTHU (TONGCHIPHI, TONGTIEN) VALUES (?, ?)";
             PreparedStatement ps = conn.prepareStatement(insertDoanhThuSql);
             ps.setDouble(1, tongChiPhi);
             ps.setDouble(2, tongTien);
             ps.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
+
+    public double getChiPhi(String maDoUong) {
+        double chiPhi = 0;
+        String query = "SELECT CHIPHI FROM DOUONG WHERE MADOUONG = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, maDoUong);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                chiPhi = rs.getDouble("CHIPHI");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return chiPhi;
+    }
+
     public boolean deleteAfterSucess(String maban) {
         String deleteSql = "DELETE FROM ORDER_ WHERE MABAN = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(deleteSql)) {

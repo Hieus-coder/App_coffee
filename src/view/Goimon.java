@@ -660,11 +660,11 @@ public class Goimon extends javax.swing.JFrame {
 
     private void btnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatbanActionPerformed
         // TODO add your handling code here:
-       
-            Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-            db.setVisible(true); // Hiển thị trang QuanLy
-            this.dispose(); // Đóng trang hiện tại
-        
+
+        Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
+        db.setVisible(true); // Hiển thị trang QuanLy
+        this.dispose(); // Đóng trang hiện tại
+
     }//GEN-LAST:event_btnDatbanActionPerformed
 
     private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
@@ -708,6 +708,7 @@ public class Goimon extends javax.swing.JFrame {
         thanhToanForm.setNgayDat();                // Truyền ngày đặt
         thanhToanForm.setDanhSachMon(danhSachMon); // Truyền danh sách món
         thanhToanForm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnThanhtoanActionPerformed
 
     private void TabledsMonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabledsMonMouseClicked

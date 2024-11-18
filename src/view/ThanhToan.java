@@ -221,37 +221,52 @@ public class ThanhToan extends javax.swing.JFrame {
 
     private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
         try {
-            // Tính tổng chi phí từ jTableHoaDon
+            // Lấy model của bảng và khởi tạo các biến
             DefaultTableModel model = (DefaultTableModel) TabledsMoncuaban.getModel();
             double tongChiPhi = 0, tongTien = 0;
-            
+
+            // Lấy thông tin bàn
             String tenBan = lbTen.getText();
-            
-            String maBan = ban.getID(tenBan); 
-            System.out.println(maBan);
+            String maBan = ban.getID(tenBan);
+            System.out.println("Mã bàn: " + maBan);
+
+            // Tính tổng tiền và chi phí dựa theo dữ liệu bảng
             for (int i = 0; i < model.getRowCount(); i++) {
-                double gia = Double.parseDouble(model.getValueAt(i, 3).toString());
-                int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
+                String maDoUong = model.getValueAt(i, 0).toString(); // Giả sử MADOUONG là cột 0
+                int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString()); // SLUONG là cột 2
+
+                // Truy vấn chi phí từ cơ sở dữ liệu
+                double chiPhi = order.getChiPhi(maDoUong); // Thêm phương thức getChiPhi trong lớp order
+                tongChiPhi += chiPhi * soLuong;
+
+                // Tính tổng tiền
+                double gia = Double.parseDouble(model.getValueAt(i, 3).toString()); // Đơn giá là cột 3
                 tongTien += gia * soLuong;
             }
 
+            // Ghi dữ liệu vào doanh thu và cập nhật trạng thái
             boolean insertSuccess = order.insertDoanhThu(tongChiPhi, tongTien);
-            boolean deleteAfterSucess =  order.deleteAfterSucess(maBan);
+            boolean deleteAfterSucess = order.deleteAfterSucess(maBan);
+
             JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
-            
+
+            // Cập nhật trạng thái bàn
             boolean updateStatusSuccess = ban.updateBanStatus(maBan, "Trống");
             if (!updateStatusSuccess) {
                 JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật trạng thái bàn!");
                 return;
             }
-            
+
+            // Dọn dẹp bảng và giao diện
             model.setRowCount(0);
-            lbTen.setText(""); 
+            lbTen.setText("");
             lbNgaygio.setText("");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Lỗi khi thanh toán: " + e.getMessage());
         }
+        Goimon gm = new Goimon(admin);
+        gm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnThanhtoanActionPerformed
 
