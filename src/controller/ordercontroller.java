@@ -183,55 +183,10 @@ public class ordercontroller {
         }
         return tenDouong;
     }
-
-    public void addDrinkToTable(String maBan, String maDouong, int soLuong, double gia) {
-        double tongTien = soLuong * gia;
-
-        // Kiểm tra nếu món đồ uống đã có trong bảng ORDER_ của bàn chưa
-        String sqlCheck = "SELECT * FROM ORDER_ WHERE MABAN = ? AND MADOUONG = ?";
-        try (PreparedStatement stmtCheck = conn.prepareStatement(sqlCheck)) {
-            stmtCheck.setString(1, maBan);
-            stmtCheck.setString(2, maDouong);
-            ResultSet rs = stmtCheck.executeQuery();
-
-            if (rs.next()) {
-                // Món đã tồn tại, cập nhật số lượng và tổng tiền
-                int currentQuantity = rs.getInt("SOLUONG");
-                double currentTotal = rs.getDouble("TONGTIEN");
-
-                int newQuantity = currentQuantity + soLuong;  // Cập nhật số lượng
-                double newTotal = currentTotal + tongTien;    // Cập nhật tổng tiền
-
-                // Cập nhật vào cơ sở dữ liệu
-                String sqlUpdate = "UPDATE ORDER_ SET SOLUONG = ?, TONGTIEN = ? WHERE MABAN = ? AND MADOUONG = ?";
-                try (PreparedStatement stmtUpdate = conn.prepareStatement(sqlUpdate)) {
-                    stmtUpdate.setInt(1, newQuantity);
-                    stmtUpdate.setDouble(2, newTotal);
-                    stmtUpdate.setString(3, maBan);
-                    stmtUpdate.setString(4, maDouong);
-                    stmtUpdate.executeUpdate();
-                }
-            } else {
-                // Món chưa có trong bảng, thêm mới
-                String sqlInsert = "INSERT INTO ORDER_ (MABAN, MADOUONG, TENDOUONG, SOLUONG, TONGTIEN) VALUES (?, ?, ?, ?, ?)";
-                try (PreparedStatement stmtInsert = conn.prepareStatement(sqlInsert)) {
-                    stmtInsert.setString(1, maBan);
-                    stmtInsert.setString(2, maDouong);
-                    stmtInsert.setString(3, getDrinkName(maDouong));  // Lấy tên đồ uống từ cơ sở dữ liệu
-                    stmtInsert.setInt(4, soLuong);
-                    stmtInsert.setDouble(5, tongTien);
-                    stmtInsert.executeUpdate();
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public String getIDDouong(String ten) {
         String maDoUong = null;
         String sql = "SELECT MADOUONG FROM DOUONG WHERE TENDOUONG = ?";
-        try (Connection conn = Dbconnection.getInstance().getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, ten);
             ResultSet rs = pstmt.executeQuery();
