@@ -14,7 +14,6 @@ public class Datban extends javax.swing.JFrame {
 
     public Datban(boolean isAdmin) {
         this.admin = isAdmin;
-
         if (!Dangnhap.isAuthenticated) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
             this.dispose();

@@ -30,15 +30,15 @@ public class Goimon extends javax.swing.JFrame {
 
     public Goimon(boolean isAdmin) {
         this.admin = isAdmin;
-        btnNhanVien = new javax.swing.JButton();
-        btnNhanVien.setVisible(admin);
-        initComponents();
         if (!Dangnhap.isAuthenticated) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
             this.dispose();
             new Dangnhap().setVisible(true);
             return;
         }
+        btnNhanVien = new javax.swing.JButton();
+        btnNhanVien.setVisible(admin);
+        initComponents();
         setTitle("Coffee");
         ban = new bancontroller();
         order = new ordercontroller();

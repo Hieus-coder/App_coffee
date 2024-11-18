@@ -22,14 +22,14 @@ public class Doanhthu extends javax.swing.JFrame {
     private doanhthucontroller Dt;
 
     public Doanhthu(boolean isAdmin) {
-        initComponents();
         this.admin = isAdmin;
         if (!Dangnhap.isAuthenticated) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
             this.dispose();
             new Dangnhap().setVisible(true);
             return;
-        }
+        } 
+        initComponents();
         setTitle("Coffee");
         Dt = new doanhthucontroller();
         btnNhanVien.setVisible(admin);

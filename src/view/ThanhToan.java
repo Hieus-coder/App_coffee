@@ -28,15 +28,15 @@ public class ThanhToan extends javax.swing.JFrame {
     private String maban = "";
 
     public ThanhToan(boolean IsAdmin) {
-        initComponents();
+        this.admin = IsAdmin;
         if (!Dangnhap.isAuthenticated) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
             new Dangnhap().setVisible(true);
             this.dispose();
             return;
         }
+        initComponents();
         setTitle("Coffee");
-        this.admin = IsAdmin;
         order = new ordercontroller();
         ban = new bancontroller();
         loadData();
