@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author leduc
@@ -19,21 +20,28 @@ public class ThanhToan extends javax.swing.JFrame {
     /**
      * Creates new form ThanhToan
      */
-    
     private boolean admin;
-    
+
     private ordercontroller order;
     private bancontroller ban;
     private Goimon gm;
     private String maban = "";
+
     public ThanhToan(boolean IsAdmin) {
         initComponents();
-        
+        if (!Dangnhap.isAuthenticated) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
+            new Dangnhap().setVisible(true);
+            this.dispose();
+            return;
+        }
+        setTitle("Coffee");
         this.admin = IsAdmin;
         order = new ordercontroller();
         ban = new bancontroller();
         loadData();
     }
+
     public ThanhToan(String admin) {
         initComponents(); // Gọi hàm khởi tạo giao diện
     }
@@ -57,6 +65,7 @@ public class ThanhToan extends javax.swing.JFrame {
             model.addRow(mon); // Thêm từng dòng vào bảng
         }
     }
+
     private void loadData() {
         // Cập nhật tên bàn
         lbTen.setText(ban.getTenBan(maban));
@@ -69,7 +78,7 @@ public class ThanhToan extends javax.swing.JFrame {
 
         // Lấy DefaultTableModel hiện tại của TabledsMoncuaban
         DefaultTableModel model = (DefaultTableModel) TabledsMoncuaban.getModel();
-        
+
         // Thiết lập tiêu đề cột cho bảng
         String[] columnNames = {"Mã món", "Tên món", "Số lượng", "Giá"};
         model.setColumnIdentifiers(columnNames);
@@ -79,8 +88,6 @@ public class ThanhToan extends javax.swing.JFrame {
             model.addRow(row);  // Thêm dòng mới vào bảng
         }
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -226,11 +233,10 @@ public class ThanhToan extends javax.swing.JFrame {
             }
 
             // Tổng tiền (có thể bổ sung thêm logic VAT/khuyến mãi nếu cần)
-
             // Gọi phương thức lưu vào DOANHTHU
             boolean insertSuccess = order.insertDoanhThu(tongChiPhi, tongTien);
             // Gọi phương thức xóa dữ liệu trong ORDER_ theo MABAN
-            
+
             boolean deleteSuccess = order.deleteAfterSucess(lbTen.getText());
             if (deleteSuccess) {
                 JOptionPane.showMessageDialog(this, "Dữ liệu bàn đã được xóa thành công!");

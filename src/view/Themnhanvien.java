@@ -20,6 +20,7 @@ public class Themnhanvien extends javax.swing.JFrame {
 
     public Themnhanvien() {
         initComponents();
+        setTitle("Coffee");
         nhanvien = new nhansucontroller();
         account = new accountcontroller();
     }

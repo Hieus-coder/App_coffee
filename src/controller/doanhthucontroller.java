@@ -23,10 +23,9 @@ public class doanhthucontroller {
 
     public ResultSet getHoadon() {
         try {
-            // Truy vấn để lấy tất cả dữ liệu từ bảng DOANHTHU
             String sql = "SELECT ID, NGAY, GIO, TONGCHIPHI, TONGTIEN FROM DOANHTHU";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            return pstmt.executeQuery(); // Trả về ResultSet chứa dữ liệu
+            return pstmt.executeQuery();
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
@@ -36,18 +35,17 @@ public class doanhthucontroller {
 
     public int getCount() {
         try {
-            // Truy vấn để đếm số lượng đơn trong bảng DOANHTHU
             String sql = "SELECT COUNT(*) FROM DOANHTHU";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                return rs.getInt(1);  // Trả về số lượng đơn
+                return rs.getInt(1); 
             }
-            return 0;  // Nếu không có dữ liệu, trả về 0
+            return 0; 
         } catch (Exception ex) {
             ex.printStackTrace();
-            return 0;  // Nếu có lỗi, trả về 0
+            return 0;
         }
     }
 

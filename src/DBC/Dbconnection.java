@@ -9,7 +9,6 @@ public class Dbconnection {
 
     private Dbconnection() {
         try {
-            // Thay đổi chuỗi kết nối dưới đây theo cơ sở dữ liệu của bạn
             String url = "jdbc:sqlserver://localhost:1433;databaseName=QLCOFFEE;encrypt=true;trustServerCertificate=true;";
             String username = "sa";
             String password = "12345";

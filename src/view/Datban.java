@@ -11,34 +11,34 @@ public class Datban extends javax.swing.JFrame {
     private Datban ban;
     private bancontroller bc;
     private boolean checkBan = false;
+
     public Datban(boolean isAdmin) {
         this.admin = isAdmin;
 
-//        if (!Dangnhap.isAuthenticated) {
-//            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
-//            this.dispose();
-//            new Dangnhap().setVisible(true);
-//            return;
-//        }
+        if (!Dangnhap.isAuthenticated) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
+            this.dispose();
+            new Dangnhap().setVisible(true);
+            return;
+        }
+        setTitle("Coffee");
         initComponents();
         btnNhanVien.setVisible(admin);
-        setTitle("Coffee");
-
         bc = new bancontroller();
         loadDataToTable();
     }
-    
+
     private void loadDataToTable() {
         try {
             ResultSet rs = bc.getAllBan();
             DefaultTableModel model = new DefaultTableModel(new String[]{"Mã bàn", "Tên Bàn", "Trạng Thái"}, 0);
-            
+
             while (rs.next()) {
                 model.addRow(new Object[]{rs.getString("MABAN"), rs.getString("TENBAN"), rs.getString("TRANGTHAI")});
             }
-            
+
             jTable1.setModel(model);
-            int rowIndex = 0; 
+            int rowIndex = 0;
             String trangthai = (String) model.getValueAt(rowIndex, 2);
             if ("Trống".equals(trangthai)) {
                 checkBan = true;
@@ -49,10 +49,11 @@ public class Datban extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
     public boolean isCheckBan() {
         return checkBan;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -338,8 +339,8 @@ public class Datban extends javax.swing.JFrame {
     private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed
         // TODO add your handling code here:
         int confirmed = JOptionPane.showConfirmDialog(this,
-            "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                "Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (confirmed == JOptionPane.YES_OPTION) {
             Dangnhap frm = new Dangnhap();
             frm.setVisible(true);

@@ -23,29 +23,27 @@ public class bancontroller {
             return null;
         }
     }
-    // Thêm danh sách trạng thái của từng bàn
 
     public boolean[] Trangthai() {
-        boolean[] trangThaiBans = new boolean[6]; // Giả sử có 6 bàn
+        boolean[] trangThaiBans = new boolean[6];
         try {
             String sql = "SELECT MABAN, TRANGTHAI FROM BAN";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
-            int index = 0; // Dùng để lưu trạng thái cho từng bàn
+            int index = 0;
             while (rs.next()) {
                 String maBan = rs.getString("MABAN");
                 String trangthai = rs.getString("TRANGTHAI");
-                // Kiểm tra trạng thái của bàn và lưu vào mảng
                 if ("Trống".equals(trangthai)) {
-                    trangThaiBans[index] = true; // Bàn trống
+                    trangThaiBans[index] = true;
                 } else {
-                    trangThaiBans[index] = false; // Bàn không trống
+                    trangThaiBans[index] = false;
                 }
                 index++;
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // In lỗi ra console để gỡ lỗi
+            e.printStackTrace();
         }
 
         return trangThaiBans;
@@ -56,7 +54,6 @@ public class bancontroller {
             System.err.println("Giá trị trạng thái không hợp lệ: " + trangThai);
             return false;
         }
-        // Tiếp tục cập nhật trạng thái nếu hợp lệ
         try {
             String sql = "UPDATE BAN SET TRANGTHAI = ? WHERE MABAN = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -69,14 +66,15 @@ public class bancontroller {
             return false;
         }
     }
+
     public String getTenBan(String id) {
         String tenBan = "";
         String sql = "SELECT TENBAN FROM BAN WHERE MABAN = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, id);  // Set mã bàn
+            pstmt.setString(1, id);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    tenBan = rs.getString("TENBAN");  // Lấy tên bàn
+                    tenBan = rs.getString("TENBAN");
                 }
             }
         } catch (SQLException e) {
@@ -85,4 +83,3 @@ public class bancontroller {
         return tenBan;
     }
 }
-

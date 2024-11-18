@@ -33,6 +33,13 @@ public class Goimon extends javax.swing.JFrame {
         btnNhanVien = new javax.swing.JButton();
         btnNhanVien.setVisible(admin);
         initComponents();
+        if (!Dangnhap.isAuthenticated) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
+            this.dispose();
+            new Dangnhap().setVisible(true);
+            return;
+        }
+        setTitle("Coffee");
         ban = new bancontroller();
         order = new ordercontroller();
         updateLabels();
@@ -469,9 +476,11 @@ public class Goimon extends javax.swing.JFrame {
     public boolean isCellEditable(int row, int column) {
         return false;
     }
+
     public String getMaban() {
         return maban;
     }
+
     private void updateLabels() {
         JLabel[] lbBans = {lbBan1, lbBan2, lbBan3, lbBan4, lbBan5, lbBan6};
         boolean[] trangthaiBans = ban.Trangthai(); // Lấy trạng thái của từng bàn
@@ -507,7 +516,7 @@ public class Goimon extends javax.swing.JFrame {
     private void LoadDataDouongdagoi(String maBan) {
         DefaultTableModel modelMon = (DefaultTableModel) TableMondagoi.getModel();
         modelMon.setRowCount(0);
-        
+
         // Lấy danh sách món của bàn từ cơ sở dữ liệu
         List<Object[]> danhSachMon = order.getDanhSachMonCuaBan(maBan);
 
@@ -522,6 +531,7 @@ public class Goimon extends javax.swing.JFrame {
         TableMondagoi.setModel(modelMon);
         updateTotalAmountLabel();
     }
+
     private void deleteSelectedRow() {
         DefaultTableModel model = (DefaultTableModel) TableMondagoi.getModel();
         int selectedRow = TableMondagoi.getSelectedRow(); // Lấy dòng được chọn
@@ -545,7 +555,7 @@ public class Goimon extends javax.swing.JFrame {
 
                     // Cập nhật tổng tiền (nếu cần thiết)
                     updateTotalAmountLabel();
-                } 
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Dữ liệu không hợp lệ, không thể xóa.");
             }
@@ -554,68 +564,67 @@ public class Goimon extends javax.swing.JFrame {
         }
     }
 
-
-    
     private void handleBanSelection(String maBan) {
         selectedTable = maBan;  // Cập nhật bàn đã chọn
         LoadDataDouongdagoi(selectedTable);  // Tải dữ liệu tương ứng
-        
+
     }
 
     private void updateTotalAmountLabel() {
         double totalAmount = calculateTotalAmount();
-        lbTongtien.setText("Thành tiền:" + totalAmount +"đ");
+        lbTongtien.setText("Thành tiền:" + totalAmount + "đ");
     }
-    private double calculateTotalAmount() { 
+
+    private double calculateTotalAmount() {
         double totalAmount = 0;
-        DefaultTableModel model = (DefaultTableModel) TableMondagoi.getModel(); 
-        int rowCount = model.getRowCount(); 
-        for (int i = 0; i < rowCount; i++) { 
+        DefaultTableModel model = (DefaultTableModel) TableMondagoi.getModel();
+        int rowCount = model.getRowCount();
+        for (int i = 0; i < rowCount; i++) {
             double tongtien = (double) model.getValueAt(i, 3);
-            totalAmount += tongtien; 
+            totalAmount += tongtien;
         }
-        return totalAmount; 
+        return totalAmount;
     }
-    
+
     private void btnBan6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan6ActionPerformed
         handleBanSelection("B06");
-        
+
     }//GEN-LAST:event_btnBan6ActionPerformed
 
     private void btnBan5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan5ActionPerformed
-        
+
         handleBanSelection("B05");
 
-       
+
     }//GEN-LAST:event_btnBan5ActionPerformed
 
     private void btnBan3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan3ActionPerformed
-    
+
         handleBanSelection("B03");
 
         // Gọi phương thức tính tổng tiền từ cơ sở dữ liệu
-        
+
     }//GEN-LAST:event_btnBan3ActionPerformed
 
     private void btnBan4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan4ActionPerformed
-        
+
         handleBanSelection("B04");
 
         // Gọi phương thức tính tổng tiền từ cơ sở dữ liệu
-        
+
     }//GEN-LAST:event_btnBan4ActionPerformed
 
     private void btnBan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan1ActionPerformed
-        
+
         handleBanSelection("B01");
 
-        
+
     }//GEN-LAST:event_btnBan1ActionPerformed
 
     private void btnBan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan2ActionPerformed
         handleBanSelection("B02");
 
-       
+
     }//GEN-LAST:event_btnBan2ActionPerformed
 
     private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed
@@ -705,7 +714,7 @@ public class Goimon extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Món mới đã được thêm!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else {
+        } else {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn món trước khi thêm!", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnThemActionPerformed

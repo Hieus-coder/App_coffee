@@ -23,6 +23,12 @@ public class QuanLy extends javax.swing.JFrame {
     public QuanLy(boolean isAdmin) {
         this.admin = isAdmin;
         initComponents();
+        if (!Dangnhap.isAuthenticated) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
+            this.dispose();
+            new Dangnhap().setVisible(true);
+            return;
+        }
         setTitle("Coffee");
         tk = new accountcontroller();
         ns = new nhansucontroller();
