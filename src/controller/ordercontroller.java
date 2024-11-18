@@ -192,7 +192,6 @@ public class ordercontroller {
         }
         return tenDouong;
     }
-<<<<<<< HEAD
 
     public boolean addDrinkToTable(String maBan, String maDouong, String tendouong, int soLuong, double gia, double chiphi) {
         double tongTien = soLuong * gia;
@@ -256,12 +255,6 @@ public class ordercontroller {
 
             // Thực thi truy vấn và lấy kết quả
             ResultSet rs = pst.executeQuery();
-=======
-    public String getIDDouong(String ten) {
-        String maDoUong = null;
-        String sql = "SELECT MADOUONG FROM DOUONG WHERE TENDOUONG = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
->>>>>>> 2f5d2d00c0bfbe6f8d91d1ec573d4f5b5373c8c3
 
             if (rs.next()) {
                 totalAmount = rs.getDouble("TotalAmount");  // Lấy giá trị tổng tiền

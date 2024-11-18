@@ -4,14 +4,12 @@
  */
 package view;
 
-import DBC.Dbconnection;
 import controller.bancontroller;
 import controller.ordercontroller;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.sql.*;
 /**
  *
  * @author leduc

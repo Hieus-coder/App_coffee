@@ -10,10 +10,6 @@ import java.awt.Color;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-<<<<<<< HEAD
-
-=======
->>>>>>> 2f5d2d00c0bfbe6f8d91d1ec573d4f5b5373c8c3
 import javax.swing.table.DefaultTableModel;
 import model.quanliban;
 
