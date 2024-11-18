@@ -1,7 +1,7 @@
 package controller;
 
 import DBC.Dbconnection;
-import model.quanlymodel;
+import model.nhansumodel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,8 +48,8 @@ public class nhansucontroller {
     }
 
     // Method to retrieve an employee by ID
-    public quanlymodel getEmployeeById(int id) {
-        quanlymodel employee = null;
+    public nhansumodel getEmployeeById(int id) {
+        nhansumodel employee = null;
         try {
             String sql = "SELECT * FROM NHAN_SU WHERE ID = ?"; // Sửa tên bảng cho đúng
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -57,7 +57,7 @@ public class nhansucontroller {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                employee = new quanlymodel(
+                employee = new nhansumodel(
                         rs.getInt("ID_NHAN_VIEN"),
                         rs.getString("HO_VA_TEN"),
                         rs.getString("GIOI_TINH"),
@@ -74,7 +74,7 @@ public class nhansucontroller {
     }
 
     // Method to update employee details
-    public boolean updateEmployee(quanlymodel employee) {
+    public boolean updateEmployee(nhansumodel employee) {
         try {
             String sql = "UPDATE NHAN_SU SET HO_VA_TEN = ?, GIOI_TINH = ?, NAM_SINH = ?, CHUC_VU = ?, QUE_QUAN = ?, SO_DIEN_THOAI = ? WHERE ID_NHAN_SU = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -111,7 +111,7 @@ public class nhansucontroller {
         return idNV;
     }
 
-    public boolean addEmployee(quanlymodel employee) {
+    public boolean addEmployee(nhansumodel employee) {
         PreparedStatement pstmt = null;
         ResultSet generatedKeys = null;
 

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.accountcontroller;
 import controller.doanhthucontroller;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -28,14 +29,23 @@ public class Doanhthu extends javax.swing.JFrame {
             this.dispose();
             new Dangnhap().setVisible(true);
             return;
-        } 
+        }
         initComponents();
         setTitle("Coffee");
         Dt = new doanhthucontroller();
         btnNhanVien.setVisible(admin);
-
+        displayLoggedInUser();
         loadDataToTable();
 
+    }
+
+    private void displayLoggedInUser() {
+        String username = accountcontroller.loggedInUsername;
+        if (username != null) {
+            txtUser.setText("" + username);
+        } else {
+            txtUser.setText("NULL22");
+        }
     }
 
     private void loadDataToTable() {
@@ -96,7 +106,7 @@ public class Doanhthu extends javax.swing.JFrame {
         btnDatban = new javax.swing.JButton();
         btnDatmon = new javax.swing.JButton();
         btnDoanthu = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         txtSodon = new java.awt.Label();
@@ -164,10 +174,10 @@ public class Doanhthu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Name");
+        txtUser.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        txtUser.setForeground(new java.awt.Color(255, 255, 255));
+        txtUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtUser.setText("Name");
 
         javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
         pnMenu.setLayout(pnMenuLayout);
@@ -188,14 +198,14 @@ public class Doanhthu extends javax.swing.JFrame {
             .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnMenuLayout.setVerticalGroup(
             pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(49, 49, 49)
@@ -466,7 +476,6 @@ public class Doanhthu extends javax.swing.JFrame {
     private javax.swing.JButton btnDatmon;
     private javax.swing.JButton btnDoanthu;
     private javax.swing.JButton btnNhanVien;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -481,5 +490,6 @@ public class Doanhthu extends javax.swing.JFrame {
     private java.awt.Label txtChiphi;
     private java.awt.Label txtLai;
     private java.awt.Label txtSodon;
+    private javax.swing.JLabel txtUser;
     // End of variables declaration//GEN-END:variables
 }

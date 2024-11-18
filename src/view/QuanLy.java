@@ -5,7 +5,7 @@ import controller.*;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.quanlymodel;
+import model.nhansumodel;
 
 /**
  *
@@ -23,19 +23,29 @@ public class QuanLy extends javax.swing.JFrame {
     public QuanLy(boolean isAdmin) {
         this.admin = isAdmin;
 
-        if (!Dangnhap.isAuthenticated) {
-            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
-            this.dispose();
-            new Dangnhap().setVisible(true);
-            return;
-        }
+//        if (!Dangnhap.isAuthenticated) {
+//            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập trước!");
+//            this.dispose();
+//            new Dangnhap().setVisible(true);
+//            return;
+//        }
         initComponents();
         setTitle("Coffee");
         tk = new accountcontroller();
         ns = new nhansucontroller();
+        displayLoggedInUser();
         loadDataToTable();
         enableTextFields(false);
 
+    }
+
+    private void displayLoggedInUser() {
+        String username = accountcontroller.loggedInUsername;
+        if (username != null) {
+            txtUser.setText("" + username);
+        } else {
+            txtUser.setText("NULL22");
+        }
     }
 
     private void loadDataToTable() {
@@ -126,7 +136,7 @@ public class QuanLy extends javax.swing.JFrame {
         btnDatban3 = new javax.swing.JButton();
         btnDatmon3 = new javax.swing.JButton();
         btnDoanthu2 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JLabel();
 
         jLabel7.setText("jLabel7");
 
@@ -428,10 +438,10 @@ public class QuanLy extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Name");
+        txtUser.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        txtUser.setForeground(new java.awt.Color(255, 255, 255));
+        txtUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtUser.setText("Name");
 
         javax.swing.GroupLayout pnMenu3Layout = new javax.swing.GroupLayout(pnMenu3);
         pnMenu3.setLayout(pnMenu3Layout);
@@ -452,14 +462,14 @@ public class QuanLy extends javax.swing.JFrame {
             .addComponent(btnNhanVien3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnMenu3Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnMenu3Layout.setVerticalGroup(
             pnMenu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnMenu3Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16)
                 .addGap(49, 49, 49)
@@ -541,7 +551,7 @@ public class QuanLy extends javax.swing.JFrame {
 
             if (ns.checkEmployeeExists(id)) {
                 // Tạo đối tượng Employee để cập nhật thông tin nhân viên
-                quanlymodel employee = new quanlymodel(id, Ten, gt, namsinh, chucvu, quequan, sdt);
+                nhansumodel employee = new nhansumodel(id, Ten, gt, namsinh, chucvu, quequan, sdt);
 
                 // Cập nhật tài khoản và thông tin nhân viên
                 boolean checkAccount = tk.editAccount(taikhoan, mkStr, id);
@@ -658,7 +668,7 @@ public class QuanLy extends javax.swing.JFrame {
             boolean checkAccount = tk.editAccount(taikhoan, mkStr, id_nhan_su);
 
             // Cập nhật thông tin nhân viên
-            quanlymodel employee = new quanlymodel(id_nhan_su, Ten, gt, namsinh, chucvu, quequan, sdt);
+            nhansumodel employee = new nhansumodel(id_nhan_su, Ten, gt, namsinh, chucvu, quequan, sdt);
             boolean checkTtnv = ns.updateEmployee(employee);
 
             // Kiểm tra kết quả cập nhật
@@ -748,7 +758,6 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -771,5 +780,6 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JTextField txtQuequan;
     private javax.swing.JTextField txtSdt;
     private javax.swing.JTextField txtTaikhoan;
+    private javax.swing.JLabel txtUser;
     // End of variables declaration//GEN-END:variables
 }

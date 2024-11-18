@@ -6,7 +6,7 @@ import DBC.Dbconnection;
 public class accountcontroller {
 
     private Connection conn;
-    private nhansucontroller nhanvien;
+    public static String loggedInUsername = null;
 
     public accountcontroller() {
         conn = Dbconnection.getInstance().getConnection();
@@ -14,7 +14,7 @@ public class accountcontroller {
 
     public String getPasswordFromDatabase(String username) {
         String encodedPassword = null;
-        String query = "SELECT MATKHAU FROM Users WHERE TAIKHOAN = ?";
+        String query = "SELECT MATKHAU FROM ACCOUNT WHERE TAIKHOAN = ?";
         try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -34,7 +34,15 @@ public class accountcontroller {
             pre.setString(1, TAIKHOAN);
             pre.setString(2, MATKHAU);
             ResultSet rs = pre.executeQuery();
-            return rs.next();
+
+            // Nếu tìm thấy tài khoản và mật khẩu phù hợp
+            if (rs.next()) {
+                loggedInUsername = rs.getString("TAIKHOAN"); // Lấy tài khoản
+                System.out.println("Username: " + loggedInUsername); // In ra để kiểm tra
+                return true; // Đăng nhập thành công
+            } else {
+                return false; // Tài khoản hoặc mật khẩu sai
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
@@ -85,7 +93,7 @@ public class accountcontroller {
         }
         return encoded.toString();
     }
-    
+
     public String decodePassword(String encodedPassword) {
         if (encodedPassword == null) {
             return null;
@@ -98,24 +106,28 @@ public class accountcontroller {
     }
 
     public boolean checkLogin(String username, String password) {
-        // Giả sử bạn có phương thức để lấy mật khẩu đã mã hóa từ cơ sở dữ liệu
         String encodedPasswordFromDb = getPasswordFromDatabase(username);
         if (encodedPasswordFromDb != null) {
             String decodedPassword = decodePassword(encodedPasswordFromDb);
-            return password.equals(decodedPassword);
+            if (password.equals(decodedPassword)) {
+                loggedInUsername = username; // Gán giá trị khi đăng nhập thành công
+                return true;
+            }
         }
+        loggedInUsername = null; // Đặt lại nếu đăng nhập thất bại
         return false;
     }
 
-    public boolean addAccount(String taikhoan, String matkhau, int idNhansu) {
+    public boolean addAccount(String taikhoan, String matkhau, int idNhansu, String chucvu) {
         PreparedStatement pstmt = null;
         try {
             // Chèn tài khoản vào bảng ACCOUNT
-            String sql = "INSERT INTO ACCOUNT(TAIKHOAN, MATKHAU, ID_NHAN_SU) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO ACCOUNT(TAIKHOAN, MATKHAU, ID_NHAN_SU, CHUC_VU) VALUES (?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, taikhoan);
             pstmt.setString(2, matkhau);
             pstmt.setInt(3, idNhansu);
+            pstmt.setString(4, chucvu);
 
             int rowAffected = pstmt.executeUpdate();
             return rowAffected > 0;
@@ -124,7 +136,8 @@ public class accountcontroller {
             return false;
         }
     }
-    public boolean editAccount (String taikhoan, String matkhau, int id_nhan_su) {
+
+    public boolean editAccount(String taikhoan, String matkhau, int id_nhan_su) {
         PreparedStatement pstmt = null;
         try {
             String sql = "UPDATE ACCOUNT SET TAIKHOAN = ?, MATKHAU = ? WHERE ID_NHAN_SU = ?";
@@ -139,6 +152,7 @@ public class accountcontroller {
             return false;
         }
     }
+
     public boolean isAdmin(String TAIKHOAN) {
         PreparedStatement stmt = null;
         ResultSet rs = null;

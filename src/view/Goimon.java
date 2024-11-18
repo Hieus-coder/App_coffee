@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.accountcontroller;
 import controller.bancontroller;
 import controller.ordercontroller;
 import java.awt.Color;
@@ -40,11 +41,22 @@ public class Goimon extends javax.swing.JFrame {
         btnNhanVien.setVisible(admin);
         initComponents();
         setTitle("Coffee");
+        btnNhanVien.setVisible(admin);
         ban = new bancontroller();
         order = new ordercontroller();
         updateLabels();
         updateDouong();
+        displayLoggedInUser();
         LoadDataDouongdagoi(maban);
+    }
+
+    private void displayLoggedInUser() {
+        String username = accountcontroller.loggedInUsername;
+        if (username != null) {
+            txtUser.setText("" + username);
+        } else {
+            txtUser.setText("NULL22");
+        }
     }
 
     /**
@@ -89,7 +101,7 @@ public class Goimon extends javax.swing.JFrame {
         btnDatban = new javax.swing.JButton();
         btnDatmon = new javax.swing.JButton();
         btnDoanthu = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -403,10 +415,10 @@ public class Goimon extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Name");
+        txtUser.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        txtUser.setForeground(new java.awt.Color(255, 255, 255));
+        txtUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtUser.setText("Name");
 
         javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
         pnMenu.setLayout(pnMenuLayout);
@@ -423,7 +435,7 @@ public class Goimon extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnMenuLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnMenuLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(BtnDangxuat)))
@@ -433,7 +445,7 @@ public class Goimon extends javax.swing.JFrame {
             pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(49, 49, 49)
@@ -780,7 +792,6 @@ public class Goimon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -794,6 +805,7 @@ public class Goimon extends javax.swing.JFrame {
     private javax.swing.JLabel lbBan6;
     private javax.swing.JLabel lbTongtien;
     private javax.swing.JPanel pnMenu;
+    private javax.swing.JLabel txtUser;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -6,7 +6,7 @@ package view;
 
 import javax.swing.JOptionPane;
 import controller.*;
-import model.quanlymodel;
+import model.nhansumodel;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Themnhanvien extends javax.swing.JFrame {
 
     private accountcontroller account;
     private nhansucontroller nhanvien;
-    private quanlymodel model = new quanlymodel();
+    private nhansumodel model = new nhansumodel();
 
     public Themnhanvien() {
         initComponents();
@@ -307,7 +307,7 @@ public class Themnhanvien extends javax.swing.JFrame {
             }
 
             // Thêm tài khoản vào bảng ACCOUNT
-            boolean successTK = account.addAccount(taikhoan, matkhau, autoid);
+            boolean successTK = account.addAccount(taikhoan, matkhau, autoid, chucvu);
 
             if (successTK) {
                 JOptionPane.showMessageDialog(null, "Thêm nhân viên và tài khoản thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);

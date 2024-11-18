@@ -232,24 +232,14 @@ public class ThanhToan extends javax.swing.JFrame {
                 tongTien += gia * soLuong;
             }
 
-            // Tổng tiền (có thể bổ sung thêm logic VAT/khuyến mãi nếu cần)
-            // Gọi phương thức lưu vào DOANHTHU
             boolean insertSuccess = order.insertDoanhThu(tongChiPhi, tongTien);
-            // Gọi phương thức xóa dữ liệu trong ORDER_ theo MABAN
 
             boolean deleteSuccess = order.deleteAfterSucess(lbTen.getText());
-            if (deleteSuccess) {
-                JOptionPane.showMessageDialog(this, "Dữ liệu bàn đã được xóa thành công!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Không tìm thấy bàn để xóa!");
-            }
-            // Hiển thị thông báo thành công
-            JOptionPane.showMessageDialog(this, "Thanh toán thành công! Dữ liệu đã được lưu vào doanh thu và bàn đã được xóa.");
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
 
-            // Xóa dữ liệu trên form
-            model.setRowCount(0); // Xóa dữ liệu trong bảng
-            lbTen.setText(""); // Xóa tên bàn
-            lbNgaygio.setText(""); // Xóa ngày đặt
+            model.setRowCount(0);
+            lbTen.setText(""); 
+            lbNgaygio.setText("");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Lỗi khi thanh toán: " + e.getMessage());

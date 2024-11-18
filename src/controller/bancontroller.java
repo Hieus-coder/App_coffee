@@ -50,7 +50,7 @@ public class bancontroller {
     }
 
     public boolean updateBanStatus(String maBan, String trangThai) {
-        if (!"Trống".equals(trangThai) && !"Không trống".equals(trangThai)) {
+        if (!"Trống".equals(trangThai) && !"Đã đặt".equals(trangThai)) {
             System.err.println("Giá trị trạng thái không hợp lệ: " + trangThai);
             return false;
         }

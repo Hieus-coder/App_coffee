@@ -146,15 +146,16 @@ public class Dangnhap extends javax.swing.JFrame {
         String username = txtTaikhoan.getText().trim();
         String password = new String(txtMatkhau.getPassword()).trim();
 
-        if (accController.checkUserCredentials(username, password)) {
-            isAuthenticated = true;
-            isAdmin = accController.isAdmin(username); 
+        if (accController.checkUserCredentials(username, password)) { 
+            isAuthenticated = true; // Đánh dấu người dùng đã đăng nhập
+            isAdmin = accController.isAdmin(username); // Kiểm tra quyền quản trị
 
+            // Chuyển đến giao diện Datban và truyền quyền quản trị
             Datban frm = new Datban(isAdmin);
             frm.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại! Kiểm tra lại tài khoản hoặc mật khẩu.");
         }
     }//GEN-LAST:event_btnDangnhapActionPerformed
 

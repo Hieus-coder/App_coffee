@@ -3,7 +3,7 @@ package model;
 /**
  * Model class for representing an employee (nhân sự).
  */
-public class quanlymodel {
+public class nhansumodel {
     
     private int ID_NHAN_SU; // Đổi tên biến từ 'id' thành 'id' để khớp với tên cột SQL
     private String HO_VA_TEN; // Đổi tên biến
@@ -14,8 +14,8 @@ public class quanlymodel {
     private String SO_DIEN_THOAI; // Đổi tên biến
 
     // Constructor
-    public quanlymodel(){}
-    public quanlymodel(int id, String HO_VA_TEN, String GIOI_TINH, int NAM_SINH, String CHUC_VU, String QUE_QUAN, String SO_DIEN_THOAI) {
+    public nhansumodel(){}
+    public nhansumodel(int id, String HO_VA_TEN, String GIOI_TINH, int NAM_SINH, String CHUC_VU, String QUE_QUAN, String SO_DIEN_THOAI) {
         this.ID_NHAN_SU = id;
         this.HO_VA_TEN = HO_VA_TEN;
         this.GIOI_TINH = GIOI_TINH;
