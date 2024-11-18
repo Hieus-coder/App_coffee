@@ -69,5 +69,20 @@ public class bancontroller {
             return false;
         }
     }
-
+    public String getTenBan(String id) {
+        String tenBan = "";
+        String sql = "SELECT TENBAN FROM BAN WHERE MABAN = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, id);  // Set mã bàn
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    tenBan = rs.getString("TENBAN");  // Lấy tên bàn
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tenBan;
+    }
 }
+

@@ -10,10 +10,11 @@ import java.awt.Color;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
+
 import javax.swing.table.DefaultTableModel;
 import model.quanliban;
-import java.lang.String;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -26,7 +27,7 @@ public class Goimon extends javax.swing.JFrame {
     private ordercontroller order;
     private quanliban qlban;
     private String selectedTable = "";
-    private String maban;
+    private String maban = "";
 
     public Goimon(boolean isAdmin) {
         this.admin = isAdmin;
@@ -36,9 +37,8 @@ public class Goimon extends javax.swing.JFrame {
         ban = new bancontroller();
         order = new ordercontroller();
         updateLabels();
-        ChooseTable();
         updateDouong();
-        LoadDataDouongdagoi();
+        LoadDataDouongdagoi(maban);
     }
 
     /**
@@ -288,40 +288,37 @@ public class Goimon extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("DANH SÁCH MÓN ĐÃ GỌI");
 
-        lbTongtien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbTongtien.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbTongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(355, 355, 355))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(20, 20, 20))))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(149, 149, 149))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnThanhtoan)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(142, 142, 142)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lbTongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(211, 211, 211)
+                                .addComponent(btnThanhtoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2))
+                        .addGap(30, 30, 30))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(137, 137, 137))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,18 +331,20 @@ public class Goimon extends javax.swing.JFrame {
                         .addComponent(btnThem)
                         .addGap(26, 26, 26)
                         .addComponent(btnXoa))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbTongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThanhtoan))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(btnThanhtoan)))
+                .addGap(16, 16, 16))
         );
 
         pnMenu.setBackground(new java.awt.Color(74, 48, 34));
@@ -460,12 +459,10 @@ public class Goimon extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -473,7 +470,9 @@ public class Goimon extends javax.swing.JFrame {
     public boolean isCellEditable(int row, int column) {
         return false;
     }
-
+    public String getMaban() {
+        return maban;
+    }
     private void updateLabels() {
         JLabel[] lbBans = {lbBan1, lbBan2, lbBan3, lbBan4, lbBan5, lbBan6};
         boolean[] trangthaiBans = ban.Trangthai(); // Lấy trạng thái của từng bàn
@@ -506,68 +505,118 @@ public class Goimon extends javax.swing.JFrame {
         TabledsMon.setModel(model);
     }
 
-    private void LoadDataDouongdagoi() {
-        DefaultTableModel modelMon = order.displayOrderForTable(maban);
-        TableMondagoi.setModel(modelMon); // Cập nhật bảng giao diện
-    }
-
-    public void ChooseTable() {
-        if (selectedTable.isEmpty()) {
-            // Nếu chưa chọn bàn, yêu cầu người dùng chọn
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn bàn trước!");
-        } else {
-            // Nếu đã chọn bàn, thực hiện các hành động khác
-            // Chẳng hạn như tải dữ liệu đồ uống cho bàn
-            LoadDataDouongdagoi(selectedTable);
-        }
-    }
-
     private void LoadDataDouongdagoi(String maBan) {
-        DefaultTableModel modelMon = new DefaultTableModel(new String[]{"Mã đồ uống", "Tên đồ uống", "Số lượng", "Tổng"}, 0);
-        List<Object[]> douongs = order.getDataFromDatabaseForTable(maBan);
+        DefaultTableModel modelMon = (DefaultTableModel) TableMondagoi.getModel();
+        modelMon.setRowCount(0);
+        
+        // Lấy danh sách món của bàn từ cơ sở dữ liệu
+        List<Object[]> danhSachMon = order.getDanhSachMonCuaBan(maBan);
 
-        for (Object[] douong : douongs) {
-            modelMon.addRow(douong);
+        // Thêm dữ liệu vào bảng
+        for (Object[] mon : danhSachMon) {
+            modelMon.addRow(mon);
         }
-
+        // setHeader
+        String[] columnNames = {"Mã đồ uống", "Tên đồ uống", "Số lượng", "Tổng tiền"};
+        modelMon.setColumnIdentifiers(columnNames);
+        // Gán lại model cho bảng (không thực sự cần thiết nếu model không thay đổi)
         TableMondagoi.setModel(modelMon);
+        updateTotalAmountLabel();
+    }
+    private void deleteSelectedRow() {
+        DefaultTableModel model = (DefaultTableModel) TableMondagoi.getModel();
+        int selectedRow = TableMondagoi.getSelectedRow(); // Lấy dòng được chọn
+
+        if (selectedRow != -1) {
+            // Lấy giá trị của MABAN và MADOUONG từ dòng được chọn
+            String maBan = selectedTable;  // Giả sử cột đầu tiên là MABAN
+            String maDoUong = (String) model.getValueAt(selectedRow, 0);  // Giả sử cột thứ 2 là MADOUONG
+
+            // Kiểm tra lại dữ liệu trước khi xóa
+            if (maBan != null && maDoUong != null) {
+                // Xóa dữ liệu trong cơ sở dữ liệu
+                boolean isDeleted = order.deleteFromDatabase(maBan, maDoUong);  // Giả sử phương thức return true/false
+
+                if (isDeleted) {
+                    // Xóa dòng trong bảng chỉ khi xóa thành công trong cơ sở dữ liệu
+                    model.removeRow(selectedRow);
+
+                    // Làm mới lại dữ liệu sau khi xóa
+                    LoadDataDouongdagoi(maBan);
+
+                    // Cập nhật tổng tiền (nếu cần thiết)
+                    updateTotalAmountLabel();
+                } 
+            } else {
+                JOptionPane.showMessageDialog(null, "Dữ liệu không hợp lệ, không thể xóa.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn một dòng để xóa.");
+        }
     }
 
 
+    
+    private void handleBanSelection(String maBan) {
+        selectedTable = maBan;  // Cập nhật bàn đã chọn
+        LoadDataDouongdagoi(selectedTable);  // Tải dữ liệu tương ứng
+        
+    }
+
+    private void updateTotalAmountLabel() {
+        double totalAmount = calculateTotalAmount();
+        lbTongtien.setText("Thành tiền:" + totalAmount +"đ");
+    }
+    private double calculateTotalAmount() { 
+        double totalAmount = 0;
+        DefaultTableModel model = (DefaultTableModel) TableMondagoi.getModel(); 
+        int rowCount = model.getRowCount(); 
+        for (int i = 0; i < rowCount; i++) { 
+            double tongtien = (double) model.getValueAt(i, 3);
+            totalAmount += tongtien; 
+        }
+        return totalAmount; 
+    }
+    
     private void btnBan6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan6ActionPerformed
-        // TODO add your handling code here:
-        selectedTable = "Ban6";
-        LoadDataDouongdagoi();
+        handleBanSelection("B06");
+        
     }//GEN-LAST:event_btnBan6ActionPerformed
 
     private void btnBan5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan5ActionPerformed
-        // TODO add your handling code here:
-        selectedTable = "Ban5";
-        LoadDataDouongdagoi();
+        
+        handleBanSelection("B05");
+
+       
     }//GEN-LAST:event_btnBan5ActionPerformed
 
     private void btnBan3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan3ActionPerformed
-        // TODO add your handling code here:
-        selectedTable = "Ban3";
-        LoadDataDouongdagoi();
+    
+        handleBanSelection("B03");
+
+        // Gọi phương thức tính tổng tiền từ cơ sở dữ liệu
+        
     }//GEN-LAST:event_btnBan3ActionPerformed
 
     private void btnBan4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan4ActionPerformed
-        // TODO add your handling code here:
-        selectedTable = "Ban4";
-        LoadDataDouongdagoi();
+        
+        handleBanSelection("B04");
+
+        // Gọi phương thức tính tổng tiền từ cơ sở dữ liệu
+        
     }//GEN-LAST:event_btnBan4ActionPerformed
 
     private void btnBan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan1ActionPerformed
+        
+        handleBanSelection("B01");
 
-        selectedTable = "Ban1";
-        LoadDataDouongdagoi();
+        
     }//GEN-LAST:event_btnBan1ActionPerformed
 
     private void btnBan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan2ActionPerformed
-        // TODO add your handling code here:
-        selectedTable = "Ban2";
-        LoadDataDouongdagoi();
+        handleBanSelection("B02");
+
+       
     }//GEN-LAST:event_btnBan2ActionPerformed
 
     private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed
@@ -611,67 +660,60 @@ public class Goimon extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDoanthuActionPerformed
 
     private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
-        // TODO add your handling code here:
+        // Lấy thông tin tên bàn
+        String tenBan = ban.getTenBan(selectedTable);
 
+        // Lấy danh sách món từ JTable
+        DefaultTableModel model = (DefaultTableModel) TableMondagoi.getModel();
+        List<String[]> danhSachMon = new ArrayList<>();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String maMon = model.getValueAt(i, 0).toString();
+            String tenMon = model.getValueAt(i, 1).toString();
+            String soLuong = model.getValueAt(i, 2).toString();
+            String gia = model.getValueAt(i, 3).toString();
+            danhSachMon.add(new String[]{maMon, tenMon, soLuong, gia});
+        }
+
+        // Mở giao diện ThanhToan và truyền dữ liệu qua setter
+        ThanhToan thanhToanForm = new ThanhToan(admin);
+        thanhToanForm.setTenBan(tenBan);            // Truyền tên bàn
+        thanhToanForm.setNgayDat();                // Truyền ngày đặt
+        thanhToanForm.setDanhSachMon(danhSachMon); // Truyền danh sách món
+        thanhToanForm.setVisible(true);
     }//GEN-LAST:event_btnThanhtoanActionPerformed
 
     private void TabledsMonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabledsMonMouseClicked
         // TODO add your handling code here:
 
-
     }//GEN-LAST:event_TabledsMonMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
         int selectedRow = TabledsMon.getSelectedRow();
         if (selectedRow != -1) {
-            // Lấy thông tin đồ uống từ dòng đã chọn trong TabledsMon
-            String tendouong = TabledsMon.getValueAt(selectedRow, 0).toString();  // Tên đồ uống
-            String madouong = order.getIDDouong(tendouong);  // Mã đồ uống từ order controller
-            float gia = (float) TabledsMon.getValueAt(selectedRow, 1);  // Giá đồ uống
-            String maBan = "B01";  // Ví dụ mã bàn, thay bằng giá trị thực tế trong ứng dụng của bạn
-            float chiPhi = 0;  // Chi phí mặc định, có thể thay đổi tùy thuộc vào logic của bạn
+            String tendouong = TabledsMon.getValueAt(selectedRow, 0).toString();
+            String madouong = order.Madouong(tendouong);
+            double gia = (double) TabledsMon.getValueAt(selectedRow, 1);
+            int soluong = 1;
+            double tongtien = gia * soluong;
+            String maBan = selectedTable;
+            double chiPhi = 0;
 
-            // Số lượng mặc định là 1, có thể thay đổi tùy theo logic trong ứng dụng
-            int soLuong = 1;
+            boolean isUpdated = order.addDrinkToTable(maBan, madouong, tendouong, soluong, gia, chiPhi);
 
-            // Gọi phương thức addDrinkToTable để thêm hoặc cập nhật món vào cơ sở dữ liệu
-            order.addDrinkToTable(maBan, madouong, soLuong, gia, chiPhi, tendouong);
-
-            // Cập nhật bảng TableMondagoi (bảng hiển thị các món đã gọi)
-            DefaultTableModel model = (DefaultTableModel) TableMondagoi.getModel();
-            boolean found = false;
-            float tongTien = soLuong * gia;  // Tính tổng tiền
-
-            // Kiểm tra xem món đã có trong TableMondagoi chưa
-            for (int i = 0; i < model.getRowCount(); i++) {
-                if (model.getValueAt(i, 0).toString().equals(madouong)) {
-                    int currentQuantity = (int) model.getValueAt(i, 2);  // Số lượng hiện tại trong bảng
-                    // Tăng số lượng và cập nhật tổng tiền
-                    int newQuantity = currentQuantity + soLuong;
-                    float newTotal = tongTien * newQuantity;
-
-                    // Cập nhật lại trong bảng TableMondagoi
-                    model.setValueAt(newQuantity, i, 2);  // Cập nhật số lượng
-                    model.setValueAt(newTotal, i, 3);  // Cập nhật tổng tiền
-
-                    found = true;
-                    break;
-                }
+            LoadDataDouongdagoi(maBan);
+            if (isUpdated) {
+                JOptionPane.showMessageDialog(this, "Số lượng món đã được cập nhật!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Món mới đã được thêm!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
-
-            // Nếu món chưa có trong bảng, thêm mới
-            if (!found) {
-                model.addRow(new Object[]{madouong, tendouong, soLuong, tongTien});  // Thêm dòng mới vào bảng (có 4 cột)
-
-                // Gọi lại phương thức addDrinkToTable để thêm món vào cơ sở dữ liệu
-                order.addDrinkToTable(maBan, madouong, soLuong, gia, chiPhi, tendouong);  // Thêm vào database (chi phí = 0)
-            }
+        }else {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn món trước khi thêm!", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        deleteSelectedRow();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     /**
