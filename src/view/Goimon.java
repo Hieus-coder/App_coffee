@@ -599,44 +599,104 @@ public class Goimon extends javax.swing.JFrame {
     }
 
     private void btnBan6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan6ActionPerformed
+        String maBan = "B06";
+        String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B06");
+        if ("Trống".equals(trangThai)) {
+            // Hiển thị thông báo nếu bàn đang trống
+            JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
+
+            // Quay lại form Đặt Bàn
+            Datban datBanForm = new Datban(admin);
+            datBanForm.setVisible(true);
+            this.dispose();
+            return;
+        }
 
     }//GEN-LAST:event_btnBan6ActionPerformed
 
     private void btnBan5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan5ActionPerformed
 
+        String maBan = "B05";
+        String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B05");
+        if ("Trống".equals(trangThai)) {
+            // Hiển thị thông báo nếu bàn đang trống
+            JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
 
-
+            // Quay lại form Đặt Bàn
+            Datban datBanForm = new Datban(admin);
+            datBanForm.setVisible(true);
+            this.dispose();
+            return;
+        }
     }//GEN-LAST:event_btnBan5ActionPerformed
 
     private void btnBan3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan3ActionPerformed
 
+        String maBan = "B03";
+        String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B03");
+        if ("Trống".equals(trangThai)) {
+            // Hiển thị thông báo nếu bàn đang trống
+            JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
 
-        // Gọi phương thức tính tổng tiền từ cơ sở dữ liệu
-
+            // Quay lại form Đặt Bàn
+            Datban datBanForm = new Datban(admin);
+            datBanForm.setVisible(true);
+            this.dispose();
+            return;
+        }
     }//GEN-LAST:event_btnBan3ActionPerformed
 
     private void btnBan4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan4ActionPerformed
 
+        String maBan = "B04";
+        String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B04");
+        if ("Trống".equals(trangThai)) {
+            // Hiển thị thông báo nếu bàn đang trống
+            JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
 
-        // Gọi phương thức tính tổng tiền từ cơ sở dữ liệu
-
+            // Quay lại form Đặt Bàn
+            Datban datBanForm = new Datban(admin);
+            datBanForm.setVisible(true);
+            this.dispose();
+            return;
+        }
     }//GEN-LAST:event_btnBan4ActionPerformed
 
     private void btnBan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan1ActionPerformed
-
+        String maBan = "B01"; 
+        String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B01");
-
+        if ("Trống".equals(trangThai)) {
+        // Hiển thị thông báo nếu bàn đang trống
+        JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
+        
+        // Quay lại form Đặt Bàn
+        Datban datBanForm = new Datban(admin); 
+        datBanForm.setVisible(true);
+        this.dispose();
+        return; // Dừng xử lý tiếp theo
+    }
 
     }//GEN-LAST:event_btnBan1ActionPerformed
 
     private void btnBan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan2ActionPerformed
+        String maBan = "B02";
+        String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B02");
+        if ("Trống".equals(trangThai)) {
+            // Hiển thị thông báo nếu bàn đang trống
+            JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
 
-
+            // Quay lại form Đặt Bàn
+            Datban datBanForm = new Datban(admin);
+            datBanForm.setVisible(true);
+            this.dispose();
+            return;
+        }
     }//GEN-LAST:event_btnBan2ActionPerformed
 
     private void BtnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDangxuatActionPerformed

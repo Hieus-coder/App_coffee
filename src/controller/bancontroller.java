@@ -35,6 +35,19 @@ public class bancontroller {
         }
         return false; // Nếu không có bàn nào hoặc xảy ra lỗi
     }
+    public String getTrangThai(String maBan) {
+        String sql = "SELECT TRANGTHAI FROM BAN WHERE MABAN = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, maBan);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("TRANGTHAI");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Trả về null nếu không tìm thấy bàn hoặc có lỗi
+    }
 
     public boolean[] Trangthai() {
         boolean[] trangThaiBans = new boolean[6];
