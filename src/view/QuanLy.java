@@ -14,7 +14,7 @@ import model.nhansumodel;
 public class QuanLy extends javax.swing.JFrame {
 
     private boolean admin;
-    private Datban ban;
+    private bancontroller ban;
     private nhansucontroller ns;
     private accountcontroller tk;
     private Connection conn;
@@ -33,6 +33,7 @@ public class QuanLy extends javax.swing.JFrame {
         setTitle("Coffee");
         tk = new accountcontroller();
         ns = new nhansucontroller();
+        ban = new bancontroller();
         displayLoggedInUser();
         loadDataToTable();
         enableTextFields(false);
@@ -721,10 +722,16 @@ public class QuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDatban3ActionPerformed
 
     private void btnDatmon3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmon3ActionPerformed
-        // TODO add your handling code here:
-        Goimon gm = new Goimon(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        gm.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        boolean hasBanDaDat = ban.isAnyBanDaDat(); // Kiểm tra trạng thái của các bàn
+        if (!hasBanDaDat) {
+            JOptionPane.showMessageDialog(this, "Không có bàn nào đang được đặt. Vui lòng đặt bàn trước!");
+            return;
+        }
+
+        // Nếu có bàn đã đặt, mở giao diện đặt món
+        Goimon goiMonUI = new Goimon(admin);
+        goiMonUI.setVisible(true); // Hiển thị giao diện Goimon
+        this.dispose(); // Đóng giao diện hiện tại
     }//GEN-LAST:event_btnDatmon3ActionPerformed
 
     private void btnDoanthu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthu2ActionPerformed

@@ -224,8 +224,11 @@ public class ThanhToan extends javax.swing.JFrame {
             // Tính tổng chi phí từ jTableHoaDon
             DefaultTableModel model = (DefaultTableModel) TabledsMoncuaban.getModel();
             double tongChiPhi = 0, tongTien = 0;
-            String maBan = order.Madouong(lbTen.getText()); // Lấy mã bàn từ giao diện
-            System.out.println(lbTen.getText());
+            
+            String tenBan = lbTen.getText();
+            
+            String maBan = ban.getID(tenBan); 
+            System.out.println(maBan);
             for (int i = 0; i < model.getRowCount(); i++) {
                 double gia = Double.parseDouble(model.getValueAt(i, 3).toString());
                 int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
@@ -233,10 +236,15 @@ public class ThanhToan extends javax.swing.JFrame {
             }
 
             boolean insertSuccess = order.insertDoanhThu(tongChiPhi, tongTien);
-
-            boolean deleteSuccess = order.deleteAfterSucess(lbTen.getText());
+            boolean deleteAfterSucess =  order.deleteAfterSucess(maBan);
             JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
-
+            
+            boolean updateStatusSuccess = ban.updateBanStatus(maBan, "Trống");
+            if (!updateStatusSuccess) {
+                JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật trạng thái bàn!");
+                return;
+            }
+            
             model.setRowCount(0);
             lbTen.setText(""); 
             lbNgaygio.setText("");
@@ -244,7 +252,7 @@ public class ThanhToan extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Lỗi khi thanh toán: " + e.getMessage());
         }
-
+        this.dispose();
     }//GEN-LAST:event_btnThanhtoanActionPerformed
 
     /**

@@ -26,7 +26,7 @@ public class accountcontroller {
         }
         return encodedPassword;
     }
-
+    
     public boolean checkUserCredentials(String TAIKHOAN, String MATKHAU) {
         try {
             String sql = "SELECT * FROM ACCOUNT WHERE TAIKHOAN = ? AND MATKHAU = ?";

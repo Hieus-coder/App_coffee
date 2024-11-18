@@ -239,9 +239,7 @@ public class ordercontroller {
         }
         return false;
     }
-
     
-
     public double tongtienban(String maban) {
         double totalAmount = 0;  // Khai báo biến totalAmount và gán giá trị mặc định là 0
 
@@ -300,14 +298,17 @@ public class ordercontroller {
         return false;
     }
     public boolean deleteAfterSucess(String maban) {
-        try {
-            String deleteSql = "DELETE FROM ORDER_ WHERE MABAN = ?";
-            PreparedStatement pstmt = conn.prepareStatement(deleteSql);
+        String deleteSql = "DELETE FROM ORDER_ WHERE MABAN = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(deleteSql)) {
+
             pstmt.setString(1, maban);
-            pstmt.executeUpdate();
-        } catch(SQLException e) {
+            int rowsAffected = pstmt.executeUpdate();
+
+            return rowsAffected > 0; // Trả về true nếu xóa thành công
+        } catch (SQLException e) {
             e.printStackTrace();
+            return false; // Trả về false nếu lỗi
         }
-        return false;
-    } 
+    }
+
 }

@@ -149,14 +149,19 @@ BEGIN
 END;
 
 go
-select * from ban;
+select * from ban ;
 select * from DOUONG
 select * from ACCOUNT
 SELECT * FROM DOUONG
-Select * from ORDER_
+Select * from ORDER_ where MABAN ='B02';
 DELETE FROM ORDER_ WHERE MABAN = 'B01' AND MADOUONG = 'D02';
 
 Select * from DOANHTHU
 
 
 
+DELETE FROM ORDER_ WHERE MABAN = 'B01'
+SELECT * 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'ORDER_';
+SELECT COUNT(*) AS SoLuong FROM BAN WHERE TRANGTHAI = N'Đã đặt'

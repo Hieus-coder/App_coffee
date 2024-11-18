@@ -23,6 +23,18 @@ public class bancontroller {
             return null;
         }
     }
+    public boolean isAnyBanDaDat() {
+        String sql = "SELECT COUNT(*) AS SoLuong FROM BAN WHERE TRANGTHAI = N'Đã đặt'";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("SoLuong") > 0; // Nếu có ít nhất 1 bàn trạng thái "Đã đặt"
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // Nếu không có bàn nào hoặc xảy ra lỗi
+    }
 
     public boolean[] Trangthai() {
         boolean[] trangThaiBans = new boolean[6];
@@ -48,7 +60,12 @@ public class bancontroller {
 
         return trangThaiBans;
     }
+   
+    public boolean datBan(String maBan) {
+        return updateBanStatus(maBan, "Đã đặt");
+    }
 
+    
     public boolean updateBanStatus(String maBan, String trangThai) {
         if (!"Trống".equals(trangThai) && !"Đã đặt".equals(trangThai)) {
             System.err.println("Giá trị trạng thái không hợp lệ: " + trangThai);
@@ -82,4 +99,20 @@ public class bancontroller {
         }
         return tenBan;
     }
+    public String getID(String tenBan) {
+        String sql = "SELECT MABAN FROM BAN WHERE TENBAN = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, tenBan);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("MABAN");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Trả về null nếu không tìm thấy
+    }
+
 }

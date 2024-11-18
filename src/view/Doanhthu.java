@@ -5,6 +5,7 @@
 package view;
 
 import controller.accountcontroller;
+import controller.bancontroller;
 import controller.doanhthucontroller;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -21,7 +22,7 @@ public class Doanhthu extends javax.swing.JFrame {
      */
     private boolean admin;
     private doanhthucontroller Dt;
-
+    private bancontroller ban;
     public Doanhthu(boolean isAdmin) {
         this.admin = isAdmin;
         if (!Dangnhap.isAuthenticated) {
@@ -34,6 +35,7 @@ public class Doanhthu extends javax.swing.JFrame {
         setTitle("Coffee");
         Dt = new doanhthucontroller();
         btnNhanVien.setVisible(admin);
+        ban = new bancontroller();
         displayLoggedInUser();
         loadDataToTable();
 
@@ -412,10 +414,16 @@ public class Doanhthu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
-        // TODO add your handling code here:
-        Goimon gm = new Goimon(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        gm.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        boolean hasBanDaDat = ban.isAnyBanDaDat(); // Kiểm tra trạng thái của các bàn
+        if (!hasBanDaDat) {
+            JOptionPane.showMessageDialog(this, "Không có bàn nào đang được đặt. Vui lòng đặt bàn trước!");
+            return;
+        }
+
+        // Nếu có bàn đã đặt, mở giao diện đặt món
+        Goimon goiMonUI = new Goimon(admin);
+        goiMonUI.setVisible(true); // Hiển thị giao diện Goimon
+        this.dispose(); // Đóng giao diện hiện tại
     }//GEN-LAST:event_btnDatmonActionPerformed
 
     private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
