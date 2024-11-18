@@ -368,29 +368,28 @@ public class Datban extends javax.swing.JFrame {
 
     private void btnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatbanActionPerformed
         // TODO add your handling code here:
-        Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        db.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        Datban db = new Datban(admin); 
+        db.setVisible(true); 
+        this.dispose(); 
     }//GEN-LAST:event_btnDatbanActionPerformed
 
     private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
-        boolean hasBanDaDat = bc.isAnyBanDaDat(); // Kiểm tra trạng thái của các bàn
+        boolean hasBanDaDat = bc.isAnyBanDaDat(); 
         if (!hasBanDaDat) {
             JOptionPane.showMessageDialog(this, "Không có bàn nào đang được đặt. Vui lòng đặt bàn trước!");
             return;
         }
 
-        // Nếu có bàn đã đặt, mở giao diện đặt món
         Goimon goiMonUI = new Goimon(admin);
-        goiMonUI.setVisible(true); // Hiển thị giao diện Goimon
-        this.dispose(); // Đóng giao diện hiện tại
+        goiMonUI.setVisible(true); 
+        this.dispose();
     }//GEN-LAST:event_btnDatmonActionPerformed
 
     private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
         // TODO add your handling code here:
-        Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        dt.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        Doanhthu dt = new Doanhthu(admin);
+        dt.setVisible(true); 
+        this.dispose(); 
     }//GEN-LAST:event_btnDoanthuActionPerformed
 
     public static void main(String args[]) {

@@ -551,10 +551,8 @@ public class QuanLy extends javax.swing.JFrame {
             }
 
             if (ns.checkEmployeeExists(id)) {
-                // Tạo đối tượng Employee để cập nhật thông tin nhân viên
                 nhansumodel employee = new nhansumodel(id, Ten, gt, namsinh, chucvu, quequan, sdt);
 
-                // Cập nhật tài khoản và thông tin nhân viên
                 boolean checkAccount = tk.editAccount(taikhoan, mkStr, id);
                 boolean checkTtnv = ns.updateEmployee(employee);
                 if (checkTtnv && checkAccount) {
@@ -596,10 +594,9 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        int selectedRow = jTable1.getSelectedRow(); // Lấy hàng được chọn
+        int selectedRow = jTable1.getSelectedRow(); 
 
         if (selectedRow != -1) {
-            // Lấy dữ liệu từ hàng được chọn và điền vào các text field
             Object idObj = jTable1.getValueAt(selectedRow, 0);
             Object hoVaTenObj = jTable1.getValueAt(selectedRow, 1);
             Object taiKhoanObj = jTable1.getValueAt(selectedRow, 2);
@@ -609,7 +606,6 @@ public class QuanLy extends javax.swing.JFrame {
             Object chucVuObj = jTable1.getValueAt(selectedRow, 6);
             Object queQuanObj = jTable1.getValueAt(selectedRow, 7);
             Object soDienThoaiObj = jTable1.getValueAt(selectedRow, 8);
-            // Điền dữ liệu vào các text field (giả sử bạn đã tạo các text field này)
             if (idObj != null) {
                 txtID.setText(idObj.toString());
             }
@@ -644,11 +640,9 @@ public class QuanLy extends javax.swing.JFrame {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
         int selectRow = jTable1.getSelectedRow();
-        if (selectRow != -1 && isEditing) { // Kiểm tra nếu có hàng được chọn và đang ở trạng thái chỉnh sửa
-            // Lấy ID nhân viên từ bảng
+        if (selectRow != -1 && isEditing) { 
             int id_nhan_su = Integer.parseInt(jTable1.getValueAt(selectRow, 0).toString());
 
-            // Lấy thông tin từ các trường nhập
             String Ten = txtHoten.getText();
             String taikhoan = txtTaikhoan.getText();
             char[] mk = txtMatkhau.getPassword();
@@ -659,25 +653,21 @@ public class QuanLy extends javax.swing.JFrame {
             String quequan = txtQuequan.getText();
             String sdt = txtSdt.getText();
 
-            // Kiểm tra nếu các trường nhập còn trống
             if (Ten.isEmpty() || taikhoan.isEmpty() || mkStr.isEmpty() || gt.isEmpty() || chucvu.isEmpty() || quequan.isEmpty() || sdt.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!");
                 return;
             }
 
-            // Cập nhật thông tin tài khoản
             boolean checkAccount = tk.editAccount(taikhoan, mkStr, id_nhan_su);
 
-            // Cập nhật thông tin nhân viên
             nhansumodel employee = new nhansumodel(id_nhan_su, Ten, gt, namsinh, chucvu, quequan, sdt);
             boolean checkTtnv = ns.updateEmployee(employee);
 
-            // Kiểm tra kết quả cập nhật
             if (checkAccount && checkTtnv) {
                 JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
-                loadDataToTable(); // Cập nhật lại dữ liệu trong bảng
-                enableTextFields(false); // Vô hiệu hóa các trường nhập sau khi lưu
-                isEditing = false; // Đặt lại cờ chỉnh sửa
+                loadDataToTable(); 
+                enableTextFields(false); 
+                isEditing = false; 
                 deletefield();
             } else {
                 JOptionPane.showMessageDialog(this, "Cập nhật thất bại. Vui lòng thử lại.");
@@ -709,36 +699,35 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void btnNhanVien3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVien3ActionPerformed
         // TODO add your handling code here:
-        QuanLy ql = new QuanLy(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        ql.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        QuanLy ql = new QuanLy(admin);
+        ql.setVisible(true); 
+        this.dispose(); 
     }//GEN-LAST:event_btnNhanVien3ActionPerformed
 
     private void btnDatban3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatban3ActionPerformed
         // TODO add your handling code here:
-        Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        db.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        Datban db = new Datban(admin);
+        db.setVisible(true);
+        this.dispose(); 
     }//GEN-LAST:event_btnDatban3ActionPerformed
 
     private void btnDatmon3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmon3ActionPerformed
-        boolean hasBanDaDat = ban.isAnyBanDaDat(); // Kiểm tra trạng thái của các bàn
+        boolean hasBanDaDat = ban.isAnyBanDaDat(); 
         if (!hasBanDaDat) {
             JOptionPane.showMessageDialog(this, "Không có bàn nào đang được đặt. Vui lòng đặt bàn trước!");
             return;
         }
 
-        // Nếu có bàn đã đặt, mở giao diện đặt món
         Goimon goiMonUI = new Goimon(admin);
-        goiMonUI.setVisible(true); // Hiển thị giao diện Goimon
-        this.dispose(); // Đóng giao diện hiện tại
+        goiMonUI.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDatmon3ActionPerformed
 
     private void btnDoanthu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthu2ActionPerformed
         // TODO add your handling code here:
-        Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        dt.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        Doanhthu dt = new Doanhthu(admin);
+        dt.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDoanthu2ActionPerformed
 
     public static void main(String args[]) {

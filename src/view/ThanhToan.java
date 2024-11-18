@@ -43,49 +43,40 @@ public class ThanhToan extends javax.swing.JFrame {
     }
 
     public ThanhToan(String admin) {
-        initComponents(); // Gọi hàm khởi tạo giao diện
+        initComponents();
     }
 
-    // Setter để nhận tên bàn
     public void setTenBan(String tenBan) {
-        lbTen.setText(tenBan); // txtTenBan là JTextField hoặc JLabel
+        lbTen.setText(tenBan); 
     }
 
-    // Setter để nhận ngày đặt
     public void setNgayDat() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        lbNgaygio.setText(sdf.format(new java.util.Date())); // Hiển thị ngày giờ hiện tại
+        lbNgaygio.setText(sdf.format(new java.util.Date())); 
     }
 
-    // Setter để nhận danh sách món
     public void setDanhSachMon(List<String[]> danhSachMon) {
         DefaultTableModel model = (DefaultTableModel) TabledsMoncuaban.getModel();
-        model.setRowCount(0); // Xóa các dòng cũ trong bảng (nếu có)
+        model.setRowCount(0);
         for (String[] mon : danhSachMon) {
-            model.addRow(mon); // Thêm từng dòng vào bảng
+            model.addRow(mon);
         }
     }
 
     private void loadData() {
-        // Cập nhật tên bàn
         lbTen.setText(ban.getTenBan(maban));
 
-        // Cập nhật ngày giờ hiện tại
         lbNgaygio.setText(java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
-        // Lấy danh sách đồ uống từ phương thức Danhsachdouongdagoi của đối tượng order
         List<Object[]> danhSachDoUong = order.Danhsachdouongdagoi(maban);
 
-        // Lấy DefaultTableModel hiện tại của TabledsMoncuaban
         DefaultTableModel model = (DefaultTableModel) TabledsMoncuaban.getModel();
 
-        // Thiết lập tiêu đề cột cho bảng
         String[] columnNames = {"Mã món", "Tên món", "Số lượng", "Giá"};
         model.setColumnIdentifiers(columnNames);
 
-        // Lặp qua danh sách và thêm từng dòng vào bảng
         for (Object[] row : danhSachDoUong) {
-            model.addRow(row);  // Thêm dòng mới vào bảng
+            model.addRow(row);  
         }
     }
 
@@ -221,43 +212,34 @@ public class ThanhToan extends javax.swing.JFrame {
 
     private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
         try {
-            // Lấy model của bảng và khởi tạo các biến
             DefaultTableModel model = (DefaultTableModel) TabledsMoncuaban.getModel();
             double tongChiPhi = 0, tongTien = 0;
 
-            // Lấy thông tin bàn
             String tenBan = lbTen.getText();
             String maBan = ban.getID(tenBan);
             System.out.println("Mã bàn: " + maBan);
 
-            // Tính tổng tiền và chi phí dựa theo dữ liệu bảng
             for (int i = 0; i < model.getRowCount(); i++) {
-                String maDoUong = model.getValueAt(i, 0).toString(); // Giả sử MADOUONG là cột 0
-                int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString()); // SLUONG là cột 2
-
-                // Truy vấn chi phí từ cơ sở dữ liệu
-                double chiPhi = order.getChiPhi(maDoUong); // Thêm phương thức getChiPhi trong lớp order
+                String maDoUong = model.getValueAt(i, 0).toString();
+                int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString()); 
+                double chiPhi = order.getChiPhi(maDoUong);
                 tongChiPhi += chiPhi * soLuong;
 
-                // Tính tổng tiền
-                double gia = Double.parseDouble(model.getValueAt(i, 3).toString()); // Đơn giá là cột 3
+                double gia = Double.parseDouble(model.getValueAt(i, 3).toString()); 
                 tongTien += gia * soLuong;
             }
 
-            // Ghi dữ liệu vào doanh thu và cập nhật trạng thái
             boolean insertSuccess = order.insertDoanhThu(tongChiPhi, tongTien);
             boolean deleteAfterSucess = order.deleteAfterSucess(maBan);
 
             JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
 
-            // Cập nhật trạng thái bàn
             boolean updateStatusSuccess = ban.updateBanStatus(maBan, "Trống");
             if (!updateStatusSuccess) {
                 JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật trạng thái bàn!");
                 return;
             }
 
-            // Dọn dẹp bảng và giao diện
             model.setRowCount(0);
             lbTen.setText("");
             lbNgaygio.setText("");

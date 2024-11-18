@@ -30,17 +30,14 @@ public class quanliban {
         danhSachBan.get(banSo).add(doUong);
     }
 
-    // Thêm đồ uống vào bàn
     public void themDoUong(String doUong) {
         danhSachDoUong.add(doUong);
     }
 
-    // Lấy danh sách đồ uống của bàn
     public List<String> getDanhSachDoUong() {
         return danhSachDoUong;
     }
 
-    // Lấy tên bàn
     public String getTenBan() {
         return tenBan;
     }

@@ -35,13 +35,12 @@ public class accountcontroller {
             pre.setString(2, MATKHAU);
             ResultSet rs = pre.executeQuery();
 
-            // Nếu tìm thấy tài khoản và mật khẩu phù hợp
             if (rs.next()) {
-                loggedInUsername = rs.getString("TAIKHOAN"); // Lấy tài khoản
-                System.out.println("Username: " + loggedInUsername); // In ra để kiểm tra
-                return true; // Đăng nhập thành công
+                loggedInUsername = rs.getString("TAIKHOAN"); 
+                System.out.println("Username: " + loggedInUsername);
+                return true; 
             } else {
-                return false; // Tài khoản hoặc mật khẩu sai
+                return false; 
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -51,13 +50,12 @@ public class accountcontroller {
 
     public boolean checkAccountExists(String taikhoan) {
         try {
-            // Truy vấn kiểm tra tài khoản đã tồn tại
             String sql = "SELECT COUNT(*) FROM ACCOUNT WHERE TAIKHOAN = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, taikhoan);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return rs.getInt(1) > 0;  // Nếu có ít nhất 1 tài khoản trùng
+                return rs.getInt(1) > 0;  
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -74,7 +72,6 @@ public class accountcontroller {
             while (rs.next()) {
                 tk = rs.getString("TAIKHOAN");
                 mk = rs.getString("MATKHAU");
-                // Xử lý dữ liệu
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,10 +79,9 @@ public class accountcontroller {
         return false;
     }
 
-    // Phương thức mã hóa mật khẩu đơn giản
     public String encodePassword(String password) {
         if (password == null) {
-            return null; // Hoặc xử lý khác nếu cần
+            return null; 
         }
         StringBuilder encoded = new StringBuilder();
         for (char c : password.toCharArray()) {
@@ -110,18 +106,17 @@ public class accountcontroller {
         if (encodedPasswordFromDb != null) {
             String decodedPassword = decodePassword(encodedPasswordFromDb);
             if (password.equals(decodedPassword)) {
-                loggedInUsername = username; // Gán giá trị khi đăng nhập thành công
+                loggedInUsername = username; 
                 return true;
             }
         }
-        loggedInUsername = null; // Đặt lại nếu đăng nhập thất bại
+        loggedInUsername = null; 
         return false;
     }
 
     public boolean addAccount(String taikhoan, String matkhau, int idNhansu, String chucvu) {
         PreparedStatement pstmt = null;
         try {
-            // Chèn tài khoản vào bảng ACCOUNT
             String sql = "INSERT INTO ACCOUNT(TAIKHOAN, MATKHAU, ID_NHAN_SU, CHUC_VU) VALUES (?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, taikhoan);
@@ -157,7 +152,6 @@ public class accountcontroller {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            // Truy vấn kiểm tra CHUC_VU của tài khoản
             String sql = "SELECT ns.CHUC_VU "
                     + "FROM ACCOUNT a "
                     + "JOIN NHAN_SU ns ON a.ID_NHAN_SU = ns.ID_NHAN_SU "
@@ -166,7 +160,6 @@ public class accountcontroller {
             stmt.setString(1, TAIKHOAN);
             rs = stmt.executeQuery();
 
-            // Kiểm tra nếu CHUC_VU là 'Quản lý'
             if (rs.next()) {
                 String chucVu = rs.getString("CHUC_VU");
                 return "Quản lý".equalsIgnoreCase(chucVu);
