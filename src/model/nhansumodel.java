@@ -5,13 +5,13 @@ package model;
  */
 public class nhansumodel {
     
-    private int ID_NHAN_SU; // Đổi tên biến từ 'id' thành 'id' để khớp với tên cột SQL
-    private String HO_VA_TEN; // Đổi tên biến
-    private String GIOI_TINH; // Đổi tên biến
-    private int NAM_SINH; // Đổi tên biến
-    private String CHUC_VU; // Đổi tên biến
-    private String QUE_QUAN; // Đổi tên biến
-    private String SO_DIEN_THOAI; // Đổi tên biến
+    private int ID_NHAN_SU; 
+    private String HO_VA_TEN; 
+    private String GIOI_TINH; 
+    private int NAM_SINH;
+    private String CHUC_VU; 
+    private String QUE_QUAN; 
+    private String SO_DIEN_THOAI;
 
     // Constructor
     public nhansumodel(){}

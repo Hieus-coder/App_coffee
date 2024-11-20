@@ -28,12 +28,12 @@ public class bancontroller {
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                return rs.getInt("SoLuong") > 0; // Nếu có ít nhất 1 bàn trạng thái "Đã đặt"
+                return rs.getInt("SoLuong") > 0;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false; // Nếu không có bàn nào hoặc xảy ra lỗi
+        return false;
     }
     public String getTrangThai(String maBan) {
         String sql = "SELECT TRANGTHAI FROM BAN WHERE MABAN = ?";
@@ -46,7 +46,7 @@ public class bancontroller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null; // Trả về null nếu không tìm thấy bàn hoặc có lỗi
+        return null;
     }
 
     public boolean[] Trangthai() {
@@ -125,7 +125,7 @@ public class bancontroller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null; // Trả về null nếu không tìm thấy
+        return null; 
     }
 
 }

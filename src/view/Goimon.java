@@ -495,13 +495,13 @@ public class Goimon extends javax.swing.JFrame {
 
     private void updateLabels() {
         JLabel[] lbBans = {lbBan1, lbBan2, lbBan3, lbBan4, lbBan5, lbBan6};
-        boolean[] trangthaiBans = ban.Trangthai(); // Lấy trạng thái của từng bàn
-        // Kiểm tra trạng thái của từng bàn và thay đổi màu sắc cho từng JLabel tương ứng
+        boolean[] trangthaiBans = ban.Trangthai();
+       
         for (int i = 0; i < lbBans.length; i++) {
             if (trangthaiBans[i]) {
-                lbBans[i].setForeground(Color.GREEN); // Bàn trống
+                lbBans[i].setForeground(Color.GREEN); 
             } else {
-                lbBans[i].setForeground(Color.RED); // Bàn có khách
+                lbBans[i].setForeground(Color.RED);
             }
         }
     }
@@ -510,7 +510,7 @@ public class Goimon extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel(new String[]{"Tên đồ uống", "Giá tiền"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Không cho phép chỉnh sửa bất kỳ ô nào trong bảng
+                return false;
             }
         };
         List<Object[]> douonglist = order.Danhsachdouong();
@@ -529,45 +529,32 @@ public class Goimon extends javax.swing.JFrame {
         DefaultTableModel modelMon = (DefaultTableModel) TableMondagoi.getModel();
         modelMon.setRowCount(0);
 
-        // Lấy danh sách món của bàn từ cơ sở dữ liệu
         List<Object[]> danhSachMon = order.getDanhSachMonCuaBan(maBan);
 
-        // Thêm dữ liệu vào bảng
         for (Object[] mon : danhSachMon) {
             modelMon.addRow(mon);
         }
         // setHeader
         String[] columnNames = {"Mã đồ uống", "Tên đồ uống", "Số lượng", "Tổng tiền"};
         modelMon.setColumnIdentifiers(columnNames);
-        // Gán lại model cho bảng (không thực sự cần thiết nếu model không thay đổi)
         TableMondagoi.setModel(modelMon);
         updateTotalAmountLabel();
     }
 
     private void deleteSelectedRow() {
         DefaultTableModel model = (DefaultTableModel) TableMondagoi.getModel();
-        int selectedRow = TableMondagoi.getSelectedRow(); // Lấy dòng được chọn
+        int selectedRow = TableMondagoi.getSelectedRow();
 
         if (selectedRow != -1) {
-            // Lấy giá trị của MABAN và MADOUONG từ dòng được chọn
-            String maBan = selectedTable;  // Giả sử cột đầu tiên là MABAN
-            String maDoUong = (String) model.getValueAt(selectedRow, 0);  // Giả sử cột thứ 2 là MADOUONG
+            String maBan = selectedTable;  
+            String maDoUong = (String) model.getValueAt(selectedRow, 0); 
 
-            // Kiểm tra lại dữ liệu trước khi xóa
             if (maBan != null && maDoUong != null) {
-                // Xóa dữ liệu trong cơ sở dữ liệu
-                boolean isDeleted = order.deleteFromDatabase(maBan, maDoUong);  // Giả sử phương thức return true/false
-
-                if (isDeleted) {
-                    // Xóa dòng trong bảng chỉ khi xóa thành công trong cơ sở dữ liệu
+                boolean isDeleted = order.deleteFromDatabase(maBan, maDoUong); 
                     model.removeRow(selectedRow);
-
-                    // Làm mới lại dữ liệu sau khi xóa
                     LoadDataDouongdagoi(maBan);
-
-                    // Cập nhật tổng tiền (nếu cần thiết)
                     updateTotalAmountLabel();
-                }
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Dữ liệu không hợp lệ, không thể xóa.");
             }
@@ -577,8 +564,8 @@ public class Goimon extends javax.swing.JFrame {
     }
 
     private void handleBanSelection(String maBan) {
-        selectedTable = maBan;  // Cập nhật bàn đã chọn
-        LoadDataDouongdagoi(selectedTable);  // Tải dữ liệu tương ứng
+        selectedTable = maBan; 
+        LoadDataDouongdagoi(selectedTable);
 
     }
 
@@ -603,10 +590,7 @@ public class Goimon extends javax.swing.JFrame {
         String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B06");
         if ("Trống".equals(trangThai)) {
-            // Hiển thị thông báo nếu bàn đang trống
             JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
-
-            // Quay lại form Đặt Bàn
             Datban datBanForm = new Datban(admin);
             datBanForm.setVisible(true);
             this.dispose();
@@ -621,10 +605,7 @@ public class Goimon extends javax.swing.JFrame {
         String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B05");
         if ("Trống".equals(trangThai)) {
-            // Hiển thị thông báo nếu bàn đang trống
             JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
-
-            // Quay lại form Đặt Bàn
             Datban datBanForm = new Datban(admin);
             datBanForm.setVisible(true);
             this.dispose();
@@ -638,10 +619,7 @@ public class Goimon extends javax.swing.JFrame {
         String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B03");
         if ("Trống".equals(trangThai)) {
-            // Hiển thị thông báo nếu bàn đang trống
             JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
-
-            // Quay lại form Đặt Bàn
             Datban datBanForm = new Datban(admin);
             datBanForm.setVisible(true);
             this.dispose();
@@ -655,10 +633,7 @@ public class Goimon extends javax.swing.JFrame {
         String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B04");
         if ("Trống".equals(trangThai)) {
-            // Hiển thị thông báo nếu bàn đang trống
             JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
-
-            // Quay lại form Đặt Bàn
             Datban datBanForm = new Datban(admin);
             datBanForm.setVisible(true);
             this.dispose();
@@ -671,14 +646,11 @@ public class Goimon extends javax.swing.JFrame {
         String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B01");
         if ("Trống".equals(trangThai)) {
-        // Hiển thị thông báo nếu bàn đang trống
         JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
-        
-        // Quay lại form Đặt Bàn
         Datban datBanForm = new Datban(admin); 
         datBanForm.setVisible(true);
         this.dispose();
-        return; // Dừng xử lý tiếp theo
+        return; 
     }
 
     }//GEN-LAST:event_btnBan1ActionPerformed
@@ -688,10 +660,7 @@ public class Goimon extends javax.swing.JFrame {
         String trangThai = ban.getTrangThai(maBan);
         handleBanSelection("B02");
         if ("Trống".equals(trangThai)) {
-            // Hiển thị thông báo nếu bàn đang trống
             JOptionPane.showMessageDialog(this, "Bàn hiện đang trống, không thể đặt món. Vui lòng đặt bàn trước!");
-
-            // Quay lại form Đặt Bàn
             Datban datBanForm = new Datban(admin);
             datBanForm.setVisible(true);
             this.dispose();
@@ -713,45 +682,42 @@ public class Goimon extends javax.swing.JFrame {
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
-        QuanLy ql = new QuanLy(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        ql.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        QuanLy ql = new QuanLy(admin);
+        ql.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatbanActionPerformed
         // TODO add your handling code here:
 
-        Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        db.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        Datban db = new Datban(admin);
+        db.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_btnDatbanActionPerformed
 
     private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
-        boolean hasBanDaDat = ban.isAnyBanDaDat(); // Kiểm tra trạng thái của các bàn
+        boolean hasBanDaDat = ban.isAnyBanDaDat();
         if (!hasBanDaDat) {
             JOptionPane.showMessageDialog(this, "Không có bàn nào đang được đặt. Vui lòng đặt bàn trước!");
             return;
         }
 
-        // Nếu có bàn đã đặt, mở giao diện đặt món
         Goimon goiMonUI = new Goimon(admin);
-        goiMonUI.setVisible(true); // Hiển thị giao diện Goimon
-        this.dispose(); // Đóng giao diện hiện tại
+        goiMonUI.setVisible(true); 
+        this.dispose();
     }//GEN-LAST:event_btnDatmonActionPerformed
 
     private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
         // TODO add your handling code here:
-        Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        dt.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        Doanhthu dt = new Doanhthu(admin); 
+        dt.setVisible(true); 
+        this.dispose(); 
     }//GEN-LAST:event_btnDoanthuActionPerformed
 
     private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
-        // Lấy thông tin tên bàn
         String tenBan = ban.getTenBan(selectedTable);
 
-        // Lấy danh sách món từ JTable
         DefaultTableModel model = (DefaultTableModel) TableMondagoi.getModel();
         List<String[]> danhSachMon = new ArrayList<>();
         for (int i = 0; i < model.getRowCount(); i++) {
@@ -762,11 +728,10 @@ public class Goimon extends javax.swing.JFrame {
             danhSachMon.add(new String[]{maMon, tenMon, soLuong, gia});
         }
 
-        // Mở giao diện ThanhToan và truyền dữ liệu qua setter
         ThanhToan thanhToanForm = new ThanhToan(admin);
-        thanhToanForm.setTenBan(tenBan);            // Truyền tên bàn
-        thanhToanForm.setNgayDat();                // Truyền ngày đặt
-        thanhToanForm.setDanhSachMon(danhSachMon); // Truyền danh sách món
+        thanhToanForm.setTenBan(tenBan);         
+        thanhToanForm.setNgayDat();             
+        thanhToanForm.setDanhSachMon(danhSachMon);
         thanhToanForm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnThanhtoanActionPerformed

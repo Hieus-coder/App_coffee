@@ -79,10 +79,8 @@ public class Doanhthu extends javax.swing.JFrame {
                 });
             }
 
-            // Cập nhật model cho bảng
             jTable1.setModel(model);
 
-            // Hiển thị tổng chi phí và tổng tiền lên JLabel
             txtSodon.setText("" + count);
             txtChiphi.setText("" + totalChiphi);
             txtLai.setText("" + lai);
@@ -410,36 +408,35 @@ public class Doanhthu extends javax.swing.JFrame {
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
-        QuanLy ql = new QuanLy(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        ql.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        QuanLy ql = new QuanLy(admin);
+        ql.setVisible(true); 
+        this.dispose(); 
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
-        boolean hasBanDaDat = ban.isAnyBanDaDat(); // Kiểm tra trạng thái của các bàn
+        boolean hasBanDaDat = ban.isAnyBanDaDat(); 
         if (!hasBanDaDat) {
             JOptionPane.showMessageDialog(this, "Không có bàn nào đang được đặt. Vui lòng đặt bàn trước!");
             return;
         }
 
-        // Nếu có bàn đã đặt, mở giao diện đặt món
         Goimon goiMonUI = new Goimon(admin);
-        goiMonUI.setVisible(true); // Hiển thị giao diện Goimon
-        this.dispose(); // Đóng giao diện hiện tại
+        goiMonUI.setVisible(true); 
+        this.dispose(); 
     }//GEN-LAST:event_btnDatmonActionPerformed
 
     private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
         // TODO add your handling code here:
-        Doanhthu dt = new Doanhthu(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        dt.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        Doanhthu dt = new Doanhthu(admin);
+        dt.setVisible(true);
+        this.dispose(); 
     }//GEN-LAST:event_btnDoanthuActionPerformed
 
     private void btnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatbanActionPerformed
         // TODO add your handling code here:
-        Datban db = new Datban(admin); // Truyền tham số admin vào để giữ nguyên quyền truy cập
-        db.setVisible(true); // Hiển thị trang QuanLy
-        this.dispose(); // Đóng trang hiện tại
+        Datban db = new Datban(admin); 
+        db.setVisible(true);
+        this.dispose(); 
     }//GEN-LAST:event_btnDatbanActionPerformed
 
     /**

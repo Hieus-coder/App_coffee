@@ -292,21 +292,17 @@ public class Themnhanvien extends javax.swing.JFrame {
         model.setQUE_QUAN(quequan);
         model.setSO_DIEN_THOAI(sdt);
 
-        // Thêm nhân viên vào bảng NHAN_SU
         boolean successNV = nhanvien.addEmployee(model);
 
         if (successNV) {
-            // Lấy ID của nhân viên vừa thêm vào bảng NHAN_SU
             int autoid = nhanvien.getIDNhanvien();
 
-            // Kiểm tra tài khoản có tồn tại chưa
             boolean accountExists = account.checkAccountExists(taikhoan);
             if (accountExists) {
                 JOptionPane.showMessageDialog(null, "Tài khoản đã tồn tại", "Thông báo", JOptionPane.WARNING_MESSAGE);
-                return;  // Dừng lại nếu tài khoản đã tồn tại
+                return;  
             }
 
-            // Thêm tài khoản vào bảng ACCOUNT
             boolean successTK = account.addAccount(taikhoan, matkhau, autoid, chucvu);
 
             if (successTK) {
