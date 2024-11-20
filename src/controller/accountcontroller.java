@@ -2,6 +2,8 @@ package controller;
 
 import java.sql.*;
 import DBC.Dbconnection;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class accountcontroller {
 
@@ -78,7 +80,23 @@ public class accountcontroller {
         }
         return false;
     }
-
+    public static String hashPassword(String password) {
+        if (password == null) {
+            return null;
+        }
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(String.format("%02x", b)); // Chuyển đổi byte sang hex
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     public String encodePassword(String password) {
         if (password == null) {
             return null; 

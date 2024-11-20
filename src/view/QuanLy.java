@@ -19,6 +19,7 @@ public class QuanLy extends javax.swing.JFrame {
     private accountcontroller tk;
     private Connection conn;
     private boolean isEditing = false;
+    
 
     public QuanLy(boolean isAdmin) {
         this.admin = isAdmin;
@@ -60,13 +61,13 @@ public class QuanLy extends javax.swing.JFrame {
             jTable1.setDefaultEditor(Object.class, null);
             while (rs.next()) {
                 String password = rs.getString("MATKHAU");
-                String encodedPassword = (password != null) ? tk.encodePassword(password) : "N/A";
+                String hashedPassword = (password != null) ? tk.hashPassword(password) : "N/A";
 
                 model.addRow(new Object[]{
                     rs.getInt("ID_NHAN_SU"),
                     rs.getString("HO_VA_TEN"),
                     rs.getString("TAIKHOAN"),
-                    encodedPassword,
+                    hashedPassword,
                     rs.getInt("NAM_SINH"),
                     rs.getString("GIOI_TINH"),
                     rs.getString("CHUC_VU"),
@@ -557,9 +558,8 @@ public class QuanLy extends javax.swing.JFrame {
                 boolean checkTtnv = ns.updateEmployee(employee);
                 if (checkTtnv && checkAccount) {
                     loadDataToTable();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Cập nhật thất bại. Vui lòng thử lại.");
-                }
+                    JOptionPane.showMessageDialog(this, "Cập nhập nhân viên thành công");
+                } 
             } else {
                 JOptionPane.showMessageDialog(this, "Nhân viên với ID này không tồn tại.");
             }
