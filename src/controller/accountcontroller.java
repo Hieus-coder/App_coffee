@@ -26,7 +26,7 @@ public class accountcontroller {
         }
         return encodedPassword;
     }
-    
+
     public boolean checkUserCredentials(String TAIKHOAN, String MATKHAU) {
         try {
             String sql = "SELECT * FROM ACCOUNT WHERE TAIKHOAN = ? AND MATKHAU = ?";
@@ -36,11 +36,11 @@ public class accountcontroller {
             ResultSet rs = pre.executeQuery();
 
             if (rs.next()) {
-                loggedInUsername = rs.getString("TAIKHOAN"); 
+                loggedInUsername = rs.getString("TAIKHOAN");
                 System.out.println("Username: " + loggedInUsername);
-                return true; 
+                return true;
             } else {
-                return false; 
+                return false;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -55,7 +55,7 @@ public class accountcontroller {
             stmt.setString(1, taikhoan);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return rs.getInt(1) > 0;  
+                return rs.getInt(1) > 0;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -81,7 +81,7 @@ public class accountcontroller {
 
     public String encodePassword(String password) {
         if (password == null) {
-            return null; 
+            return null;
         }
         StringBuilder encoded = new StringBuilder();
         for (char c : password.toCharArray()) {
@@ -106,11 +106,11 @@ public class accountcontroller {
         if (encodedPasswordFromDb != null) {
             String decodedPassword = decodePassword(encodedPasswordFromDb);
             if (password.equals(decodedPassword)) {
-                loggedInUsername = username; 
+                loggedInUsername = username;
                 return true;
             }
         }
-        loggedInUsername = null; 
+        loggedInUsername = null;
         return false;
     }
 
