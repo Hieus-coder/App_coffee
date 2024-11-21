@@ -1,3 +1,7 @@
+# Thành viên
+## Văn Đăng Hiếu (D17CNPM1)
+## Lê Văn Đức (D17CNPM1)
+
 1. Đăng nhập
 ![Đăng nhập](https://github.com/user-attachments/assets/969260ff-de74-4ea5-841e-f085bd9df2f1)
 2. Đăng kí và thêm nhân viên
