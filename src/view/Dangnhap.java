@@ -147,10 +147,9 @@ public class Dangnhap extends javax.swing.JFrame {
         String password = new String(txtMatkhau.getPassword()).trim();
 
         if (accController.checkUserCredentials(username, password)) { 
-            isAuthenticated = true; // Đánh dấu người dùng đã đăng nhập
-            isAdmin = accController.isAdmin(username); // Kiểm tra quyền quản trị
+            isAuthenticated = true; 
+            isAdmin = accController.isAdmin(username);
 
-            // Chuyển đến giao diện Datban và truyền quyền quản trị
             Datban frm = new Datban(isAdmin);
             frm.setVisible(true);
             this.dispose();

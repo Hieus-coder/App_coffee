@@ -31,10 +31,13 @@ public class accountcontroller {
 
     public boolean checkUserCredentials(String TAIKHOAN, String MATKHAU) {
         try {
+            String hashedPassword = hashPassword(MATKHAU);
+
             String sql = "SELECT * FROM ACCOUNT WHERE TAIKHOAN = ? AND MATKHAU = ?";
             PreparedStatement pre = conn.prepareStatement(sql);
             pre.setString(1, TAIKHOAN);
-            pre.setString(2, MATKHAU);
+            pre.setString(2, hashedPassword);
+
             ResultSet rs = pre.executeQuery();
 
             if (rs.next()) {
@@ -42,6 +45,8 @@ public class accountcontroller {
                 System.out.println("Username: " + loggedInUsername);
                 return true;
             } else {
+                System.out.println("Sai tài khoản hoặc mật khẩu");
+                System.out.println(hashedPassword);
                 return false;
             }
         } catch (Exception ex) {
@@ -80,6 +85,7 @@ public class accountcontroller {
         }
         return false;
     }
+
     public static String hashPassword(String password) {
         if (password == null) {
             return null;
@@ -89,7 +95,7 @@ public class accountcontroller {
             byte[] hashedBytes = md.digest(password.getBytes());
             StringBuilder sb = new StringBuilder();
             for (byte b : hashedBytes) {
-                sb.append(String.format("%02x", b)); // Chuyển đổi byte sang hex
+                sb.append(String.format("%02x", b));
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException e) {
@@ -97,44 +103,11 @@ public class accountcontroller {
             return null;
         }
     }
-    public String encodePassword(String password) {
-        if (password == null) {
-            return null;
-        }
-        StringBuilder encoded = new StringBuilder();
-        for (char c : password.toCharArray()) {
-            encoded.append((char) (c + 1));
-        }
-        return encoded.toString();
-    }
-
-    public String decodePassword(String encodedPassword) {
-        if (encodedPassword == null) {
-            return null;
-        }
-        StringBuilder decoded = new StringBuilder();
-        for (char c : encodedPassword.toCharArray()) {
-            decoded.append((char) (c - 1));
-        }
-        return decoded.toString();
-    }
-
-    public boolean checkLogin(String username, String password) {
-        String encodedPasswordFromDb = getPasswordFromDatabase(username);
-        if (encodedPasswordFromDb != null) {
-            String decodedPassword = decodePassword(encodedPasswordFromDb);
-            if (password.equals(decodedPassword)) {
-                loggedInUsername = username;
-                return true;
-            }
-        }
-        loggedInUsername = null;
-        return false;
-    }
 
     public boolean addAccount(String taikhoan, String matkhau, int idNhansu, String chucvu) {
         PreparedStatement pstmt = null;
         try {
+
             String sql = "INSERT INTO ACCOUNT(TAIKHOAN, MATKHAU, ID_NHAN_SU, CHUC_VU) VALUES (?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, taikhoan);
@@ -153,10 +126,12 @@ public class accountcontroller {
     public boolean editAccount(String taikhoan, String matkhau, int id_nhan_su) {
         PreparedStatement pstmt = null;
         try {
+            String hashedPassword = hashPassword(matkhau);
+
             String sql = "UPDATE ACCOUNT SET TAIKHOAN = ?, MATKHAU = ? WHERE ID_NHAN_SU = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, taikhoan);
-            pstmt.setString(2, matkhau);
+            pstmt.setString(2, hashedPassword);
             pstmt.setInt(3, id_nhan_su);
             int rowAffected = pstmt.executeUpdate();
             return rowAffected > 0;

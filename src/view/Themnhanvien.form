@@ -189,6 +189,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtMatkhau">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMatkhauActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

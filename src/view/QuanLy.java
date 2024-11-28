@@ -62,14 +62,12 @@ public class QuanLy extends javax.swing.JFrame {
             );
             jTable1.setDefaultEditor(Object.class, null);
             while (rs.next()) {
-                String password = rs.getString("MATKHAU");
-                String hashedPassword = (password != null) ? tk.hashPassword(password) : "N/A";
-
+     
                 model.addRow(new Object[]{
                     rs.getInt("ID_NHAN_SU"),
                     rs.getString("HO_VA_TEN"),
                     rs.getString("TAIKHOAN"),
-                    hashedPassword,
+                    rs.getString("MATKHAU"),
                     rs.getInt("NAM_SINH"),
                     rs.getString("GIOI_TINH"),
                     rs.getString("CHUC_VU"),
@@ -545,8 +543,6 @@ public class QuanLy extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void enableTextFields(boolean enable) {
         txtHoten.setEditable(enable);
-        txtTaikhoan.setEditable(enable);
-        txtMatkhau.setEditable(enable);
         txtNamsinh.setEditable(enable);
         txtGioitinh.setEditable(enable);
         txtChucvu.setEditable(enable);
@@ -567,32 +563,6 @@ public class QuanLy extends javax.swing.JFrame {
                 enableTextFields(true);
             } else {
                 enableTextFields(false);
-            }
-            int id = Integer.parseInt(txtID.getText());
-            String Ten = txtHoten.getText();
-            String taikhoan = txtTaikhoan.getText();
-            char[] mk = txtMatkhau.getPassword();
-            String mkStr = String.valueOf(mk);
-            int namsinh = Integer.parseInt(txtNamsinh.getText());
-            String gt = txtGioitinh.getText();
-            String chucvu = txtChucvu.getText();
-            String quequan = txtQuequan.getText();
-            String sdt = txtSdt.getText();
-            if (Ten.isEmpty() || taikhoan.isEmpty() || mkStr.isEmpty() || gt.isEmpty() || chucvu.isEmpty() || quequan.isEmpty() || sdt.isEmpty()) {
-                JOptionPane.showConfirmDialog(this, "Vui lòng nhập đầy đủ thông tin!");
-            }
-
-            if (ns.checkEmployeeExists(id)) {
-                nhansumodel employee = new nhansumodel(id, Ten, gt, namsinh, chucvu, quequan, sdt);
-
-                boolean checkAccount = tk.editAccount(taikhoan, mkStr, id);
-                boolean checkTtnv = ns.updateEmployee(employee);
-                if (checkTtnv && checkAccount) {
-                    loadDataToTable();
-                    JOptionPane.showMessageDialog(this, "Cập nhập nhân viên thành công");
-                } 
-            } else {
-                JOptionPane.showMessageDialog(this, "Nhân viên với ID này không tồn tại.");
             }
         } else {
             JOptionPane.showMessageDialog(this, "Hãy chọn hàng để sửa");

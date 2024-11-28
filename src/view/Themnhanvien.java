@@ -6,6 +6,7 @@ package view;
 
 import javax.swing.JOptionPane;
 import controller.*;
+import static controller.accountcontroller.hashPassword;
 import model.nhansumodel;
 
 /**
@@ -81,6 +82,12 @@ public class Themnhanvien extends javax.swing.JFrame {
         jLabel4.setText("Tài Khoản:");
 
         jLabel5.setText("Mật Khẩu:");
+
+        txtMatkhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMatkhauActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -270,8 +277,11 @@ public class Themnhanvien extends javax.swing.JFrame {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         String ho = txtHo.getText();
         String ten = txtTen.getText();
-        String taikhoan = txtTaikhoan.getText();
-        String matkhau = txtMatkhau.getText();
+        String taikhoan = txtTaikhoan.getText().trim();
+        String matkhau = txtMatkhau.getText().trim();
+        
+        String hashedPassword = hashPassword(matkhau);
+        
         int namsinh = Integer.valueOf(txtNamsinh.getText().toString());
         String gt = null;
         if (jRBNam.isSelected()) {
@@ -303,10 +313,11 @@ public class Themnhanvien extends javax.swing.JFrame {
                 return;  
             }
 
-            boolean successTK = account.addAccount(taikhoan, matkhau, autoid, chucvu);
+            boolean successTK = account.addAccount(taikhoan, hashedPassword, autoid, chucvu);
 
             if (successTK) {
                 JOptionPane.showMessageDialog(null, "Thêm nhân viên và tài khoản thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                System.out.println(hashedPassword);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Thêm tài khoản thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -330,6 +341,10 @@ public class Themnhanvien extends javax.swing.JFrame {
         }
         this.dispose();
     }//GEN-LAST:event_btnKhongluuActionPerformed
+
+    private void txtMatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatkhauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatkhauActionPerformed
 
     /**
      * @param args the command line arguments
