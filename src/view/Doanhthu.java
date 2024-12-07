@@ -45,6 +45,7 @@ public class Doanhthu extends javax.swing.JFrame {
         setTitle("Coffee");
         Dt = new doanhthucontroller();
         btnNhanVien.setVisible(admin);
+        btnDouong.setVisible(admin);
         ban = new bancontroller();
         displayLoggedInUser();
         loadDataToTable();
@@ -165,6 +166,7 @@ public class Doanhthu extends javax.swing.JFrame {
         btnDatmon = new javax.swing.JButton();
         btnDoanthu = new javax.swing.JButton();
         txtUser = new javax.swing.JLabel();
+        btnDouong = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         txtSodon = new java.awt.Label();
@@ -238,6 +240,16 @@ public class Doanhthu extends javax.swing.JFrame {
         txtUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtUser.setText("Name");
 
+        btnDouong.setBackground(new java.awt.Color(74, 48, 34));
+        btnDouong.setForeground(new java.awt.Color(255, 255, 255));
+        btnDouong.setText("Đồ uống");
+        btnDouong.setBorder(null);
+        btnDouong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDouongActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
         pnMenu.setLayout(pnMenuLayout);
         pnMenuLayout.setHorizontalGroup(
@@ -251,14 +263,24 @@ public class Doanhthu extends javax.swing.JFrame {
                         .addGap(64, 64, 64)
                         .addComponent(BtnDangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
-            .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatban, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(pnMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnDouong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnMenuLayout.setVerticalGroup(
             pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,8 +296,10 @@ public class Doanhthu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDoanthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDouong, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnDangxuat)
                 .addContainerGap())
         );
@@ -455,7 +479,7 @@ public class Doanhthu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 7, Short.MAX_VALUE)
                         .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -535,6 +559,13 @@ public class Doanhthu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
+    private void btnDouongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDouongActionPerformed
+        // TODO add your handling code here:
+        QlyDouong form = new QlyDouong(admin);
+        form.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDouongActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -578,6 +609,7 @@ public class Doanhthu extends javax.swing.JFrame {
     private javax.swing.JButton btnDatban;
     private javax.swing.JButton btnDatmon;
     private javax.swing.JButton btnDoanthu;
+    private javax.swing.JButton btnDouong;
     private javax.swing.JButton btnNhanVien;
     private java.awt.Button btnXuatfile;
     private javax.swing.JLabel jLabel2;

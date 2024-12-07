@@ -141,6 +141,7 @@ public class QuanLy extends javax.swing.JFrame {
         btnDatmon3 = new javax.swing.JButton();
         btnDoanthu2 = new javax.swing.JButton();
         txtUser = new javax.swing.JLabel();
+        btnDouong = new javax.swing.JButton();
 
         jLabel7.setText("jLabel7");
 
@@ -474,6 +475,16 @@ public class QuanLy extends javax.swing.JFrame {
         txtUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtUser.setText("Name");
 
+        btnDouong.setBackground(new java.awt.Color(74, 48, 34));
+        btnDouong.setForeground(new java.awt.Color(255, 255, 255));
+        btnDouong.setText("Đồ uống");
+        btnDouong.setBorder(null);
+        btnDouong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDouongActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnMenu3Layout = new javax.swing.GroupLayout(pnMenu3);
         pnMenu3.setLayout(pnMenu3Layout);
         pnMenu3Layout.setHorizontalGroup(
@@ -487,7 +498,6 @@ public class QuanLy extends javax.swing.JFrame {
                         .addGap(64, 64, 64)
                         .addComponent(BtnDangxuat3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
-            .addComponent(btnDoanthu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatmon3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatban3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNhanVien3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -495,6 +505,8 @@ public class QuanLy extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnDoanthu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnDouong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnMenu3Layout.setVerticalGroup(
             pnMenu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,6 +521,8 @@ public class QuanLy extends javax.swing.JFrame {
                 .addComponent(btnDatmon3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDoanthu2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDouong, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
@@ -530,10 +544,10 @@ public class QuanLy extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnMenu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -757,6 +771,13 @@ public class QuanLy extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTimKiemActionPerformed
 
+    private void btnDouongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDouongActionPerformed
+        // TODO add your handling code here:
+        QlyDouong form = new QlyDouong(admin);
+        form.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDouongActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -771,6 +792,7 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JButton btnDatban3;
     private javax.swing.JButton btnDatmon3;
     private javax.swing.JButton btnDoanthu2;
+    private javax.swing.JButton btnDouong;
     private javax.swing.JButton btnKLuu;
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnNhanVien3;

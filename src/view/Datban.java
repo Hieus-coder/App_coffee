@@ -25,6 +25,7 @@ public class Datban extends javax.swing.JFrame {
         setTitle("Coffee");
         initComponents();
         btnNhanVien.setVisible(admin);
+        btnDouong.setVisible(admin);
         bc = new bancontroller();
         displayLoggedInUser();
         loadDataToTable();
@@ -85,6 +86,7 @@ public class Datban extends javax.swing.JFrame {
         btnDatmon = new javax.swing.JButton();
         btnDoanthu = new javax.swing.JButton();
         txtUser = new javax.swing.JLabel();
+        btnDouong = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,6 +213,16 @@ public class Datban extends javax.swing.JFrame {
         txtUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtUser.setText("Name");
 
+        btnDouong.setBackground(new java.awt.Color(74, 48, 34));
+        btnDouong.setForeground(new java.awt.Color(255, 255, 255));
+        btnDouong.setText("Đồ uống");
+        btnDouong.setBorder(null);
+        btnDouong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDouongActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
         pnMenu.setLayout(pnMenuLayout);
         pnMenuLayout.setHorizontalGroup(
@@ -227,11 +239,15 @@ public class Datban extends javax.swing.JFrame {
             .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatban, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnDouong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnMenuLayout.setVerticalGroup(
             pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,6 +262,8 @@ public class Datban extends javax.swing.JFrame {
                 .addComponent(btnDatmon, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDoanthu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDouong, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -392,6 +410,14 @@ public class Datban extends javax.swing.JFrame {
         this.dispose(); 
     }//GEN-LAST:event_btnDoanthuActionPerformed
 
+    private void btnDouongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDouongActionPerformed
+        // TODO add your handling code here:
+        QlyDouong form = new QlyDouong(admin);
+        form.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnDouongActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -407,6 +433,7 @@ public class Datban extends javax.swing.JFrame {
     private javax.swing.JButton btnDatban;
     private javax.swing.JButton btnDatmon;
     private javax.swing.JButton btnDoanthu;
+    private javax.swing.JButton btnDouong;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
