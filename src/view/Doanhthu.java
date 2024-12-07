@@ -7,9 +7,18 @@ package view;
 import controller.accountcontroller;
 import controller.bancontroller;
 import controller.doanhthucontroller;
+import java.io.FileOutputStream;
 import java.sql.ResultSet;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -23,6 +32,7 @@ public class Doanhthu extends javax.swing.JFrame {
     private boolean admin;
     private doanhthucontroller Dt;
     private bancontroller ban;
+
     public Doanhthu(boolean isAdmin) {
         this.admin = isAdmin;
         if (!Dangnhap.isAuthenticated) {
@@ -90,6 +100,54 @@ public class Doanhthu extends javax.swing.JFrame {
         }
     }
 
+    public void exportTableToExcel(JTable table, String filePath) {
+        try {
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Doanh Thu");
+
+            TableModel model = table.getModel();
+
+            // Tạo tiêu đề cột
+            Row headerRow = sheet.createRow(0);
+            for (int col = 0; col < model.getColumnCount(); col++) {
+                Cell cell = headerRow.createCell(col);
+                cell.setCellValue(model.getColumnName(col));
+            }
+
+            // Thêm dữ liệu từ JTable vào file Excel
+            for (int row = 0; row < model.getRowCount(); row++) {
+                Row excelRow = sheet.createRow(row + 1);
+                for (int col = 0; col < model.getColumnCount(); col++) {
+                    Cell cell = excelRow.createCell(col);
+
+                    // Kiểm tra kiểu dữ liệu và gán giá trị
+                    Object value = model.getValueAt(row, col);
+                    if (value instanceof Integer) {
+                        cell.setCellValue((Integer) value);
+                    } else if (value instanceof Float || value instanceof Double) {
+                        cell.setCellValue(Double.parseDouble(value.toString()));
+                    } else if (value instanceof java.util.Date) {
+                        cell.setCellValue(value.toString());
+                    } else {
+                        cell.setCellValue(value != null ? value.toString() : "");
+                    }
+                }
+            }
+
+            // Ghi dữ liệu ra file
+            try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+                workbook.write(fileOut);
+            }
+
+            workbook.close();
+            System.out.println("Xuất file Excel thành công!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi khi xuất file Excel.");
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,6 +177,7 @@ public class Doanhthu extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnXuatfile = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -354,6 +413,13 @@ public class Doanhthu extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        btnXuatfile.setLabel("Xuất file");
+        btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatfileActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -368,7 +434,10 @@ public class Doanhthu extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -387,6 +456,8 @@ public class Doanhthu extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -409,35 +480,60 @@ public class Doanhthu extends javax.swing.JFrame {
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
         QuanLy ql = new QuanLy(admin);
-        ql.setVisible(true); 
-        this.dispose(); 
+        ql.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
-        boolean hasBanDaDat = ban.isAnyBanDaDat(); 
+        boolean hasBanDaDat = ban.isAnyBanDaDat();
         if (!hasBanDaDat) {
             JOptionPane.showMessageDialog(this, "Không có bàn nào đang được đặt. Vui lòng đặt bàn trước!");
             return;
         }
 
         Goimon goiMonUI = new Goimon(admin);
-        goiMonUI.setVisible(true); 
-        this.dispose(); 
+        goiMonUI.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDatmonActionPerformed
 
     private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
         // TODO add your handling code here:
         Doanhthu dt = new Doanhthu(admin);
         dt.setVisible(true);
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_btnDoanthuActionPerformed
 
     private void btnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatbanActionPerformed
         // TODO add your handling code here:
-        Datban db = new Datban(admin); 
+        Datban db = new Datban(admin);
         db.setVisible(true);
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_btnDatbanActionPerformed
+
+    private void btnXuatfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatfileActionPerformed
+        // TODO add your handling code here:
+        // Sử dụng JFileChooser để chọn nơi lưu file
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu file Excel");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+            // Đảm bảo file có phần mở rộng .xlsx
+            if (!filePath.endsWith(".xlsx")) {
+                filePath += ".xlsx";
+            }
+
+            // Gọi hàm xuất file Excel
+            exportTableToExcel(jTable1, filePath);
+
+            // Thông báo sau khi xuất file thành công
+            JOptionPane.showMessageDialog(this, "Xuất file Excel thành công tại: " + filePath);
+        }
+    }//GEN-LAST:event_btnXuatfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -483,6 +579,7 @@ public class Doanhthu extends javax.swing.JFrame {
     private javax.swing.JButton btnDatmon;
     private javax.swing.JButton btnDoanthu;
     private javax.swing.JButton btnNhanVien;
+    private java.awt.Button btnXuatfile;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
