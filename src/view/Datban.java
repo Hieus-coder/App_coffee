@@ -334,17 +334,21 @@ public class Datban extends javax.swing.JFrame {
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow >= 0) {
             String maBan = jTable1.getValueAt(selectedRow, 0).toString();
+
+            boolean deleteOrderSuccess = bc.deleteOrdersByBan(maBan);
+
             String newStatus = "Trống";
             boolean success = bc.updateBanStatus(maBan, newStatus);
             if (success) {
                 loadDataToTable();
-                JOptionPane.showMessageDialog(this, "Đặt hủy thành công!");
+                JOptionPane.showMessageDialog(this, "Hủy bàn thành công!");
             } else {
                 JOptionPane.showMessageDialog(this, "Lỗi hủy bàn!");
             }
         } else {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn một bàn để hủy!");
         }
+
     }//GEN-LAST:event_BtnHuybanActionPerformed
 
     private void BtnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDatbanActionPerformed
@@ -386,28 +390,28 @@ public class Datban extends javax.swing.JFrame {
 
     private void btnDatbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatbanActionPerformed
         // TODO add your handling code here:
-        Datban db = new Datban(admin); 
-        db.setVisible(true); 
-        this.dispose(); 
+        Datban db = new Datban(admin);
+        db.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDatbanActionPerformed
 
     private void btnDatmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatmonActionPerformed
-        boolean hasBanDaDat = bc.isAnyBanDaDat(); 
+        boolean hasBanDaDat = bc.isAnyBanDaDat();
         if (!hasBanDaDat) {
             JOptionPane.showMessageDialog(this, "Không có bàn nào đang được đặt. Vui lòng đặt bàn trước!");
             return;
         }
 
         Goimon goiMonUI = new Goimon(admin);
-        goiMonUI.setVisible(true); 
+        goiMonUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnDatmonActionPerformed
 
     private void btnDoanthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanthuActionPerformed
         // TODO add your handling code here:
         Doanhthu dt = new Doanhthu(admin);
-        dt.setVisible(true); 
-        this.dispose(); 
+        dt.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDoanthuActionPerformed
 
     private void btnDouongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDouongActionPerformed
@@ -415,7 +419,7 @@ public class Datban extends javax.swing.JFrame {
         QlyDouong form = new QlyDouong(admin);
         form.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_btnDouongActionPerformed
 
     public static void main(String args[]) {

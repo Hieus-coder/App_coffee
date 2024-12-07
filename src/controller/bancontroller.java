@@ -23,6 +23,7 @@ public class bancontroller {
             return null;
         }
     }
+
     public boolean isAnyBanDaDat() {
         String sql = "SELECT COUNT(*) AS SoLuong FROM BAN WHERE TRANGTHAI = N'Đã đặt'";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -35,6 +36,7 @@ public class bancontroller {
         }
         return false;
     }
+
     public String getTrangThai(String maBan) {
         String sql = "SELECT TRANGTHAI FROM BAN WHERE MABAN = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -73,12 +75,11 @@ public class bancontroller {
 
         return trangThaiBans;
     }
-   
+
     public boolean datBan(String maBan) {
         return updateBanStatus(maBan, "Đã đặt");
     }
 
-    
     public boolean updateBanStatus(String maBan, String trangThai) {
         if (!"Trống".equals(trangThai) && !"Đã đặt".equals(trangThai)) {
             System.err.println("Giá trị trạng thái không hợp lệ: " + trangThai);
@@ -112,6 +113,7 @@ public class bancontroller {
         }
         return tenBan;
     }
+
     public String getID(String tenBan) {
         String sql = "SELECT MABAN FROM BAN WHERE TENBAN = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -125,7 +127,20 @@ public class bancontroller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null; 
+        return null;
+    }
+
+    public boolean deleteOrdersByBan(String maBan) {
+        String sql = "DELETE FROM [ORDER_] WHERE MABAN = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, maBan);
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0; // Trả về true nếu có dòng bị xóa
+        } catch (SQLException ex) {
+            System.out.println("Lỗi khi xóa order: " + ex.getMessage());
+            return false;
+        }
     }
 
 }
