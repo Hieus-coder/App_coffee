@@ -290,7 +290,7 @@ public class ThanhToan extends javax.swing.JFrame {
                 tongChiPhi += chiPhi * soLuong;
 
                 double gia = Double.parseDouble(model.getValueAt(i, 3).toString());
-                tongTien += gia * soLuong;
+                tongTien += gia;
 
                 thanhToanData.add(new String[]{maDoUong, String.valueOf(soLuong), String.valueOf(chiPhi * soLuong), String.valueOf(gia * soLuong)});
             }
