@@ -195,7 +195,7 @@ public class Doanhthu extends javax.swing.JFrame {
             }
         });
 
-        btnNhanVien.setBackground(new java.awt.Color(255, 102, 102));
+        btnNhanVien.setBackground(new java.awt.Color(74, 48, 34));
         btnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setBorder(null);
@@ -225,8 +225,9 @@ public class Doanhthu extends javax.swing.JFrame {
             }
         });
 
-        btnDoanthu.setBackground(new java.awt.Color(74, 48, 34));
-        btnDoanthu.setForeground(new java.awt.Color(255, 255, 255));
+        btnDoanthu.setBackground(new java.awt.Color(202, 174, 136));
+        btnDoanthu.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        btnDoanthu.setForeground(new java.awt.Color(146, 73, 0));
         btnDoanthu.setText("Doanh thu");
         btnDoanthu.setBorder(null);
         btnDoanthu.addActionListener(new java.awt.event.ActionListener() {
@@ -269,10 +270,6 @@ public class Doanhthu extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -281,6 +278,7 @@ public class Doanhthu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnDouong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnMenuLayout.setVerticalGroup(
             pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

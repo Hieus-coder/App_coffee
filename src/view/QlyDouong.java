@@ -125,7 +125,7 @@ public class QlyDouong extends javax.swing.JFrame {
             }
         });
 
-        btnNhanVien.setBackground(new java.awt.Color(255, 102, 102));
+        btnNhanVien.setBackground(new java.awt.Color(74, 48, 34));
         btnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setBorder(null);
@@ -170,8 +170,9 @@ public class QlyDouong extends javax.swing.JFrame {
         txtUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtUser.setText("Name");
 
-        btnDouong.setBackground(new java.awt.Color(74, 48, 34));
-        btnDouong.setForeground(new java.awt.Color(255, 255, 255));
+        btnDouong.setBackground(new java.awt.Color(202, 174, 136));
+        btnDouong.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        btnDouong.setForeground(new java.awt.Color(146, 73, 0));
         btnDouong.setText("Đồ uống");
         btnDouong.setBorder(null);
         btnDouong.addActionListener(new java.awt.event.ActionListener() {
@@ -201,10 +202,7 @@ public class QlyDouong extends javax.swing.JFrame {
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnDouong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(btnDouong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnMenuLayout.setVerticalGroup(
             pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

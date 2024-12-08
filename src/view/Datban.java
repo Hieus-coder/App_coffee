@@ -168,7 +168,7 @@ public class Datban extends javax.swing.JFrame {
             }
         });
 
-        btnNhanVien.setBackground(new java.awt.Color(255, 102, 102));
+        btnNhanVien.setBackground(new java.awt.Color(74, 48, 34));
         btnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setBorder(null);
@@ -178,8 +178,9 @@ public class Datban extends javax.swing.JFrame {
             }
         });
 
-        btnDatban.setBackground(new java.awt.Color(74, 48, 34));
-        btnDatban.setForeground(new java.awt.Color(255, 255, 255));
+        btnDatban.setBackground(new java.awt.Color(202, 174, 136));
+        btnDatban.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        btnDatban.setForeground(new java.awt.Color(146, 73, 0));
         btnDatban.setText("Đặt bàn");
         btnDatban.setBorder(null);
         btnDatban.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +239,6 @@ public class Datban extends javax.swing.JFrame {
                 .addGap(56, 56, 56))
             .addComponent(btnDoanthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDatmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnDatban, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,6 +248,7 @@ public class Datban extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnDouong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(btnDatban, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnMenuLayout.setVerticalGroup(
             pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

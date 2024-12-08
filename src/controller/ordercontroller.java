@@ -80,9 +80,7 @@ public class ordercontroller {
     public List<Object[]> getDanhSachMonCuaBan(String maBan) {
         List<Object[]> danhSachMon = new ArrayList<>();
         String query = "SELECT MADOUONG, TENDOUONG, SOLUONG, GIA * SOLUONG AS TONGTIEN FROM ORDER_ WHERE MABAN = ?";
-        if (!setGia()) {
-            System.out.println("Cập nhật giá thất bại, tiếp tục lấy danh sách món...");
-        }
+        
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, maBan);
             ResultSet rs = stmt.executeQuery();
@@ -164,10 +162,8 @@ public class ordercontroller {
 
             // Kiểm tra xem có hàng nào được cập nhật không
             if (rowsUpdated > 0) {
-                System.out.println("Cập nhật giá thành công: " + rowsUpdated + " hàng.");
                 return true;
             } else {
-                System.out.println("Không có hàng nào cần cập nhật.");
                 return false;
             }
         } catch (SQLException e) {
@@ -270,10 +266,8 @@ public class ordercontroller {
             pst.setString(1, maBan);
             pst.setString(2, maDoUong);
 
-            // Thực thi câu lệnh xóa
             int rowsAffected = pst.executeUpdate();
 
-            // Kiểm tra số dòng bị ảnh hưởng (xóa thành công sẽ trả về > 0 dòng)
             if (rowsAffected > 0) {
                 System.out.println("Dữ liệu đã được xóa thành công.");
             } else {

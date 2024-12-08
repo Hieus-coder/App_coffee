@@ -104,7 +104,6 @@ public class ThanhToan extends javax.swing.JFrame {
                 Row headerRow = sheet.createRow(0);
                 headerRow.createCell(0).setCellValue("Mã Đồ Uống");
                 headerRow.createCell(1).setCellValue("Số Lượng");
-                headerRow.createCell(2).setCellValue("Chi Phí");
                 headerRow.createCell(3).setCellValue("Giá");
 
                 int rowNum = 1;
@@ -116,8 +115,7 @@ public class ThanhToan extends javax.swing.JFrame {
                 }
 
                 Row totalRow = sheet.createRow(rowNum);
-                totalRow.createCell(0).setCellValue("Tổng Chi Phí:");
-                totalRow.createCell(1).setCellValue(tongChiPhi);
+
                 totalRow.createCell(2).setCellValue("Tổng Tiền:");
                 totalRow.createCell(3).setCellValue(tongTien);
 
